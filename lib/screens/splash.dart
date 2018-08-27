@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../utils/localization.dart' show Localization;
 import '../utils/general.dart';
 import '../utils/theme.dart' as Theme;
 
@@ -40,6 +41,7 @@ class SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
+    var localization = Localization.of(context);
     return Scaffold(
       primary: true,
       body: Stack(
@@ -55,7 +57,7 @@ class SplashState extends State<Splash> {
             child: Container(
               child: Center(
                 child: Text(
-                  'Splash',
+                  localization.trans('LOADING'),
                   style: TextStyle(
                     fontSize: 36.0,
                     color: Colors.white,
