@@ -6,6 +6,7 @@ import './utils/localization.dart';
 import './utils/theme.dart' as Theme;
 import './screens/splash.dart' show Splash;
 import './screens/index.dart' show Index;
+import './screens/infinite_list_view.dart' show InfiniteListView;
 
 void main() => runApp(new MyApp());
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/splash': (BuildContext context) => Splash(),
         '/index': (BuildContext context) => Index(),
+        '/infinite_list_view': (BuildContext context) => InfiniteListView(),
       },
       supportedLocales: [
         const Locale('en', 'US'),

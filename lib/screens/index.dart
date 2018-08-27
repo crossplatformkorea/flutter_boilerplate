@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../models/menu.dart' show Menu;
 import '../utils/general.dart';
 
 class Index extends StatefulWidget {
@@ -10,16 +11,34 @@ class Index extends StatefulWidget {
 }
 
 class IndexState extends State<Index> {
-  _navigate() {
-    General.instance.navigateScreenNamed(context, '/index', reset: true);
-  }
+  final List<Menu> items = [
+    Menu('Infinite ListView', 'Sample for infinite ListView.'),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Text('Empty'),
+      appBar: AppBar(
+        title: Text(
+          'dooboolab'
+        ),
+      ),
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text('${items[index].title}'),
+            subtitle: Text('${items[index].description}'),
+            onTap: () {
+              this._navigate('/infinite_list_view');
+            },
+          );
+        },
       ),
     );
+  }
+
+  _navigate(String path) {
+    General.instance.navigateScreenNamed(context, path, reset: false);
   }
 }
