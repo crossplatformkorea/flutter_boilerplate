@@ -60,5 +60,6 @@ Text(localization.trans('LOADING'));
 ## Examples
 <img src="https://github.com/dooboolab/flutter_boilerplate/blob/master/doc/preview.gif"/>
 We'll add more examples of building widgets along with `InfiniteListView` as we go on.
-* Current List
-  * Infinite ListView
+
+### Current List
+* Infinite ListView
