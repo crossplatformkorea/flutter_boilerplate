@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../utils/localization.dart';
 import '../models/menu.dart' show Menu;
 import '../utils/general.dart';
 
@@ -17,23 +18,15 @@ class IndexState extends State<Index> {
 
   @override
   Widget build(BuildContext context) {
+    var localization = Localization.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'dooboolab'
         ),
       ),
-      body: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('${items[index].title}'),
-            subtitle: Text('${items[index].description}'),
-            onTap: () {
-              this._navigate('/infinite_list_view');
-            },
-          );
-        },
+      body: Center(
+        child: Text(localization.trans('INTRO')),
       ),
     );
   }
