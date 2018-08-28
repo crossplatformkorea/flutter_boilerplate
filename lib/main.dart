@@ -6,6 +6,7 @@ import './utils/localization.dart';
 import './utils/theme.dart' as Theme;
 import './screens/splash.dart' show Splash;
 import './screens/index.dart' show Index;
+import './screens/empty.dart' show Empty;
 
 void main() => runApp(new MyApp());
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/splash': (BuildContext context) => Splash(),
         '/index': (BuildContext context) => Index(),
+        '/empty': (BuildContext context) => Empty(),
       },
       supportedLocales: [
         const Locale('en', 'US'),
