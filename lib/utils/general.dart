@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:math' as Math;
 import 'package:flutter/material.dart';
 
-import '../shared_widgets/dialog_spinner.dart';
+import '../shared/dialog_spinner.dart';
 import '../utils/localization.dart';
 
 class General {

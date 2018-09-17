@@ -11,7 +11,7 @@ For help getting started with Flutter, view our online
 > Specification
 * localization
 * folder structures
-  - models, screens, shared_widgets, utils 
+  - models, screens, shared, utils 
 
 # Structures
 ```text
@@ -21,7 +21,7 @@ project/
 ├─ lib
 │  └─ models // models used in project
 │  └─ screens // list of screens
-│  └─ shared_widgets // widgets that is used in screens multiply
+│  └─ shared // widgets that is used in screens multiply
 │  └─ utils // useful materials - localization, theme, general
 │  └─ main.dart // root of dart file
 ├─ res/
