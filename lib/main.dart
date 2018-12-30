@@ -38,6 +38,10 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate
       ],
       localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
+        if (locale == null) {
+          debugPrint("*language locale is null!!!");
+          return supportedLocales.first;
+        }
         for (Locale supportedLocale in supportedLocales) {
           if (supportedLocale.languageCode == locale.languageCode || supportedLocale.countryCode == locale.countryCode) {
             return supportedLocale;
