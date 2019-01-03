@@ -44,6 +44,7 @@ void main() {
     Splash screen = Splash();
     // Build our app and trigger a frame.
     await tester.pumpWidget(makeTestableWidget(child: screen));
+    await tester.pumpAndSettle();
 
     // Verify that our counter starts at 0.
     // TODO: below fails
