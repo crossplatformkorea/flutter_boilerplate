@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter\_localizations/flutter\_localizations.dart';
-import 'dart:async';
 
 import './utils/localization.dart';
 import './utils/theme.dart' as Theme;
