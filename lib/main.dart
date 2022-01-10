@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/generated/l10n.dart';
 import 'package:flutter_boilerplate/screens/home.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -14,12 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      onGenerateTitle: (context) {
-        return AppLocalizations.of(context)!.appName;
-      },
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
-        AppLocalizations.delegate,
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

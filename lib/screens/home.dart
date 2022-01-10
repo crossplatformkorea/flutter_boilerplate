@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(AppLocalizations.of(context)!.appName),
+        title: Text(Intl.message('appName')),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
