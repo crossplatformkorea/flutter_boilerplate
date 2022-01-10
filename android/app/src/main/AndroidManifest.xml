@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_boilerplate">
+    package="com.dooboolab.flutter_boilerplate">
    <application
         android:label="flutter_boilerplate"
         android:name="${applicationName}"
