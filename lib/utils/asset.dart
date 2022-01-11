@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+
 class Icons {
   Icons._();
-  // static Image logo = Image.asset('res/icons/logo.png');
+  static Image logo = Image.asset('res/icons/logo.png');
 }
 
 class Images {
   Images._();
-  // static AssetImage logoImage = const AssetImage('res/images/logo.png');
+  static AssetImage logo = const AssetImage('res/images/logo.png');
 }
 
 class Colors {

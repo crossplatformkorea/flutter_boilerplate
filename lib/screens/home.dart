@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/utils/asset.dart' as asset;
 import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
@@ -30,9 +31,15 @@ class _HomeState extends State<Home> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Container(
+              margin: const EdgeInsets.all(20),
+              child: Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+            ),
+            Image(
+              image: asset.Images.logo,
             ),
           ],
         ),
