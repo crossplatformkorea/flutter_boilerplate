@@ -176,6 +176,8 @@ dotenv.get('FOO');
 
 This project has a [logger](https://pub.dev/packages/flutter_dotenv) installed
 
+### How to use
+
 ```dart
 logger.d('Log message with 2 methods');
 logger.i('Info message');
