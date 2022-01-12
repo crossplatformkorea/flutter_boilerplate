@@ -4,12 +4,26 @@ Full boilerplate project for Flutter.
 
 ![Flutter](https://docs.flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png)
 
+## Getting Started
+
+> You have to create the .env file.
+>
+> Rename the .env_example file to .env.
+
+```bash
+cp .env_example .env
+flutter pub get
+flutter run
+```
+
 ## Specification
 
-* Localization
-* [Get package](https://pub.dev/packages/get) navigation settings
-* Asset-related settings (Image, Icon, Color)
-* Installed test packages
+- Localization
+- [Get package](https://pub.dev/packages/get) navigation settings
+- Asset-related settings (Image, Icon, Color)
+- Installed test packages
+- Installed the flutter_env package
+-
 
 ## Folder Structures
 
@@ -33,7 +47,8 @@ Full boilerplate project for Flutter.
 │   ├── screens // <- or pages
 │   │   └── home.dart
 │   ├── utils
-│   │   └── asset.dart
+│   │   ├── asset.dart
+│   │   └── logger.dart
 │   └── widgets // <- or components
 │       └── sample.dart
 ├── res
@@ -48,22 +63,25 @@ Full boilerplate project for Flutter.
 ├── flutter_boilerplate.iml
 ├── pubspec.lock
 ├── pubspec.yaml
+├──.env // <- Rename the .env_example file to .env.
 └── README.md
 ```
 
 ## Dependencies
 
 ```yaml
-  # dev_dependencies
-  test: ^1.17.12
-  mockito: ^5.0.17
-  build_runner: ^2.1.7
-  integration_test: ^0.8.1
+# dev_dependencies
+test: ^1.17.12
+mockito: ^5.0.17
+build_runner: ^2.1.7
+integration_test: ^0.8.1
 
-  # dependencies
-  intl: ^0.17.0
-  get: ^4.6.1
-  cupertino_icons: ^1.0.2
+# dependencies
+cupertino_icons: ^1.0.2
+intl: ^0.17.0
+get: ^4.6.1
+flutter_dotenv: ^5.0.2
+logger: ^1.1.0
 ```
 
 ## Running the project
@@ -82,8 +100,8 @@ To use it, you need to install the Flutter Intl extension in your VSCode or Andr
 
 You can go to the link below for installation.
 
-* [Visual studio code](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl)
-* [Android studio](https://plugins.jetbrains.com/plugin/13666-flutter-intl)
+- [Visual studio code](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl)
+- [Android studio](https://plugins.jetbrains.com/plugin/13666-flutter-intl)
 
 When Flutter Intl is installed, a dart file is automatically created when modifying the arb file.
 
@@ -112,11 +130,11 @@ Text(S.of(context))
 
 > The following related things are called Assets.
 >
-> * Images
-> * Icons
-> * Fonts
+> - Images
+> - Icons
+> - Fonts
 >
-Things related to assets are created under the `res` folder.
+> Things related to assets are created under the `res` folder.
 
 ```text
 └── res
@@ -139,3 +157,38 @@ Image(
   image: asset.Images.logo,
 )
 ```
+
+## Environment variables
+
+This project has a flutter_dotenv installed.
+Enter the environmental variable you want in the `.env` file as follows.
+
+```text
+FOO=foo
+BAR=bar
+FOOBAR=$FOO$BAR
+ESCAPED_DOLLAR_SIGN='$1000'
+# This is a comment
+```
+
+### How to use
+
+```dart
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+dotenv.get('FOO');
+
+```
+
+## Logging
+
+This project has a [logger](https://pub.dev/packages/flutter_dotenv) installed
+
+```dart
+logger.d('Log message with 2 methods');
+logger.i('Info message');
+logger.w('Just a warning!');
+logger.e('Error! Something bad happened');
+```
+
+![logger](https://raw.githubusercontent.com/leisim/logger/master/art/screenshot.png)
