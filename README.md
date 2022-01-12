@@ -84,14 +84,6 @@ flutter_dotenv: ^5.0.2
 logger: ^1.1.0
 ```
 
-## Running the project
-
-```sh
-pub get
-flutter run ios
-flutter run android
-```
-
 ## Localization
 
 The repository is localizing using the arb recommended on [the official Flutter website](https://docs.flutter.dev/development/accessibility-and-localization/internationalization).
