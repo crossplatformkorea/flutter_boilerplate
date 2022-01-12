@@ -23,7 +23,7 @@ flutter run
 - Asset-related settings (Image, Icon, Color)
 - Installed test packages
 - Installed the flutter_env package
--
+- Installed the logger package
 
 ## Folder Structures
 
