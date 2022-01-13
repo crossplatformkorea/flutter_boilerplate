@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/screens/result.dart';
 import 'package:flutter_boilerplate/utils/asset.dart' as asset;
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
@@ -32,11 +34,19 @@ class _HomeState extends State<Home> {
               'You have pushed the button this many times:',
             ),
             Container(
-              margin: const EdgeInsets.all(20),
+              margin: const EdgeInsets.only(top: 10),
               child: Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headline4,
               ),
+            ),
+            TextButton(
+              child: const Text("Go to the result page."),
+              onPressed: () {
+                Get.to(() => const Result(), arguments: {
+                  "count": _counter,
+                });
+              },
             ),
             Image(
               image: asset.Images.logo,
