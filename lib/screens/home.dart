@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/apis/sample.dart';
 import 'package:flutter_boilerplate/controller/count_controller.dart';
 import 'package:flutter_boilerplate/screens/result.dart';
 import 'package:flutter_boilerplate/utils/asset.dart' as asset;
