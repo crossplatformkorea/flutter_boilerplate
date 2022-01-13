@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/generated/l10n.dart';
 import 'package:flutter_boilerplate/screens/home.dart';
-import 'package:flutter_boilerplate/utils/logger.dart';
+import 'package:flutter_boilerplate/utils/themes.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-// ignore: implementation_imports
-import 'package:flutter_dotenv/src/errors.dart' show FileNotFoundError;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
 void main() async {
-  try {
-    await dotenv.load(fileName: ".env");
-  } on FileNotFoundError {
-    logger.e("Not found .env file");
-  }
+  await dotenv.load(fileName: ".env");
 
   runApp(const MyApp());
 }
@@ -25,6 +19,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: Themes.light,
+      darkTheme: Themes.dark,
+      themeMode: ThemeMode.system,
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -35,9 +32,6 @@ class MyApp extends StatelessWidget {
         Locale('en', 'US'),
         Locale('ko', 'KR'),
       ],
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: const Home(),
       getPages: [
         GetPage(
