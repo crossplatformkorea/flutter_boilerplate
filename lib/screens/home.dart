@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/controller/count_controller.dart';
+import 'package:flutter_boilerplate/controllers/count_controller.dart';
 import 'package:flutter_boilerplate/screens/result.dart';
 import 'package:flutter_boilerplate/utils/asset.dart' as asset;
 import 'package:flutter_boilerplate/utils/localization.dart';
