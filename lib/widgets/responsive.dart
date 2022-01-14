@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-const mobileMaxWith = 850;
-const tableMaxWith = 1100;
+import 'package:flutter_boilerplate/utils/constants.dart';
 
 class Responsive extends StatelessWidget {
   final Widget mobile;
