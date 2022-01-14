@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/widgets/responsive.dart';
 import 'package:get/get.dart';
 
 class Result extends StatefulWidget {
@@ -31,21 +32,16 @@ class _ResultState extends State<Result> {
         title: const Text("Result"),
       ),
       body: Center(
-        child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            if (constraints.maxWidth > 600) {
-              return Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: _buildCountNumber(),
-              );
-            } else {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: _buildCountNumber(),
-              );
-            }
-          },
+        child: Responsive(
+          mobile: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: _buildCountNumber(),
+          ),
+          desktop: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: _buildCountNumber(),
+          ),
         ),
       ),
     );
