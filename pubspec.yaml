@@ -99,6 +99,7 @@ flutter_native_splash:
   # Note: https://pub.dev/packages/flutter_native_splash
   color: "#ffffff"
   image: res/icons/logo.png
+  web: false
 
 flutter_intl:
   enabled: true
