@@ -1,56 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:flutter\_localizations/flutter\_localizations.dart';
+import 'package:flutter_boilerplate/generated/l10n.dart';
+import 'package:flutter_boilerplate/screens/home.dart';
+import 'package:flutter_boilerplate/screens/result.dart';
+import 'package:flutter_boilerplate/utils/themes.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 
-import './utils/localization.dart';
-import './utils/theme.dart' as Theme;
-import './screens/splash.dart' show Splash;
-import './screens/index.dart' show Index;
-import './screens/empty.dart' show Empty;
+void main() async {
+  await dotenv.load(fileName: ".env");
 
-void main() => runApp(new MyApp());
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Theme.Colors.dodgerBlue,
-        accentColor: Theme.Colors.dodgerBlue,
-        hintColor: Theme.Colors.paleGray,
-        disabledColor: Theme.Colors.disabled,
-      ),
-      routes: {
-        '/splash': (BuildContext context) => Splash(),
-        '/index': (BuildContext context) => Index(),
-        '/empty': (BuildContext context) => Empty(),
-      },
-      supportedLocales: [
-        const Locale('en', 'US'),
-        const Locale('ko', 'KR')
-      ],
-      localizationsDelegates: [
-        const LocalizationDelegate(),
+      theme: Themes.light,
+      darkTheme: Themes.dark,
+      themeMode: ThemeMode.system,
+      localizationsDelegates: const [
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
-      localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
-        if (locale == null) {
-          debugPrint("*language locale is null!!!");
-          return supportedLocales.first;
-        }
-        for (Locale supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode || supportedLocale.countryCode == locale.countryCode) {
-            return supportedLocale;
-          }
-        }
-        return supportedLocales.first;
-      },
-      title: 'dooboolab',
-      home: Splash(), // production
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('ko', 'KR'),
+      ],
+      home: const Home(),
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => const Home(),
+        ),
+        GetPage(
+          name: '/result',
+          page: () => const Result(),
+        ),
+      ],
     );
   }
 }
-
