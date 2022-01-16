@@ -25,6 +25,7 @@ jobs:
     - name: Build web
       run: flutter build web --release
 
-    - uses: erickzanardo/flutter-gh-pages@v3
-      # with:
-      #   workingDir: ./web
+    - uses: erickzanardo/flutter-gh-pages@v7
+      with:
+        targetBranch: gh-pages
+        baseHref: /flutter_boilerplate/
