@@ -25,9 +25,6 @@ jobs:
     - name: Build web
       run: flutter build web --release
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GH_TOKEN }}
-        publish_dir: ./build/web
-        publish_branch: gh-pages
+    - uses: erickzanardo/flutter-gh-pages@v3
+      # with:
+      #   workingDir: ./web
