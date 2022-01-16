@@ -3,14 +3,14 @@ import 'package:flutter_boilerplate/utils/constants.dart';
 
 class Responsive extends StatelessWidget {
   final Widget mobile;
-  final Widget? tablet;
+  final Widget tablet;
   final Widget desktop;
 
   const Responsive({
-    Key? key,
-    required this.mobile,
+    Key key,
+    this.mobile,
     this.tablet,
-    required this.desktop,
+    this.desktop,
   }) : super(key: key);
 
   static bool isMobile(BuildContext context) =>
@@ -30,7 +30,7 @@ class Responsive extends StatelessWidget {
     if (_size.width >= tableMaxWith) {
       return desktop;
     } else if (_size.width >= mobileMaxWith && tablet != null) {
-      return tablet!;
+      return tablet;
     }
 
     return mobile;

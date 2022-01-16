@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter_boilerplate/utils/localization.dart' show t;
 
 class Result extends StatefulWidget {
-  const Result({Key? key}) : super(key: key);
+  const Result({Key key}) : super(key: key);
 
   @override
   _ResultState createState() => _ResultState();

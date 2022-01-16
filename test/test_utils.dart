@@ -7,12 +7,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:mockito/mockito.dart';
 
-
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 class TestUtils {
   static MockNavigatorObserver observer = MockNavigatorObserver();
-  static Widget makeTestableWidget({required Widget child}) {
+  static Widget makeTestableWidget({Widget child}) {
     var widget = GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Themes.light,
