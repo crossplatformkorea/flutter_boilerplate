@@ -6,13 +6,25 @@ Full boilerplate project for Flutter.
 
 ## Getting Started
 
-> You have to create the .env file.
+### 1. Install dependencies
+
+```bash
+flutter pub get
+```
+
+### 2. Create an .env file
+
+> You have to create an .env file.
 >
-> Rename the .env_example file to .env.
+> Copy an .env_example file and create an .env file.
 
 ```bash
 cp .env_example .env
-flutter pub get
+```
+
+### 3. Run the project
+
+```bash
 flutter run
 ```
 
@@ -21,9 +33,27 @@ flutter run
 - Localization
 - [Get package](https://pub.dev/packages/get) navigation settings
 - Asset-related settings (Image, Icon, Color)
-- Installed test packages
-- Installed the flutter_env package
-- Installed the logger package
+- Testing settings
+
+### Dependencies
+
+```yaml
+# dependencies
+cupertino_icons: ^1.0.2
+intl: ^0.17.0
+get: ^4.6.1
+flutter_dotenv: ^5.0.2
+logger: ^1.1.0
+http: ^0.13.4
+
+# dev_dependencies
+flutter_lints: ^1.0.0
+test: ^1.17.12
+mockito: ^5.0.17
+build_runner: ^2.1.7
+integration_test: ^0.8.1
+flutter_native_splash: ^1.3.3
+```
 
 ## Folder Structures
 
@@ -32,6 +62,8 @@ flutter run
 ├── build
 ├── ios
 ├── lib
+│   ├── apis
+│   ├── controller
 │   ├── generated
 │   │   ├── intl
 │   │   │   ├── messages_all.dart
@@ -66,25 +98,8 @@ flutter run
 ├── flutter_boilerplate.iml
 ├── pubspec.lock
 ├── pubspec.yaml
-├──.env // <- Rename the .env_example file to .env.
+├──.env_example
 └── README.md
-```
-
-## Dependencies
-
-```yaml
-# dev_dependencies
-test: ^1.17.12
-mockito: ^5.0.17
-build_runner: ^2.1.7
-integration_test: ^0.8.1
-
-# dependencies
-cupertino_icons: ^1.0.2
-intl: ^0.17.0
-get: ^4.6.1
-flutter_dotenv: ^5.0.2
-logger: ^1.1.0
 ```
 
 ## Localization
@@ -189,3 +204,11 @@ logger.e('Error! Something bad happened');
 ```
 
 ![logger](https://raw.githubusercontent.com/leisim/logger/master/art/screenshot.png)
+
+## Native splash screen
+
+This project has a flutter_native_splash package installed.
+This makes it possible to show the native splash screen.
+Please refer to [this link](https://pub.dev/packages/flutter_native_splash#usage) for instructions on how to use it.
+
+![native_splash_image](https://raw.githubusercontent.com/jonbhanson/flutter_native_splash/master/splash_demo.gif)
