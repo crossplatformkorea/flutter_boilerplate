@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/flutter-seoul/flutter_boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/flutter-seoul/flutter_boilerplate/actions/workflows/ci.yml)
 [![Github Pages](https://github.com/flutter-seoul/flutter_boilerplate/actions/workflows/pages.yml/badge.svg)](https://github.com/flutter-seoul/flutter_boilerplate/actions/workflows/pages.yml)
+[![codecov](https://codecov.io/gh/flutter-seoul/flutter_boilerplate/branch/master/graph/badge.svg?token=xH8ULiKEmd)](https://codecov.io/gh/flutter-seoul/flutter_boilerplate)
 
 Full boilerplate project for Flutter.
 
