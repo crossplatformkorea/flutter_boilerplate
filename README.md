@@ -1,5 +1,7 @@
 # flutter_boilerplate
 
+[![CI](https://github.com/flutter-seoul/flutter_boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/flutter-seoul/flutter_boilerplate/actions/workflows/ci.yml)
+
 Full boilerplate project for Flutter.
 
 ![Flutter](https://docs.flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png)
