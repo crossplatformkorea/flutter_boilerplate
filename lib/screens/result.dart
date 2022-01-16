@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/widgets/responsive.dart';
 import 'package:get/get.dart';
+import 'package:flutter_boilerplate/utils/localization.dart' show t;
 
 class Result extends StatefulWidget {
   const Result({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class _ResultState extends State<Result> {
     List<Widget> _buildCountNumber() {
       return [
         Text(
-          'Count',
+          t("COUNT"),
           style: Theme.of(context).textTheme.headline4,
         ),
         Text(
@@ -29,7 +30,7 @@ class _ResultState extends State<Result> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Result"),
+        title: Text(t("RESULT")),
       ),
       body: Center(
         child: Responsive(

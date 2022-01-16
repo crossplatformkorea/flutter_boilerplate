@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/controllers/count_controller.dart';
 import 'package:flutter_boilerplate/screens/result.dart';
 import 'package:flutter_boilerplate/utils/asset.dart' as asset;
-import 'package:flutter_boilerplate/utils/localization.dart';
+import 'package:flutter_boilerplate/utils/localization.dart' show t;
 import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
@@ -19,15 +19,13 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(t("appName")),
+        title: Text(t("APP_NAME")),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              "You have pushed the button this many times:",
-            ),
+            Text(t("COUNT")),
             Container(
               margin: const EdgeInsets.only(top: 10),
               child: Obx(
@@ -38,7 +36,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             TextButton(
-              child: const Text("Go to the result page."),
+              child: Text(t("GOTO_RESULT")),
               onPressed: () {
                 Get.to(
                   () => const Result(),

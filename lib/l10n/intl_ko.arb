@@ -1,5 +1,8 @@
 {
   "@@locale": "ko",
 
-  "appName": "두부랩"
+  "APP_NAME": "두부랩",
+  "GOTO_RESULT": "결과 화면으로 이동",
+  "RESULT": "결과",
+  "COUNT": "카운트"
 }

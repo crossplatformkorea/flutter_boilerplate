@@ -51,10 +51,40 @@ class S {
   }
 
   /// `dooboolab`
-  String get appName {
+  String get APP_NAME {
     return Intl.message(
       'dooboolab',
-      name: 'appName',
+      name: 'APP_NAME',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to Result screen`
+  String get GOTO_RESULT {
+    return Intl.message(
+      'Go to Result screen',
+      name: 'GOTO_RESULT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Result`
+  String get RESULT {
+    return Intl.message(
+      'Result',
+      name: 'RESULT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Count`
+  String get COUNT {
+    return Intl.message(
+      'Count',
+      name: 'COUNT',
       desc: '',
       args: [],
     );

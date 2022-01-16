@@ -1,5 +1,8 @@
 {
   "@@locale": "en",
 
-  "appName": "dooboolab"
+  "APP_NAME": "dooboolab",
+  "GOTO_RESULT": "Go to Result screen",
+  "RESULT": "Result",
+  "COUNT": "Count"
 }
