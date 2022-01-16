@@ -8,4 +8,6 @@ class User {
       name: json['title'],
     );
   }
+
+
 }

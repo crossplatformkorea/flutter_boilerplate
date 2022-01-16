@@ -58,7 +58,10 @@ flutter run
 │   │   └── logo.png
 │   ├── fonts // <- If you want, you have to make it here yourself.
 ├── test
-│   └── widget_test.dart
+│   ├── /models
+│   ├── /widgets
+│   ├── app_test.dart
+│   └── test_utils.dart
 ├── analysis_options.yaml
 ├── flutter_boilerplate.iml
 ├── pubspec.lock
