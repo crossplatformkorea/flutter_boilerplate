@@ -32,6 +32,14 @@ cp .env_example .env
 flutter run
 ```
 
+### 4. (Optional) Using Git hooks
+
+This project consists of github hooks using [lefthooks](https://github.com/evilmartians/lefthook)
+
+- [What is Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)?
+
+- [How to install and use the Lefthook](https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md).
+
 ## Specification
 
 - Localization

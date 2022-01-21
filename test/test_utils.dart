@@ -11,7 +11,7 @@ class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 class TestUtils {
   static MockNavigatorObserver observer = MockNavigatorObserver();
-  static Widget makeTestableWidget({Widget child}) {
+  static Widget makeTestableWidget({required Widget child}) {
     var widget = GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Themes.light,
