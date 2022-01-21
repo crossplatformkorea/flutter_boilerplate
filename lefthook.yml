@@ -9,6 +9,6 @@ pre-commit:
       run: flutter analyze
 
 pre-push:
-  command:
+  commands:
     flutter-test:
       run: flutter test --coverage
