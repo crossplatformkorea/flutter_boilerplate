@@ -201,7 +201,7 @@ ESCAPED_DOLLAR_SIGN='$1000'
 # This is a comment
 ```
 
-### How to use
+### How to use environment variables
 
 ```dart
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -214,7 +214,7 @@ dotenv.get('FOO');
 
 This project has a [logger](https://pub.dev/packages/flutter_dotenv) installed
 
-### How to use
+### How to use logging
 
 ```dart
 logger.d('Log message with 2 methods');
