@@ -18,27 +18,9 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  void setStatusBarColors() {
-    final schedulerBinding = SchedulerBinding.instance;
-
-    if (schedulerBinding != null) {
-      Brightness brightness = schedulerBinding.window.platformBrightness;
-      bool isDarkMode = brightness == Brightness.dark;
-
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarColor: isDarkMode ? Colors.black : Colors.white,
-          statusBarIconBrightness:
-              isDarkMode ? Brightness.light : Brightness.dark,
-          statusBarBrightness: isDarkMode ? Brightness.light : Brightness.dark,
-        ),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    setStatusBarColors();
+    Themes.setStatusBarColors();
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,

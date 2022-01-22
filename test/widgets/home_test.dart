@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/screens/home.dart';
+import 'package:flutter_boilerplate/screens/result.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../test_utils.dart';
@@ -21,5 +22,18 @@ void main() {
     // Verify that our counter has incremented.
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
+  });
+
+  testWidgets('Button is present and triggers navigation after tapped',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(TestUtils.makeTestableWidget(child: const Home()));
+    await tester.pump();
+
+    expect(find.byType(TextButton), findsOneWidget);
+
+    await tester.tap(find.byType(TextButton));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(Result), findsOneWidget);
   });
 }

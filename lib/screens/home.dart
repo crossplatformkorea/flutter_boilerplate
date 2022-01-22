@@ -45,6 +45,8 @@ class _HomeState extends State<Home> {
               },
             ),
             Image(
+              width: 300,
+              height: 300,
               image: asset.Images.logo,
             ),
           ],

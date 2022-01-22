@@ -2,12 +2,10 @@ import 'package:flutter_boilerplate/apis/sample.dart';
 import 'package:flutter_boilerplate/models/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'fetch_user_test.mocks.dart';
+import '../mocks/http_client.mocks.dart';
 
-@GenerateMocks([http.Client])
 void main() {
   group('fetchUser', () {
     test('returns an User if the http call completes successfully', () async {

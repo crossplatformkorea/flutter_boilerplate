@@ -5,9 +5,8 @@ import 'package:flutter_boilerplate/screens/result.dart';
 import 'package:flutter_boilerplate/utils/themes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:mockito/mockito.dart';
 
-class MockNavigatorObserver extends Mock implements NavigatorObserver {}
+import 'mocks/navigator_observer.mocks.dart';
 
 class TestUtils {
   static MockNavigatorObserver observer = MockNavigatorObserver();
