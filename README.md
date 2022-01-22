@@ -136,7 +136,7 @@ For Korean users, you can check it on [this link](https://medium.com/flutter-seo
 import 'package:intl/intl.dart';
 ...
 
-Text(Intl.message('appName'))
+Text(Intl.message('appName'));
 ```
 
 or
@@ -145,7 +145,15 @@ or
 import 'package:flutter_boilerplate/generated/l10n.dart';
 ...
 
-Text(S.of(context))
+Text(S.of(context).appName);
+```
+
+or
+
+```dart
+import 'package:flutter_boilerplate/utils/localization.dart'
+
+t('appName');
 ```
 
 ## Assets

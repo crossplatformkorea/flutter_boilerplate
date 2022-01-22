@@ -2,7 +2,7 @@ import 'package:test/test.dart';
 import 'package:flutter_boilerplate/models/user.dart';
 
 void main() {
-  test('Counter value should be incremented', () {
+  test('The User instance has a class variable called name', () {
     final user = User(name: "Hyo");
     expect(user.name, "Hyo");
   });
