@@ -35,6 +35,7 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test --coverage
+      - run: sudo apt-get install -y lcov
       - run: lcov --remove coverage/lcov.info 'lib/generated/*' -o coverage/lcov.info
 
       - name: Upload coverage to Codecov
