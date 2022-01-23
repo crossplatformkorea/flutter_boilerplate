@@ -37,6 +37,8 @@ class TestUtils {
   }
 
   static Widget makeTestableWidget({required Widget child}) {
+    Themes.setStatusBarColors();
+
     var widget = GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Themes.light,
