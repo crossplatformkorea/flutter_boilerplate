@@ -8,8 +8,34 @@ import 'package:get/get.dart';
 
 import 'mocks/navigator_observer.mocks.dart';
 
+enum Device { mobile, tablet, desktop }
+
 class TestUtils {
   static MockNavigatorObserver observer = MockNavigatorObserver();
+  static Widget buildMediaQueryTestableWidget(
+      {required Device device, required Widget child}) {
+    double setDeviceWidth() {
+      if (device == Device.mobile) {
+        return 412;
+      } else if (device == Device.tablet) {
+        return 900;
+      }
+
+      return 1920;
+    }
+
+    return MediaQuery(
+      data: MediaQueryData(
+        size: Size.fromWidth(
+          setDeviceWidth(),
+        ),
+      ),
+      child: GetMaterialApp(
+        home: child,
+      ),
+    );
+  }
+
   static Widget makeTestableWidget({required Widget child}) {
     var widget = GetMaterialApp(
       debugShowCheckedModeBanner: false,
