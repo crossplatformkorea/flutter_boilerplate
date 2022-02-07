@@ -6,7 +6,7 @@ const darkModeStatusBarColor = SystemUiOverlayStyle(
   statusBarColor: Colors.black,
   statusBarIconBrightness: Brightness.light,
   systemNavigationBarIconBrightness: Brightness.light,
-  statusBarBrightness: Brightness.light,
+  statusBarBrightness: Brightness.dark,
 );
 
 const lightModeStatusBarColor = SystemUiOverlayStyle(
