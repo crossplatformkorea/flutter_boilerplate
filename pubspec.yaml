@@ -32,9 +32,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
   intl: ^0.17.0
-  get: ^4.6.1
+  get: ^4.6.5
   flutter_dotenv: ^5.0.2
   logger: ^1.1.0
   http: ^0.13.4
@@ -50,11 +50,11 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^1.0.0
-  test: ^1.19.5
-  mockito: ^5.0.17
-  build_runner: ^2.1.7
-  flutter_native_splash: ^2.0.2
+  flutter_lints: ^2.0.1
+  test: ^1.20.2
+  mockito: ^5.2.0
+  build_runner: ^2.1.11
+  flutter_native_splash: ^2.2.3+1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
