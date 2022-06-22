@@ -23,14 +23,12 @@ class Themes {
   static void setStatusBarColors() {
     final schedulerBinding = SchedulerBinding.instance;
 
-    if (schedulerBinding != null) {
-      Brightness brightness = schedulerBinding.window.platformBrightness;
-      bool isDarkMode = brightness == Brightness.dark;
+    Brightness brightness = schedulerBinding.window.platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
 
-      SystemChrome.setSystemUIOverlayStyle(
-        isDarkMode ? darkModeStatusBarColor : lightModeStatusBarColor,
-      );
-    }
+    SystemChrome.setSystemUIOverlayStyle(
+      isDarkMode ? darkModeStatusBarColor : lightModeStatusBarColor,
+    );
   }
 }
 
@@ -45,5 +43,5 @@ const lightModeStatusBarColor = SystemUiOverlayStyle(
   statusBarColor: Colors.white,
   statusBarIconBrightness: Brightness.dark,
   systemNavigationBarIconBrightness: Brightness.dark,
-  statusBarBrightness: Brightness.dark,
+  statusBarBrightness: Brightness.light,
 );

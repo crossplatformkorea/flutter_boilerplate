@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/controllers/count_controller.dart';
 import 'package:flutter_boilerplate/screens/result.dart';
-import 'package:flutter_boilerplate/utils/asset.dart' as asset;
+import 'package:flutter_boilerplate/utils/constants.dart';
 import 'package:flutter_boilerplate/utils/localization.dart' show t;
 import 'package:get/get.dart';
 
@@ -44,10 +44,12 @@ class _HomeState extends State<Home> {
                 );
               },
             ),
-            Image(
+            const Image(
               width: 300,
               height: 300,
-              image: asset.Images.logo,
+              image: AssetImage(
+                imageLogo,
+              ),
             ),
           ],
         ),
