@@ -55,6 +55,9 @@ dev_dependencies:
   mockito: ^5.2.0
   build_runner: ^2.1.11
   flutter_native_splash: ^2.2.3+1
+  # Rename App Package
+  # flutter pub run change_app_package_name:main com.new.package.name
+  change_app_package_name: ^1.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
