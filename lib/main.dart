@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/generated/l10n.dart';
 import 'package:flutter_boilerplate/screens/home.dart';
 import 'package:flutter_boilerplate/screens/result.dart';
+import 'package:flutter_boilerplate/utils/firebase_config.dart';
 import 'package:flutter_boilerplate/utils/themes.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,6 +10,7 @@ import 'package:get/get.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
+  await FirebaseConfig.initializeApp();
 
   runApp(const MyApp());
 }

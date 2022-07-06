@@ -6,7 +6,15 @@
 
 Full boilerplate project for Flutter.
 
-![Flutter](https://docs.flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png)
+![Flutter](https://miro.medium.com/max/857/1*QybiijG3EKfiINDa-kvolA.png)
+
+## Specification
+
+- Localization
+- [Get package](https://pub.dev/packages/get) navigation settings
+- Asset-related settings (Image, Icon, Color)
+- Testing settings
+- Firebase settings & boiler plate
 
 ## Getting Started
 
@@ -40,78 +48,108 @@ This project consists of github hooks using [lefthooks](https://github.com/evilm
 
 - [How to install and use the Lefthook](https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md).
 
-## Specification
+## Firebase settings
 
-- Localization
-- [Get package](https://pub.dev/packages/get) navigation settings
-- Asset-related settings (Image, Icon, Color)
-- Testing settings
+1. Install the CLI programs below.
+
+```bash
+$ npm install -g firebase-tools
+$ dart pub global activate flutterfire_cli
+```
+
+2. If you installed firebase-tools for the first time, log in using the command below.
+
+```bash
+$ firebase login
+```
+
+3. Run the command below from the we count project root path.
+
+```bash
+$ flutterfire configure
+```
+
+## Firebase emulator settings
+
+1. In the `.env` file, change SHOULD_USE_EMULATOR from false to true.
+
+```
+...
+SHOULD_USE_EMULATOR=true
+...
+```
+
+2.  In the `.env` file, Change to the internal IP where the emulator is running.
+
+```
+...
+INTERNAL_IP=192.168.0.3
+...
+```
+
+If you want to run an Android emulator, you need to enter `10.0.2.2`
+
+3. Install the firebase CLI program using the command below.
+
+```bash
+$ npm install -g firebase-tools
+```
+
+4. Go to the firebase directory with the command below.
+
+```bash
+$ cd firebase
+```
+
+5. Use the command below to set up the emulator.
+
+```bash
+$ firebase init emulators
+```
+
+6. Go to the functions directory with the command below.
+
+```bash
+$ cd functions
+```
+
+7. Use the command below to install the dependencies.
+
+```bash
+$ npm install
+```
+
+8. Use the command below to run the emulator.
+
+```
+$ npm run dev
+```
+
+See also: [firebase-boilerplate](https://github.com/Jay-flow/firebase-boilerplate)
 
 ### Dependencies
 
 ```yaml
 # dependencies
-cupertino_icons: ^1.0.2
+cupertino_icons: ^1.0.5
 intl: ^0.17.0
-get: ^4.6.1
+get: ^4.6.5
 flutter_dotenv: ^5.0.2
 logger: ^1.1.0
 http: ^0.13.4
+firebase_core: ^1.19.1
+firebase_auth: ^3.4.1
+cloud_firestore: ^3.2.1
+firebase_storage: ^10.3.1
+firebase_messaging: ^11.4.4
 
 # dev_dependencies
-flutter_lints: ^1.0.0
-test: ^1.17.12
-mockito: ^5.0.17
-build_runner: ^2.1.7
-integration_test: ^0.8.1
-flutter_native_splash: ^1.3.3
-```
-
-## Folder Structures
-
-```text
-├── android
-├── build
-├── ios
-├── lib
-│   ├── apis
-│   ├── controller
-│   ├── generated
-│   │   ├── intl
-│   │   │   ├── messages_all.dart
-│   │   │   ├── messages_en.dart
-│   │   │   └── messages_ko.dart
-│   │   └── l10n.dart
-│   ├── l10n
-│   │   ├── intl_en.arb
-│   │   └── intl_ko.arb
-│   ├── main.dart
-│   ├── models
-│   │   └── sample.dart
-│   ├── screens // <- or pages
-│   │   └── home.dart
-│   ├── utils
-│   │   ├── asset.dart
-│   │   └── logger.dart
-│   └── widgets // <- or components
-│       └── sample.dart
-├── res
-│   ├── icons
-│   │   └── logo.png
-│   ├── images
-│   │   └── logo.png
-│   ├── fonts // <- If you want, you have to make it here yourself.
-├── test
-│   ├── /models
-│   ├── /widgets
-│   ├── app_test.dart
-│   └── test_utils.dart
-├── analysis_options.yaml
-├── flutter_boilerplate.iml
-├── pubspec.lock
-├── pubspec.yaml
-├──.env_example
-└── README.md
+flutter_lints: ^2.0.1
+test: ^1.20.2
+mockito: ^5.2.0
+build_runner: ^2.1.11
+flutter_native_splash: ^2.2.3+1
+change_app_package_name: ^1.1.0
 ```
 
 ## Localization
@@ -204,9 +242,9 @@ ESCAPED_DOLLAR_SIGN='$1000'
 ### How to use environment variables
 
 ```dart
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_boilerplate/utils/tools.dart';
 
-dotenv.get('FOO');
+env('FOO');
 
 ```
 

@@ -7,7 +7,7 @@ class Result extends StatefulWidget {
   const Result({Key? key}) : super(key: key);
 
   @override
-  _ResultState createState() => _ResultState();
+  State<Result> createState() => _ResultState();
 }
 
 class _ResultState extends State<Result> {

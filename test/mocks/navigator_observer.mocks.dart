@@ -2,6 +2,8 @@
 // in flutter_boilerplate/test/mocks/navigator_observer.dart.
 // Do not manually edit this file.
 
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+
 import 'package:flutter/src/widgets/navigator.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
