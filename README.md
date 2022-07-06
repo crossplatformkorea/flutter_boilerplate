@@ -6,7 +6,12 @@
 
 Full boilerplate project for Flutter.
 
-![Flutter](https://miro.medium.com/max/857/1*QybiijG3EKfiINDa-kvolA.png)
+![Logo](./doc/logo.jpg)
+
+Do you need another boilerplate?
+
+- [Basic flutter boilerplate](https://github.com/flutter-seoul/flutter_boilerplate)
+- [Supabase boilerplate](https://github.com/flutter-seoul/flutter_boilerplate/tree/supabase)
 
 ## Specification
 
