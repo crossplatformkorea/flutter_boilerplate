@@ -4,7 +4,7 @@ import { existsSync } from 'fs'
 import { resolve } from 'path'
 
 const init = async () => {
-  const keyFilePath = resolve(__dirname, '../../key.json')
+  const keyFilePath = resolve(__dirname, '../key.json')
 
   if (existsSync(keyFilePath)) {
     /* eslint-disable */
