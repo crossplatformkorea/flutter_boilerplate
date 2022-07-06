@@ -6,7 +6,19 @@
 
 Full boilerplate project for Flutter.
 
-![Flutter](https://docs.flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png)
+![Flutter](./doc/logo.jpg)
+
+Do you need another boilerplate?
+
+- [Firebase boilerplate](https://github.com/flutter-seoul/flutter_boilerplate/tree/firebase)
+- [Supabase boilerplate](https://github.com/flutter-seoul/flutter_boilerplate/tree/supabase)
+
+## Specification
+
+- Localization
+- [Get package](https://pub.dev/packages/get) navigation settings
+- Asset-related settings (Image, Icon, Color)
+- Testing settings
 
 ## Getting Started
 
@@ -40,78 +52,24 @@ This project consists of github hooks using [lefthooks](https://github.com/evilm
 
 - [How to install and use the Lefthook](https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md).
 
-## Specification
-
-- Localization
-- [Get package](https://pub.dev/packages/get) navigation settings
-- Asset-related settings (Image, Icon, Color)
-- Testing settings
-
 ### Dependencies
 
 ```yaml
 # dependencies
-cupertino_icons: ^1.0.2
+cupertino_icons: ^1.0.5
 intl: ^0.17.0
-get: ^4.6.1
+get: ^4.6.5
 flutter_dotenv: ^5.0.2
 logger: ^1.1.0
 http: ^0.13.4
 
 # dev_dependencies
-flutter_lints: ^1.0.0
-test: ^1.17.12
-mockito: ^5.0.17
-build_runner: ^2.1.7
-integration_test: ^0.8.1
-flutter_native_splash: ^1.3.3
-```
-
-## Folder Structures
-
-```text
-├── android
-├── build
-├── ios
-├── lib
-│   ├── apis
-│   ├── controller
-│   ├── generated
-│   │   ├── intl
-│   │   │   ├── messages_all.dart
-│   │   │   ├── messages_en.dart
-│   │   │   └── messages_ko.dart
-│   │   └── l10n.dart
-│   ├── l10n
-│   │   ├── intl_en.arb
-│   │   └── intl_ko.arb
-│   ├── main.dart
-│   ├── models
-│   │   └── sample.dart
-│   ├── screens // <- or pages
-│   │   └── home.dart
-│   ├── utils
-│   │   ├── asset.dart
-│   │   └── logger.dart
-│   └── widgets // <- or components
-│       └── sample.dart
-├── res
-│   ├── icons
-│   │   └── logo.png
-│   ├── images
-│   │   └── logo.png
-│   ├── fonts // <- If you want, you have to make it here yourself.
-├── test
-│   ├── /models
-│   ├── /widgets
-│   ├── app_test.dart
-│   └── test_utils.dart
-├── analysis_options.yaml
-├── flutter_boilerplate.iml
-├── pubspec.lock
-├── pubspec.yaml
-├──.env_example
-└── README.md
+flutter_lints: ^2.0.1
+test: ^1.20.2
+mockito: ^5.2.0
+build_runner: ^2.1.11
+flutter_native_splash: ^2.2.3+1
+change_app_package_name: ^1.1.0
 ```
 
 ## Localization
