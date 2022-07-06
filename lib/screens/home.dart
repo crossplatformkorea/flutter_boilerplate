@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/controllers/count_controller.dart';
-import 'package:flutter_boilerplate/screens/result.dart';
-import 'package:flutter_boilerplate/utils/constants.dart';
-import 'package:flutter_boilerplate/utils/localization.dart' show t;
+import 'package:flutter_boilerplate/utils/localization.dart';
+import 'package:flutter_boilerplate/widgets/auth_state.dart';
 import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
@@ -12,53 +11,31 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends AuthState<Home> {
   final controller = Get.put(CountController());
+
+  @override
+  void initState() {
+    recoverSupabaseSession();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(t("APP_NAME")),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(t("COUNT")),
-            Container(
-              margin: const EdgeInsets.only(top: 10),
-              child: Obx(
-                () => Text(
-                  "${controller.count.value}",
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
-            ),
-            TextButton(
-              child: Text(t("GOTO_RESULT")),
-              onPressed: () {
-                Get.to(
-                  () => const Result(),
-                  arguments: "${controller.count.value}",
-                );
-              },
-            ),
-            const Image(
-              width: 300,
-              height: 300,
-              image: AssetImage(
-                imageLogo,
-              ),
-            ),
-          ],
+        title: Text(
+          t("appName"),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => controller.increase(),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: Center(
+        child: CircularProgressIndicator(
+          semanticsLabel: 'LOADING',
+          backgroundColor: Theme.of(context).primaryColor,
+          strokeWidth: 2,
+          valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+        ),
+      ),
     );
   }
 }

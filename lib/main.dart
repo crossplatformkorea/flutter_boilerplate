@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/generated/l10n.dart';
+import 'package:flutter_boilerplate/screens/account.dart';
 import 'package:flutter_boilerplate/screens/home.dart';
-import 'package:flutter_boilerplate/screens/result.dart';
+import 'package:flutter_boilerplate/screens/sign_in.dart';
 import 'package:flutter_boilerplate/utils/themes.dart';
+import 'package:flutter_boilerplate/utils/tools.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
+
+  await Supabase.initialize(
+    url: env("SUPABASE_API_URL"),
+    anonKey: env("SUPABASE_ANON_KEY"),
+    debug: env("ENV") == "development",
+  );
 
   runApp(const MyApp());
 }
@@ -42,8 +51,12 @@ class MyApp extends StatelessWidget {
           page: () => const Home(),
         ),
         GetPage(
-          name: '/result',
-          page: () => const Result(),
+          name: '/sign-in',
+          page: () => const SignIn(),
+        ),
+        GetPage(
+          name: '/account',
+          page: () => const Account(),
         ),
       ],
     );

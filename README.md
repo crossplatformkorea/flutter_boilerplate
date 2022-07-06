@@ -6,12 +6,12 @@
 
 Full boilerplate project for Flutter.
 
-![Flutter](./doc/logo.jpg)
+![Flutter](./doc/logo.webp)
 
 Do you need another boilerplate?
 
+- [Basic Flutter boilerplate](https://github.com/flutter-seoul/flutter_boilerplate)
 - [Firebase boilerplate](https://github.com/flutter-seoul/flutter_boilerplate/tree/firebase)
-- [Supabase boilerplate](https://github.com/flutter-seoul/flutter_boilerplate/tree/supabase)
 
 ## Specification
 
@@ -19,6 +19,7 @@ Do you need another boilerplate?
 - [Get package](https://pub.dev/packages/get) navigation settings
 - Asset-related settings (Image, Icon, Color)
 - Testing settings
+- Supabase settings & boilerplate
 
 ## Getting Started
 
@@ -32,19 +33,56 @@ flutter pub get
 
 > You have to create an .env file.
 >
-> Copy an .env_example file and create an .env file.
+> Copy an .env.sample file and create an .env file.
 
 ```bash
-cp .env_example .env
+cp .env.sample .env
 ```
 
-### 3. Run the project
+### 3. Create a Supabase project
+
+Create a Supabase project according to below guide.
+
+- [Project set up](https://supabase.com/docs/guides/with-flutter#project-set-up)
+- [Set up the database schema](https://supabase.com/docs/guides/with-flutter#set-up-the-database-schema)
+
+> ⚠️ Caveat
+>
+> Storage's bucket must be set to public.
+
+### 4. Modify configurations and the `.env` file
+
+According to the guide below.
+Check values to enter in `.env`'.
+
+- [Get the API & ANON Keys](https://supabase.com/docs/guides/with-flutter#get-the-api-keys)
+
+- [Setup deep links](https://supabase.com/docs/guides/with-flutter#setup-deep-links)
+
+- Modify the `.env` file in the project root
+
+As a result, an .env file similar to the following must be in the project route.
+
+```bash
+ENV="development"
+SUPABASE_API_URL="https://kaskjhasdfqwerkjhv.supabase.co"
+SUPABASE_ANON_KEY="asasdfjhASDfjkasdjkf8asdfsadf8.asdfkjhasjkdfsdafsdFASDFasdfasdflasdAFSDF9.kjahsdf123124kjhasdf66kjhasdkfjhasASDsdkj"
+DEEP_LINK="com.dooboolab.flutter-boilerplate-supabase://login-callback/"
+```
+
+> ⚠️ Caveat
+>
+> Underbar('\_') must not be used for the deep link.
+
+### 5. Run the project
 
 ```bash
 flutter run
 ```
 
-### 4. (Optional) Using Git hooks
+---
+
+### 6. (Optional) Using Git hooks
 
 This project consists of github hooks using [lefthooks](https://github.com/evilmartians/lefthook)
 
@@ -62,6 +100,9 @@ get: ^4.6.5
 flutter_dotenv: ^5.0.2
 logger: ^1.1.0
 http: ^0.13.4
+supabase: ^0.3.5
+supabase_flutter: ^0.3.1+3
+image_picker: ^0.8.5+3
 
 # dev_dependencies
 flutter_lints: ^2.0.1
