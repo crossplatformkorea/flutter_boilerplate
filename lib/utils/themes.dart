@@ -9,6 +9,19 @@ class Themes {
     // light theme settings
     backgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      iconTheme: IconThemeData(
+        color: Colors.black,
+      ),
+      actionsIconTheme: IconThemeData(
+        color: Colors.black,
+      ),
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        color: Colors.black,
+        fontSize: 17,
+      ),
       systemOverlayStyle: lightModeStatusBarColor,
     ),
   );

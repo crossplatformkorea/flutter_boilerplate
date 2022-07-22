@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/widgets/back_app_bar.dart';
 import 'package:flutter_boilerplate/widgets/responsive.dart';
 import 'package:get/get.dart';
 import 'package:flutter_boilerplate/utils/localization.dart' show t;
@@ -7,7 +8,7 @@ class Result extends StatefulWidget {
   const Result({Key? key}) : super(key: key);
 
   @override
-  _ResultState createState() => _ResultState();
+  State<Result> createState() => _ResultState();
 }
 
 class _ResultState extends State<Result> {
@@ -29,7 +30,7 @@ class _ResultState extends State<Result> {
     }
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BackAppBar(
         title: Text(t("RESULT")),
       ),
       body: Center(

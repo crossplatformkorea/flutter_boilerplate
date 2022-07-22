@@ -24,7 +24,11 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "APP_NAME": MessageLookupByLibrary.simpleMessage("두부랩"),
         "COUNT": MessageLookupByLibrary.simpleMessage("카운트"),
-        "GOTO_RESULT": MessageLookupByLibrary.simpleMessage("결과 화면으로 이동"),
-        "RESULT": MessageLookupByLibrary.simpleMessage("결과")
+        "ERROR": MessageLookupByLibrary.simpleMessage("에러"),
+        "GO_TO_RESULT": MessageLookupByLibrary.simpleMessage("결과 화면으로 이동"),
+        "GO_TO_SAMPLE": MessageLookupByLibrary.simpleMessage("샘플 위젯 화면으로 이동"),
+        "LOADING": MessageLookupByLibrary.simpleMessage("로딩중..."),
+        "RESULT": MessageLookupByLibrary.simpleMessage("결과"),
+        "WARNING": MessageLookupByLibrary.simpleMessage("경고")
       };
 }

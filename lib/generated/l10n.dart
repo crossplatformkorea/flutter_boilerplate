@@ -61,10 +61,20 @@ class S {
   }
 
   /// `Go to Result screen`
-  String get GOTO_RESULT {
+  String get GO_TO_RESULT {
     return Intl.message(
       'Go to Result screen',
-      name: 'GOTO_RESULT',
+      name: 'GO_TO_RESULT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to Sample screen`
+  String get GO_TO_SAMPLE {
+    return Intl.message(
+      'Go to Sample screen',
+      name: 'GO_TO_SAMPLE',
       desc: '',
       args: [],
     );
@@ -75,6 +85,36 @@ class S {
     return Intl.message(
       'Result',
       name: 'RESULT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Warning`
+  String get WARNING {
+    return Intl.message(
+      'Warning',
+      name: 'WARNING',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error`
+  String get ERROR {
+    return Intl.message(
+      'Error',
+      name: 'ERROR',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading...`
+  String get LOADING {
+    return Intl.message(
+      'Loading...',
+      name: 'LOADING',
       desc: '',
       args: [],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/controllers/count_controller.dart';
 import 'package:flutter_boilerplate/screens/result.dart';
+import 'package:flutter_boilerplate/screens/sample.dart';
 import 'package:flutter_boilerplate/utils/constants.dart';
 import 'package:flutter_boilerplate/utils/localization.dart' show t;
 import 'package:get/get.dart';
@@ -36,7 +37,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             TextButton(
-              child: Text(t("GOTO_RESULT")),
+              child: Text(t("GO_TO_RESULT")),
               onPressed: () {
                 Get.to(
                   () => const Result(),
@@ -50,6 +51,15 @@ class _HomeState extends State<Home> {
               image: AssetImage(
                 imageLogo,
               ),
+            ),
+            TextButton(
+              child: Text(t("GO_TO_SAMPLE")),
+              onPressed: () {
+                Get.to(
+                  () => const Sample(),
+                  arguments: "${controller.count.value}",
+                );
+              },
             ),
           ],
         ),
