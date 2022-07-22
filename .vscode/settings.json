@@ -2,15 +2,18 @@
     "cSpell.words": [
         "codecov",
         "Cupertino",
-        "firestore",
         "dooboolab",
         "dotenv",
+        "erickzanardo",
+        "firestore",
+        "flutterfire",
         "Getx",
         "Lefthook",
         "lefthooks",
         "mockito",
         "paxian",
         "pubspec",
-        "Schyler"
-    ]
+        "Schyler",
+        "subosito"
+]
 }
