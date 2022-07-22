@@ -3,6 +3,7 @@ module.exports = {
   env: {
     es6: true,
     node: true,
+    "jest/globals": true
   },
   extends: [
     "eslint:recommended",
@@ -11,12 +12,13 @@ module.exports = {
     "plugin:import/typescript",
     "google",
     "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
     "prettier"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: ["tsconfig.json", "tsconfig.dev.json"],
+    project: ["tsconfig.json"],
     sourceType: "module",
   },
   ignorePatterns: [
@@ -25,6 +27,7 @@ module.exports = {
   plugins: [
     "@typescript-eslint",
     "import",
+    "jest"
   ],
   rules: {
     "@typescript-eslint/no-non-null-assertion": 0

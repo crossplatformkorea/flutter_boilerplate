@@ -87,7 +87,7 @@ Project settings -> Service accounts
 
 2. Place the key.json file in the directory below.
 
-   path: `functions/src/key.json`
+   path: `functions/key.json`
 
 # Usage
 
