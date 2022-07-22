@@ -2,7 +2,11 @@
   "@@locale": "ko",
 
   "APP_NAME": "두부랩",
-  "GOTO_RESULT": "결과 화면으로 이동",
+  "GO_TO_RESULT": "결과 화면으로 이동",
+  "GO_TO_SAMPLE": "샘플 위젯 화면으로 이동",
   "RESULT": "결과",
+  "WARNING": "경고",
+  "ERROR": "에러",
+  "LOADING": "로딩중...",
   "COUNT": "카운트"
 }

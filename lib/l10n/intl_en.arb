@@ -2,7 +2,11 @@
   "@@locale": "en",
 
   "APP_NAME": "dooboolab",
-  "GOTO_RESULT": "Go to Result screen",
+  "GO_TO_RESULT": "Go to Result screen",
+  "GO_TO_SAMPLE": "Go to Sample screen",
   "RESULT": "Result",
+  "WARNING": "Warning",
+  "ERROR": "Error",
+  "LOADING": "Loading...",
   "COUNT": "Count"
 }

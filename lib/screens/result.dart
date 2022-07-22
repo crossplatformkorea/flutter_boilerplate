@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/widgets/back_app_bar.dart';
 import 'package:flutter_boilerplate/widgets/responsive.dart';
 import 'package:get/get.dart';
 import 'package:flutter_boilerplate/utils/localization.dart' show t;
@@ -29,7 +30,7 @@ class _ResultState extends State<Result> {
     }
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BackAppBar(
         title: Text(t("RESULT")),
       ),
       body: Center(

@@ -24,8 +24,13 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "APP_NAME": MessageLookupByLibrary.simpleMessage("dooboolab"),
         "COUNT": MessageLookupByLibrary.simpleMessage("Count"),
-        "GOTO_RESULT":
+        "ERROR": MessageLookupByLibrary.simpleMessage("Error"),
+        "GO_TO_RESULT":
             MessageLookupByLibrary.simpleMessage("Go to Result screen"),
-        "RESULT": MessageLookupByLibrary.simpleMessage("Result")
+        "GO_TO_SAMPLE":
+            MessageLookupByLibrary.simpleMessage("Go to Sample screen"),
+        "LOADING": MessageLookupByLibrary.simpleMessage("Loading..."),
+        "RESULT": MessageLookupByLibrary.simpleMessage("Result"),
+        "WARNING": MessageLookupByLibrary.simpleMessage("Warning")
       };
 }

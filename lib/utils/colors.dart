@@ -1,3 +1,3 @@
 import 'dart:ui';
 
-const sampleColor = Color(0xFFFF608D);
+const primaryColor = Color(0xFFFF608D);

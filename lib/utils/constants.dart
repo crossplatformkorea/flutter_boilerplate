@@ -1,3 +1,5 @@
+const appName = "flutter_boilerplate";
+
 const mobileMaxWith = 850;
 const tableMaxWith = 1100;
 
