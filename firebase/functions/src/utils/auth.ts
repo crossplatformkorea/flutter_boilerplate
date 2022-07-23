@@ -4,7 +4,7 @@ import { existsSync } from 'fs'
 import { resolve } from 'path'
 
 const init = async () => {
-  const keyFilePath = resolve(__dirname, '../key.json')
+  const keyFilePath = resolve(__dirname, '../../key.json')
 
   if (existsSync(keyFilePath)) {
     /* eslint-disable */
@@ -12,19 +12,22 @@ const init = async () => {
     const serviceAccount = await import(keyFilePath)
     admin.initializeApp({
       // @ts-ignore
-      credential: admin.credential.cert(serviceAccount),
-      databaseURL: process.env.DATABASE_URL
+      credential: admin.credential.cert(serviceAccount)
+      // databaseURL: process.env.DATABASE_URL
     })
   }
 
-  // eslint-disable-next-line no-extra-boolean-cast
-  if (shouldUseEmulator()) {
-    admin.firestore().settings({ host: 'localhost:8080', ssl: false })
-  }
+  handleEmulator()
 
   return admin
 }
 
+const handleEmulator = () => {
+  // eslint-disable-next-line no-extra-boolean-cast
+  if (shouldUseEmulator()) {
+    admin.firestore().settings({ host: 'localhost:8080', ssl: false })
+  }
+}
 const shouldUseEmulator = (): boolean => {
   const envShouldUseEmulator = process.env.SHOULD_USE_EMULATOR?.toLowerCase()
 
@@ -35,4 +38,5 @@ const shouldUseEmulator = (): boolean => {
   return false
 }
 
+export { handleEmulator, shouldUseEmulator }
 export default init
