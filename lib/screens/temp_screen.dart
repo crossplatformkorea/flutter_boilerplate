@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/utils/tools.dart';
-import 'package:flutter_boilerplate/widgets/back_app_bar.dart';
-import 'package:flutter_boilerplate/widgets/custom_checkbox.dart';
 import 'package:flutter_boilerplate/widgets/outline_button.dart';
+import 'package:flutter_boilerplate/screens/sign_up_screen/agreement_checkbox.dart';
 import 'package:flutter_boilerplate/widgets/solid_button.dart';
 
-class Sample extends StatefulWidget {
-  const Sample({Key? key}) : super(key: key);
+class TempScreen extends StatefulWidget {
+  const TempScreen({Key? key}) : super(key: key);
 
   @override
-  State<Sample> createState() => _SampleState();
+  State<TempScreen> createState() => _TempScreenState();
 }
 
-class _SampleState extends State<Sample> {
-  List<bool> _agreementValues = List.generate(3, (index) => false);
+class _TempScreenState extends State<TempScreen> {
+  List<bool> _agreementValues = List.generate(4, (index) => false);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BackAppBar(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -36,57 +34,50 @@ class _SampleState extends State<Sample> {
                   width: double.infinity,
                   height: 50,
                 ),
-                child: const Text("전체동의"),
+                child: const Text("All agree"),
               ),
               Row(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 5,
-                    ),
-                    child: CustomCheckbox(
-                      value: _agreementValues[0],
-                      onChanged: (value) {
-                        _agreementValues[0] = value;
-                      },
-                    ),
+                  AgreementCheckbox(
+                    value: _agreementValues[0],
+                    onChanged: (value) {
+                      _agreementValues[0] = value;
+                    },
                   ),
                   const Text('agreement 1'),
                 ],
               ),
               Row(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 5,
-                    ),
-                    child: CustomCheckbox(
-                      value: _agreementValues[1],
-                      onChanged: (value) {
-                        _agreementValues[1] = value;
-                      },
-                    ),
+                  AgreementCheckbox(
+                    value: _agreementValues[1],
+                    onChanged: (value) {
+                      _agreementValues[1] = value;
+                    },
                   ),
                   const Text('agreement 2'),
                 ],
               ),
               Row(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 5,
-                    ),
-                    child: CustomCheckbox(
-                      value: _agreementValues[2],
-                      onChanged: (value) {
-                        _agreementValues[2] = value;
-                      },
-                    ),
+                  AgreementCheckbox(
+                    value: _agreementValues[2],
+                    onChanged: (value) {
+                      _agreementValues[2] = value;
+                    },
                   ),
                   const Text('agreement 3'),
+                ],
+              ),
+              Row(
+                children: [
+                  AgreementCheckbox(
+                    value: _agreementValues[3],
+                    onChanged: (value) {
+                      _agreementValues[3] = value;
+                    },
+                  ),
+                  const Text('agreement 4'),
                 ],
               ),
               SolidButton(

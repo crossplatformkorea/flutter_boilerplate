@@ -8,5 +8,7 @@
   "WARNING": "경고",
   "ERROR": "에러",
   "LOADING": "로딩중...",
-  "COUNT": "카운트"
+  "COUNT": "카운트",
+  "SIGN_UP": "회원가입",
+  "SIGN_IN": "로그인"
 }

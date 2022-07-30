@@ -1,19 +1,22 @@
 {
-    "cSpell.words": [
-        "codecov",
-        "Cupertino",
-        "dooboolab",
-        "dotenv",
-        "erickzanardo",
-        "firestore",
-        "flutterfire",
-        "Getx",
-        "Lefthook",
-        "lefthooks",
-        "mockito",
-        "paxian",
-        "pubspec",
-        "Schyler",
-        "subosito"
-]
+  "cSpell.words": [
+    "autofocus",
+    "codecov",
+    "Cupertino",
+    "dooboolab",
+    "dotenv",
+    "erickzanardo",
+    "firestore",
+    "flutterfire",
+    "Getx",
+    "Lefthook",
+    "lefthooks",
+    "mockito",
+    "navigations",
+    "paxian",
+    "pubspec",
+    "recaptcha",
+    "Schyler",
+    "subosito"
+  ]
 }

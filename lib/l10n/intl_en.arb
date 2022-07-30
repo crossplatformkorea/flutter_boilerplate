@@ -8,5 +8,7 @@
   "WARNING": "Warning",
   "ERROR": "Error",
   "LOADING": "Loading...",
-  "COUNT": "Count"
+  "COUNT": "Count",
+  "SIGN_UP": "Sign up",
+  "SIGN_IN": "Sign in"
 }

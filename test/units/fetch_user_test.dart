@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/models/user.dart';
+import 'package:flutter_boilerplate/models/user_model.dart';
 import 'package:flutter_boilerplate/services/apis/sample.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
@@ -16,10 +16,10 @@ void main() {
           Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
         ),
       ).thenAnswer(
-        (_) async => http.Response('{"title": "mock"}', 200),
+        (_) async => http.Response('{"id": "a", "name": "Jay"}', 200),
       );
 
-      expect(await fetchUser(client), isA<User>());
+      expect(await fetchUser(client), isA<UserModel>());
     });
 
     test('throws an exception if the http call completes with an error', () {

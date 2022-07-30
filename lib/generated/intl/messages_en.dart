@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Go to Sample screen"),
         "LOADING": MessageLookupByLibrary.simpleMessage("Loading..."),
         "RESULT": MessageLookupByLibrary.simpleMessage("Result"),
+        "SIGN_IN": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "SIGN_UP": MessageLookupByLibrary.simpleMessage("Sign up"),
         "WARNING": MessageLookupByLibrary.simpleMessage("Warning")
       };
 }

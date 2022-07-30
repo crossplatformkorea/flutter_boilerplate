@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/generated/l10n.dart';
-import 'package:flutter_boilerplate/screens/home.dart';
-import 'package:flutter_boilerplate/screens/result.dart';
 import 'package:flutter_boilerplate/utils/themes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
@@ -56,16 +54,6 @@ class TestUtils {
       ],
       home: child,
       navigatorObservers: <NavigatorObserver>[observer],
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => const Home(),
-        ),
-        GetPage(
-          name: '/result',
-          page: () => const Result(),
-        ),
-      ],
     );
 
     return widget;

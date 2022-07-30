@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/utils/colors.dart';
 
 class OutlineButton extends StatelessWidget {
   final void Function() onPressed;
@@ -95,8 +94,8 @@ class OutlineButtonStyle {
     this.width,
     this.height,
     this.borderWidth = 1.5,
-    this.borderColor = primaryColor,
-    this.backgroundColor = primaryColor,
+    this.borderColor = Colors.black,
+    this.backgroundColor = Colors.black,
     this.feedbackColor,
     this.padding,
     this.margin,

@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "GO_TO_SAMPLE": MessageLookupByLibrary.simpleMessage("샘플 위젯 화면으로 이동"),
         "LOADING": MessageLookupByLibrary.simpleMessage("로딩중..."),
         "RESULT": MessageLookupByLibrary.simpleMessage("결과"),
+        "SIGN_IN": MessageLookupByLibrary.simpleMessage("로그인"),
+        "SIGN_UP": MessageLookupByLibrary.simpleMessage("회원가입"),
         "WARNING": MessageLookupByLibrary.simpleMessage("경고")
       };
 }

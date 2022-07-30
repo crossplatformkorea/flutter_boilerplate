@@ -129,6 +129,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Sign up`
+  String get SIGN_UP {
+    return Intl.message(
+      'Sign up',
+      name: 'SIGN_UP',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in`
+  String get SIGN_IN {
+    return Intl.message(
+      'Sign in',
+      name: 'SIGN_IN',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

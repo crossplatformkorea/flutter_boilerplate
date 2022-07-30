@@ -11,7 +11,7 @@ String env(String key) {
   } on AssertionError catch (e) {
     if (e.message == "A non-null fallback is required for missing entries") {
       logger.e(
-        "Key does not exist. "
+        "'$key' Key does not exist. "
         "Make sure that the key exists in the '.env' file.",
       );
     }

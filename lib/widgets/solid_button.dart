@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/utils/colors.dart';
 
 class SolidButton extends StatelessWidget {
   final void Function() onPressed;
@@ -87,7 +86,7 @@ class SolidButtonStyle {
   const SolidButtonStyle({
     this.width,
     this.height,
-    this.backgroundColor = primaryColor,
+    this.backgroundColor = Colors.black,
     this.feedbackColor,
     this.padding,
     this.margin,
