@@ -20,6 +20,30 @@ Do you need another boilerplate?
 - Asset-related settings (Image, Icon, Color)
 - Testing settings
 
+### Dependencies
+
+```yaml
+# dependencies
+cupertino_icons: ^1.0.5
+intl: ^0.17.0
+get: ^4.6.5
+flutter_dotenv: ^5.0.2
+logger: ^1.1.0
+http: ^0.13.4
+freezed_annotation: ^2.2.0
+json_annotation: ^4.7.0
+
+# dev_dependencies
+flutter_lints: ^2.0.1
+test: ^1.20.2
+mockito: ^5.2.0
+build_runner: ^2.3.0
+flutter_native_splash: ^2.2.5
+change_app_package_name: ^1.1.0
+freezed: ^2.2.0
+json_serializable: ^6.5.2
+```
+
 ## Getting Started
 
 ### 1. Install dependencies
@@ -52,25 +76,6 @@ This project consists of github hooks using [lefthooks](https://github.com/evilm
 
 - [How to install and use the Lefthook](https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md).
 
-### Dependencies
-
-```yaml
-# dependencies
-cupertino_icons: ^1.0.5
-intl: ^0.17.0
-get: ^4.6.5
-flutter_dotenv: ^5.0.2
-logger: ^1.1.0
-http: ^0.13.4
-
-# dev_dependencies
-flutter_lints: ^2.0.1
-test: ^1.20.2
-mockito: ^5.2.0
-build_runner: ^2.1.11
-flutter_native_splash: ^2.2.3+1
-change_app_package_name: ^1.1.0
-```
 
 > Current flutter version used is [written in CI](https://github.com/flutter-seoul/flutter_boilerplate/pull/10/files).
 
@@ -135,7 +140,7 @@ t('appName');
     └── fonts // <- If you want, you have to make it here yourself.
 ```
 
-### How to use asset
+### Organizing assets
 
 To use the image or icon, you can use it as below.
 
@@ -161,7 +166,7 @@ ESCAPED_DOLLAR_SIGN='$1000'
 # This is a comment
 ```
 
-### How to use environment variables
+### Using environment variables
 
 ```dart
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -174,7 +179,7 @@ dotenv.get('FOO');
 
 This project has a [logger](https://pub.dev/packages/flutter_dotenv) installed
 
-### How to use logging
+### Using the logging
 
 ```dart
 logger.d('Log message with 2 methods');
@@ -192,3 +197,39 @@ This makes it possible to show the native splash screen.
 Please refer to [this link](https://pub.dev/packages/flutter_native_splash#usage) for instructions on how to use it.
 
 ![native_splash_image](https://raw.githubusercontent.com/jonbhanson/flutter_native_splash/master/splash_demo.gif)
+
+## Freezed
+
+Lastly, [freezed](https://pub.dev/packages/freezed) package is used in the boilerplate.
+
+After creating the model, you need to run the below command to generate and sync the data structure.
+
+```sh
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+### Simple usage
+
+In current boilerplate, `user.dart` file is created and below code is written.
+
+```dart
+import "package:freezed_annotation/freezed_annotation.dart";
+
+part "user.freezed.dart";
+part "user.g.dart";
+
+@freezed
+class User with _$User {
+  const factory User({
+    required String displayName,
+    required int age,
+    required String organization,
+  }) = _User;
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+}
+```
+
+Running `flutter pub run build_runner build --delete-conflicting-outputs`, will generate [b60b3d5](https://github.com/flutter-seoul/flutter_boilerplate/commit/b60b3d55a21df4328e0991df2bd489d9cf529143).
+
+
