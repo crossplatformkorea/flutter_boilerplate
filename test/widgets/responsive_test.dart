@@ -7,21 +7,17 @@ import '../test_utils.dart';
 
 void main() {
   testWidgets('It should have a mobile width.', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      TestUtils.makeTestableWidget(
-        child: Container(),
-      ),
-    );
+    var widget = TestUtils.buildMediaQueryTestableWidget(
+        child: Container(), device: Device.mobile);
 
-    final BuildContext context = tester.element(
-      find.byType(
-        Container,
-      ),
-    );
+    await tester.pumpWidget(widget);
+
+    final BuildContext context = tester.element(find.byType(Container));
 
     bool isMobile = Responsive.isMobile(context);
     expect(isMobile, true);
   });
+
   testWidgets('It should have a tablet width.', (WidgetTester tester) async {
     tester.binding.window.physicalSizeTestValue =
         const Size(tableMaxWith - 100, 1080);
