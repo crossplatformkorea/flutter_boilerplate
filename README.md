@@ -56,10 +56,10 @@ flutter pub get
 
 > You have to create an .env file.
 >
-> Copy an .env_example file and create an .env file.
+> Copy an .env.example file and create an .env file.
 
 ```bash
-cp .env_example .env
+cp .env.example .env
 ```
 
 ### 3. Run the project
@@ -208,6 +208,9 @@ After creating the model, you need to run the below command to generate and sync
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
+> If using vscode, you can [download extension](https://marketplace.visualstudio.com/items?itemName=Kaiqun.build-runner) for auto build.
+
+
 ### Simple usage
 
 In current boilerplate, `user.dart` file is created and below code is written.
@@ -231,5 +234,3 @@ class User with _$User {
 ```
 
 Running `flutter pub run build_runner build --delete-conflicting-outputs`, will generate [b60b3d5](https://github.com/flutter-seoul/flutter_boilerplate/commit/b60b3d55a21df4328e0991df2bd489d9cf529143).
-
-
