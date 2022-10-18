@@ -72,6 +72,8 @@ flutter_native_splash: ^2.2.3+1
 change_app_package_name: ^1.1.0
 ```
 
+> Current flutter version used is [written in CI](https://github.com/flutter-seoul/flutter_boilerplate/pull/10/files).
+
 ## Localization
 
 The repository is localizing using the arb recommended on [the official Flutter website](https://docs.flutter.dev/development/accessibility-and-localization/internationalization).
