@@ -29,9 +29,11 @@ void main() {
     await tester.pumpWidget(TestUtils.makeTestableWidget(child: const Home()));
     await tester.pump();
 
-    expect(find.byType(TextButton), findsOneWidget);
+    var buttons = find.byType(TextButton);
 
-    await tester.tap(find.byType(TextButton));
+    expect(buttons, findsNWidgets(2));
+
+    await tester.tap(buttons.first);
     await tester.pumpAndSettle();
 
     expect(find.byType(Result), findsOneWidget);
