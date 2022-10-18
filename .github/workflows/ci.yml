@@ -35,12 +35,13 @@ jobs:
       - run: cp .env.sample .env
       - run: flutter pub get
       - run: flutter analyze
-      - run: flutter test --coverage
-      - run: sudo apt-get install -y lcov
-      - run: lcov --remove coverage/lcov.info 'lib/generated/*' -o coverage/lcov.info
+      - run: flutter test
+      # - run: flutter test --coverage
+      # - run: sudo apt-get install -y lcov
+      # - run: lcov --remove coverage/lcov.info 'lib/generated/*' -o coverage/lcov.info
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: coverage/lcov.info
+      # - name: Upload coverage to Codecov
+      #   uses: codecov/codecov-action@v1
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     file: coverage/lcov.info
