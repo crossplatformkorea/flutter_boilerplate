@@ -38,8 +38,8 @@ dependencies:
   flutter_dotenv: ^5.0.2
   logger: ^1.1.0
   http: ^0.13.4
-  freezed_annotation: ^2.1.0
-  json_annotation: ^4.6.0
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.7.0
 
 dev_dependencies:
   integration_test:
@@ -55,13 +55,13 @@ dev_dependencies:
   flutter_lints: ^2.0.1
   test: ^1.20.2
   mockito: ^5.2.0
-  build_runner: ^2.1.11
+  build_runner: ^2.3.0
   flutter_native_splash: ^2.2.5
   # Rename App Package
   # flutter pub run change_app_package_name:main com.new.package.name
   change_app_package_name: ^1.1.0
-  freezed: ^2.1.0+1
-  json_serializable: ^6.3.1
+  freezed: ^2.2.0
+  json_serializable: ^6.5.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
