@@ -16,7 +16,7 @@ class _ResultState extends State<Result> {
   Widget build(BuildContext context) {
     final count = Get.arguments ?? '0';
 
-    List<Widget> _buildCountNumber() {
+    List<Widget> buildCountNumWidgets() {
       return [
         Text(
           t("COUNT"),
@@ -37,12 +37,12 @@ class _ResultState extends State<Result> {
         child: Responsive(
           mobile: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: _buildCountNumber(),
+            children: buildCountNumWidgets(),
           ),
           desktop: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: _buildCountNumber(),
+            children: buildCountNumWidgets(),
           ),
         ),
       ),
