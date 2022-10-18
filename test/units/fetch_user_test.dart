@@ -16,7 +16,9 @@ void main() {
           Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
         ),
       ).thenAnswer(
-        (_) async => http.Response('{"name": "mock"}', 200),
+        (_) async => http.Response(
+            '{"displayName": "Hyo", "organization": "dooboolab", "age": 30}',
+            200),
       );
 
       expect(await fetchUser(client), isA<User>());
