@@ -7,9 +7,8 @@ class Themes {
 
   static final light = ThemeData.light().copyWith(
     // light theme settings
-    backgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       elevation: 0,
       iconTheme: IconThemeData(
         color: Colors.black,
@@ -24,13 +23,25 @@ class Themes {
       ),
       systemOverlayStyle: lightModeStatusBarColor,
     ),
+    buttonColor: Colors.black,
+    iconTheme: const IconThemeData(
+      color: Colors.black,
+    ),
+    colorScheme: ColorScheme.fromSwatch()
+        .copyWith(background: Colors.white, brightness: Brightness.dark),
   );
   static final dark = ThemeData.dark().copyWith(
     // dark theme settings
-    backgroundColor: Colors.black,
     appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.black,
       systemOverlayStyle: darkModeStatusBarColor,
     ),
+    buttonColor: Colors.white,
+    iconTheme: const IconThemeData(
+      color: Colors.white,
+    ),
+    colorScheme: ColorScheme.fromSwatch()
+        .copyWith(background: Colors.black, brightness: Brightness.light),
   );
 
   static void setStatusBarColors() {
