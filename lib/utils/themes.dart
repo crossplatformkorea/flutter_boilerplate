@@ -23,23 +23,56 @@ class Themes {
       ),
       systemOverlayStyle: lightModeStatusBarColor,
     ),
-    buttonColor: Colors.black,
+
+    scaffoldBackgroundColor: Colors.white,
+
+    inputDecorationTheme: const InputDecorationTheme(
+        border: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFFC4C4C4))),
+        focusedBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.black))),
+
+    disabledColor: const Color.fromRGBO(30, 30, 30, 0.2),
+    buttonTheme: ButtonThemeData(
+        colorScheme:
+            ColorScheme.fromSwatch().copyWith(background: Colors.black)),
+
     iconTheme: const IconThemeData(
       color: Colors.black,
     ),
+
     colorScheme: ColorScheme.fromSwatch()
         .copyWith(background: Colors.white, brightness: Brightness.dark),
+
+    //  textTheme: const TextTheme(
+    //   headlineSmall:
+    // )
   );
+
   static final dark = ThemeData.dark().copyWith(
     // dark theme settings
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.black,
       systemOverlayStyle: darkModeStatusBarColor,
     ),
-    buttonColor: Colors.white,
+
+    scaffoldBackgroundColor: Colors.black,
+
+    inputDecorationTheme: const InputDecorationTheme(
+        border: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFFA4A4A4))),
+        focusedBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.white))),
+
+    disabledColor: const Color.fromRGBO(205, 205, 205, 0.2),
+    buttonTheme: ButtonThemeData(
+        colorScheme:
+            ColorScheme.fromSwatch().copyWith(background: Colors.white)),
+
     iconTheme: const IconThemeData(
       color: Colors.white,
     ),
+
     colorScheme: ColorScheme.fromSwatch()
         .copyWith(background: Colors.black, brightness: Brightness.light),
   );

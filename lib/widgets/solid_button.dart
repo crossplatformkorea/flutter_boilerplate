@@ -29,9 +29,7 @@ class SolidButton extends StatelessWidget {
         onPressed: disabled || isLoading ? null : onPressed,
         style: ButtonStyle(
           backgroundColor: m<Color?>(
-            disabled
-                ? style.backgroundColor.withOpacity(0.4)
-                : style.backgroundColor,
+            disabled ? Theme.of(context).disabledColor : style.backgroundColor,
           ),
           padding: m<EdgeInsetsGeometry?>(style.padding),
           shape: m<RoundedRectangleBorder>(

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter_boilerplate/controllers/count_controller.dart';
+import 'package:flutter_boilerplate/screens/sample.dart';
 import 'package:flutter_boilerplate/widgets/solid_button.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ class _EditProfileState extends State<EditProfile> {
   final controller = Get.put(CountController());
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
+  late String _nameValue = "";
+  late String _descValue = "";
   XFile? _imageFile;
   final ImagePicker _picker = ImagePicker();
 
@@ -55,6 +58,9 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: _isLightTheme.value
+          ? const Color(0xFF1E1E1E)
+          : const Color(0xFFEDEDED),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: Padding(
@@ -186,13 +192,28 @@ class _EditProfileState extends State<EditProfile> {
                           ),
                         )),
                     TextField(
+                      onChanged: (String txt) => setState(() {
+                        _nameValue = txt;
+                      }),
                       controller: _nameController,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         hintText: 'Name',
-                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                color: Theme.of(context)
+                                    .inputDecorationTheme
+                                    .border!
+                                    .borderSide
+                                    .color)),
                         focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 2, color: Colors.black)),
+                            borderSide: BorderSide(
+                                width: 2,
+                                color: Theme.of(context)
+                                    .inputDecorationTheme
+                                    .focusedBorder!
+                                    .borderSide
+                                    .color)),
                       ),
                     ),
                     Container(
@@ -206,22 +227,43 @@ class _EditProfileState extends State<EditProfile> {
                           ),
                         )),
                     TextField(
+                      onChanged: (String txt) => setState(() {
+                        _descValue = txt;
+                      }),
                       controller: _descController,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         hintText: 'Description',
-                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                color: Theme.of(context)
+                                    .inputDecorationTheme
+                                    .border!
+                                    .borderSide
+                                    .color)),
                         focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 2, color: Colors.black)),
+                            borderSide: BorderSide(
+                                width: 2,
+                                color: Theme.of(context)
+                                    .inputDecorationTheme
+                                    .focusedBorder!
+                                    .borderSide
+                                    .color)),
                       ),
                     ),
                     SolidButton(
                       onPressed: () {
+                        Get.to(
+                          () => const Sample(),
+                        );
                         // setState(() {});
                       },
-                      disabled: false,
+                      disabled: _nameValue == "" || _descValue == "",
                       style: SolidButtonStyle(
-                          backgroundColor: Theme.of(context).buttonColor,
+                          backgroundColor: Theme.of(context)
+                              .buttonTheme
+                              .colorScheme!
+                              .background,
                           width: double.infinity,
                           margin: const EdgeInsets.fromLTRB(0, 40, 0, 24),
                           padding: const EdgeInsets.fromLTRB(0, 16, 0, 16)),

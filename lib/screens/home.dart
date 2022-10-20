@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/controllers/count_controller.dart';
 import 'package:flutter_boilerplate/screens/edit_profile.dart';
 import 'package:flutter_boilerplate/utils/colors.dart';
+import 'package:flutter_boilerplate/widgets/solid_button.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,7 +15,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final controller = Get.put(CountController());
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  late String _emailValue = "";
+  late String _passwordValue = "";
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   _getThemeStatus() async {
@@ -65,44 +69,81 @@ class _HomeState extends State<Home> {
                   Container(
                     margin: const EdgeInsets.only(bottom: 15),
                     child: TextField(
-                      controller: _controller,
-                      decoration: const InputDecoration(
+                      onChanged: (String txt) => setState(() {
+                        _emailValue = txt;
+                      }),
+                      controller: _emailController,
+                      decoration: InputDecoration(
                         hintText: "Email",
-                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                color: Theme.of(context)
+                                    .inputDecorationTheme
+                                    .border!
+                                    .borderSide
+                                    .color)),
                         focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 2, color: Colors.black)),
+                            borderSide: BorderSide(
+                                width: 2,
+                                color: Theme.of(context)
+                                    .inputDecorationTheme
+                                    .focusedBorder!
+                                    .borderSide
+                                    .color)),
                       ),
                     ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(bottom: 15),
                     child: TextField(
-                      controller: _controller,
-                      decoration: const InputDecoration(
+                      onChanged: (String txt) => setState(() {
+                        _passwordValue = txt;
+                      }),
+                      controller: _passwordController,
+                      obscureText: true,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      decoration: InputDecoration(
                         hintText: 'Password',
-                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                color: Theme.of(context)
+                                    .inputDecorationTheme
+                                    .border!
+                                    .borderSide
+                                    .color)),
                         focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 2, color: Colors.black)),
+                            borderSide: BorderSide(
+                                width: 2,
+                                color: Theme.of(context)
+                                    .inputDecorationTheme
+                                    .focusedBorder!
+                                    .borderSide
+                                    .color)),
                       ),
                     ),
                   ),
-                  TextButton(
-                    style: const ButtonStyle(
-                        padding: MaterialStatePropertyAll(
-                            EdgeInsets.fromLTRB(0, 16, 0, 16)),
-                        backgroundColor:
-                            MaterialStatePropertyAll(Colors.black)),
+                  SolidButton(
                     onPressed: () {
                       Get.to(
                         () => const EditProfile(),
                         arguments: "${controller.count.value}",
                       );
                     },
-                    child: const Text(
+                    disabled: _emailValue == "" || _passwordValue == "",
+                    style: SolidButtonStyle(
+                      borderRadius: const BorderRadius.all(Radius.circular(4)),
+                      padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+                      backgroundColor:
+                          Theme.of(context).buttonTheme.colorScheme!.background,
+                    ),
+                    child: Text(
                       "로그인 하기",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.background,
+                          fontSize: 16),
                     ),
                   ),
                 ],
