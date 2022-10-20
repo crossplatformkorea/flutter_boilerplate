@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
               child: Obx(
                 () => Text(
                   "${controller.count.value}",
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
             ),

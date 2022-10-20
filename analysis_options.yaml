@@ -33,7 +33,7 @@ analyzer:
     - lib/**.freezed.dart
     - lib/**.g.dart
   errors:
-    invalid_annotation_target: ignore
+    # invalid_annotation_target: ignore
+    # deprecated_member_use: ignore
     todo: ignore
-    deprecated_member_use: ignore
 

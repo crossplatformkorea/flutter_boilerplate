@@ -6,8 +6,9 @@ class Themes {
   Themes._();
 
   static final light = ThemeData.light().copyWith(
-    // light theme settings
-    backgroundColor: Colors.white,
+    colorScheme: const ColorScheme.light(
+      background: Colors.white,
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -27,7 +28,9 @@ class Themes {
   );
   static final dark = ThemeData.dark().copyWith(
     // dark theme settings
-    backgroundColor: Colors.black,
+    colorScheme: const ColorScheme.light(
+      background: Colors.black,
+    ),
     appBarTheme: const AppBarTheme(
       systemOverlayStyle: darkModeStatusBarColor,
     ),

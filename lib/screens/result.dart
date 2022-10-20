@@ -20,11 +20,11 @@ class _ResultState extends State<Result> {
       return [
         Text(
           t("COUNT"),
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
         Text(
           count,
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headlineSmall,
         )
       ];
     }
