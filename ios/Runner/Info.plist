@@ -28,8 +28,8 @@
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
 		<string>Main</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>카메라 롤에서 사진을 선택하여 프로필 사진을 변경합니다.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>카메라 롤에서 사진을 선택하여 프로필 사진을 변경합니다.</string>
 		<key>UISupportedInterfaceOrientations</key>
 		<array>
 			<string>UIInterfaceOrientationPortrait</string>
@@ -50,6 +50,6 @@
 		<key>UIStatusBarHidden</key>
 		<false/>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
-</dict>
+		<true/>
+	</dict>
 </plist>
