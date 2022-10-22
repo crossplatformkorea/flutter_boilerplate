@@ -43,13 +43,6 @@ class Themes {
     iconTheme: const IconThemeData(
       color: Colors.black,
     ),
-
-    colorScheme: ColorScheme.fromSwatch()
-        .copyWith(background: Colors.white, brightness: Brightness.dark),
-
-    //  textTheme: const TextTheme(
-    //   headlineSmall:
-    // )
   );
 
   static final dark = ThemeData.dark().copyWith(
@@ -78,9 +71,6 @@ class Themes {
     iconTheme: const IconThemeData(
       color: Colors.white,
     ),
-
-    colorScheme: ColorScheme.fromSwatch()
-        .copyWith(background: Colors.black, brightness: Brightness.light),
   );
 
   static void setStatusBarColors() {

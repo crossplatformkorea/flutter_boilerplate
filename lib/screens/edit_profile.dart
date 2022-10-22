@@ -44,7 +44,6 @@ class _EditProfileState extends State<EditProfile> {
     }).obs;
 
     bool copyValue = (await isLight.value)!;
-    print(copyValue);
     setState(() {
       _isLightTheme.value = copyValue;
     });
