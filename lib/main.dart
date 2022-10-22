@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           page: () => const Home(),
         ),
         GetPage(
-          name: '/editProfile',
+          name: '/edit_profile',
           page: () => const EditProfile(),
         ),
         GetPage(name: '/sample', page: () => const Sample())

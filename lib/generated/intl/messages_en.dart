@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "APP_NAME": MessageLookupByLibrary.simpleMessage("dooboolab"),
         "COUNT": MessageLookupByLibrary.simpleMessage("Count"),
         "ERROR": MessageLookupByLibrary.simpleMessage("Error"),
+        "FLUTTER_SEOUL": MessageLookupByLibrary.simpleMessage("Flutter Seoul"),
         "GO_TO_RESULT":
             MessageLookupByLibrary.simpleMessage("Go to Result screen"),
         "GO_TO_SAMPLE":

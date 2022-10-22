@@ -3,8 +3,9 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_boilerplate/controllers/count_controller.dart';
 import 'package:flutter_boilerplate/screens/edit_profile.dart';
 import 'package:flutter_boilerplate/utils/colors.dart';
-import 'package:flutter_boilerplate/widgets/normal_text_field.dart';
-import 'package:flutter_boilerplate/widgets/solid_button.dart';
+import 'package:flutter_boilerplate/utils/localization.dart';
+import 'package:flutter_boilerplate/widgets/edit_text.dart';
+import 'package:flutter_boilerplate/widgets/seoul_button.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,14 +32,14 @@ class _HomeState extends State<Home> {
       () => Get.changeThemeMode(ThemeMode.dark);
       SharedPreferences pref = await _prefs;
       pref.setBool('theme', true);
-    } else {
-      var isLight = _prefs.then((SharedPreferences prefs) {
-        return prefs.getBool('theme') != null ? prefs.getBool('theme') : false;
-      }).obs;
-
-      bool copyValue = (await isLight.value)!;
-      Get.changeThemeMode(copyValue ? ThemeMode.dark : ThemeMode.light);
+      return;
     }
+
+    var isLight = _prefs.then((SharedPreferences prefs) {
+      return prefs.getBool('theme') != null ? prefs.getBool('theme') : false;
+    }).obs;
+    bool copyValue = (await isLight.value)!;
+    Get.changeThemeMode(copyValue ? ThemeMode.dark : ThemeMode.light);
   }
 
   @override
@@ -63,9 +64,9 @@ class _HomeState extends State<Home> {
                     Container(
                       alignment: Alignment.center,
                       margin: const EdgeInsets.fromLTRB(0, 64, 0, 8),
-                      child: const Text(
-                        "Flutter Seoul",
-                        style: TextStyle(
+                      child: Text(
+                        t("FLUTTER_SEOUL"),
+                        style: const TextStyle(
                             fontSize: 32, fontWeight: FontWeight.w700),
                       ),
                     ),
@@ -76,27 +77,32 @@ class _HomeState extends State<Home> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    Container(
-                        margin: const EdgeInsets.only(bottom: 15),
-                        child: NormalTextField(
-                          onChanged: (String txt) => setState(() {
-                            _emailValue = txt;
-                          }),
-                          keyboardType: TextInputType.emailAddress,
-                          hintText: "Email",
-                        )),
-                    Container(
-                        margin: const EdgeInsets.only(bottom: 15),
-                        child: NormalTextField(
-                          onChanged: (String txt) => setState(() {
-                            _passwordValue = txt;
-                          }),
-                          hintText: "Password",
-                          obscureText: true,
-                          enableSuggestions: false,
-                          autocorrect: false,
-                        )),
-                    SolidButton(
+                    Column(
+                        children: ["Email", "Password"].map((String text) {
+                      if (text == "Email") {
+                        return Container(
+                            margin: const EdgeInsets.only(bottom: 15),
+                            child: EditText(
+                              onChanged: (String txt) => setState(() {
+                                _emailValue = txt;
+                              }),
+                              keyboardType: TextInputType.emailAddress,
+                              hintText: text,
+                            ));
+                      }
+                      return Container(
+                          margin: const EdgeInsets.only(bottom: 15),
+                          child: EditText(
+                            onChanged: (String txt) => setState(() {
+                              _passwordValue = txt;
+                            }),
+                            hintText: "Password",
+                            obscureText: true,
+                            enableSuggestions: false,
+                            autocorrect: false,
+                          ));
+                    }).toList()),
+                    SeoulButton(
                       onPressed: () {
                         Get.to(
                           () => const EditProfile(),
@@ -104,7 +110,7 @@ class _HomeState extends State<Home> {
                         );
                       },
                       disabled: _emailValue == "" || _passwordValue == "",
-                      style: SolidButtonStyle(
+                      style: SeoulButtonStyle(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(4)),
                         padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),

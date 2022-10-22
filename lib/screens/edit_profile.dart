@@ -1,8 +1,7 @@
 import 'dart:io';
-import 'dart:math';
 import 'package:flutter_boilerplate/controllers/count_controller.dart';
-import 'package:flutter_boilerplate/widgets/normal_text_field.dart';
-import 'package:flutter_boilerplate/widgets/solid_button.dart';
+import 'package:flutter_boilerplate/widgets/edit_text.dart';
+import 'package:flutter_boilerplate/widgets/seoul_button.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -193,7 +192,7 @@ class _EditProfileState extends State<EditProfile> {
                                   fontSize: 16, fontWeight: FontWeight.w500),
                             ),
                           )),
-                      NormalTextField(
+                      EditText(
                         onChanged: (String txt) => setState(() {
                           _nameValue = txt;
                         }),
@@ -209,18 +208,18 @@ class _EditProfileState extends State<EditProfile> {
                                   fontSize: 16, fontWeight: FontWeight.w500),
                             ),
                           )),
-                      NormalTextField(
+                      EditText(
                         onChanged: (String txt) => setState(() {
                           _descValue = txt;
                         }),
                         hintText: 'Description',
                       ),
-                      SolidButton(
+                      SeoulButton(
                         onPressed: () {
                           // todo update profile
                         },
                         disabled: _nameValue == "" || _descValue == "",
-                        style: SolidButtonStyle(
+                        style: SeoulButtonStyle(
                             backgroundColor: Theme.of(context)
                                 .buttonTheme
                                 .colorScheme!

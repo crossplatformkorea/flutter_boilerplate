@@ -3,7 +3,7 @@ import 'package:flutter_boilerplate/utils/tools.dart';
 import 'package:flutter_boilerplate/widgets/back_app_bar.dart';
 import 'package:flutter_boilerplate/widgets/custom_checkbox.dart';
 import 'package:flutter_boilerplate/widgets/outline_button.dart';
-import 'package:flutter_boilerplate/widgets/solid_button.dart';
+import 'package:flutter_boilerplate/widgets/seoul_button.dart';
 
 class Sample extends StatefulWidget {
   const Sample({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class _SampleState extends State<Sample> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SolidButton(
+              SeoulButton(
                 onPressed: () {
                   setState(() {
                     _agreementValues =
@@ -32,7 +32,7 @@ class _SampleState extends State<Sample> {
                     logger.d(_agreementValues);
                   });
                 },
-                style: const SolidButtonStyle(
+                style: const SeoulButtonStyle(
                   width: double.infinity,
                   height: 50,
                 ),
@@ -89,18 +89,18 @@ class _SampleState extends State<Sample> {
                   const Text('agreement 3'),
                 ],
               ),
-              SolidButton(
+              SeoulButton(
                 onPressed: () {},
-                style: const SolidButtonStyle(
+                style: const SeoulButtonStyle(
                   width: double.infinity,
                   backgroundColor: Colors.teal,
                 ),
                 child: const Text("Solid button"),
               ),
-              SolidButton(
+              SeoulButton(
                 disabled: true,
                 onPressed: () {},
-                style: const SolidButtonStyle(
+                style: const SeoulButtonStyle(
                   width: double.infinity,
                   backgroundColor: Colors.teal,
                 ),

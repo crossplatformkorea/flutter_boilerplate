@@ -50,6 +50,16 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Flutter Seoul`
+  String get FLUTTER_SEOUL {
+    return Intl.message(
+      'Flutter Seoul',
+      name: 'FLUTTER_SEOUL',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `dooboolab`
   String get APP_NAME {
     return Intl.message(

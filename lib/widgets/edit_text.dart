@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class NormalTextField extends StatefulWidget {
-  const NormalTextField(
+class EditText extends StatefulWidget {
+  const EditText(
       {Key? key,
       required this.onChanged,
       this.style,
@@ -23,10 +23,10 @@ class NormalTextField extends StatefulWidget {
   final TextInputType? keyboardType;
 
   @override
-  State<NormalTextField> createState() => _NormalTextFieldState();
+  State<EditText> createState() => _EditTextState();
 }
 
-class _NormalTextFieldState extends State<NormalTextField> {
+class _EditTextState extends State<EditText> {
   @override
   Widget build(BuildContext context) {
     return TextField(
