@@ -16,8 +16,6 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final controller = Get.put(CountController());
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _descController = TextEditingController();
   late String _nameValue = "";
   late String _descValue = "";
   XFile? _imageFile;
@@ -27,7 +25,7 @@ class _EditProfileState extends State<EditProfile> {
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   _saveThemeStatus() async {
-    SharedPreferences pref = await _prefs;
+    final SharedPreferences pref = await _prefs;
     pref.setBool('theme', _isLightTheme.value);
   }
 

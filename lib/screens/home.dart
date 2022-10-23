@@ -18,14 +18,12 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final controller = Get.put(CountController());
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
   late String _emailValue = "";
   late String _passwordValue = "";
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   _getThemeStatus() async {
-    var brightness = SchedulerBinding.instance!.window.platformBrightness;
+    var brightness = SchedulerBinding.instance.window.platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
 
     if (isDarkMode) {
