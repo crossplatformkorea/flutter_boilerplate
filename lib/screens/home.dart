@@ -34,7 +34,10 @@ class _HomeState extends State<Home> {
     }
 
     var isLight = _prefs.then((SharedPreferences prefs) {
-      return prefs.getBool('theme') != null ? prefs.getBool('theme') : false;
+      if (prefs.getBool('theme') == null) {
+        return false;
+      }
+      return prefs.getBool('theme');
     }).obs;
     bool copyValue = (await isLight.value)!;
     Get.changeThemeMode(copyValue ? ThemeMode.dark : ThemeMode.light);

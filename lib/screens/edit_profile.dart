@@ -22,7 +22,7 @@ class _EditProfileState extends State<EditProfile> {
   final ImagePicker _picker = ImagePicker();
 
   final RxBool _isLightTheme = false.obs;
-  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   _saveThemeStatus() async {
     final SharedPreferences pref = await _prefs;
@@ -38,7 +38,10 @@ class _EditProfileState extends State<EditProfile> {
 
   _getThemeStatus() async {
     var isLight = _prefs.then((SharedPreferences prefs) {
-      return prefs.getBool('theme') != null ? prefs.getBool('theme') : false;
+      if (prefs.getBool('theme') == null) {
+        return false;
+      }
+      return prefs.getBool('theme');
     }).obs;
 
     bool copyValue = (await isLight.value)!;
