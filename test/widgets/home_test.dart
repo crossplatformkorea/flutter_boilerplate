@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/screens/home.dart';
-import 'package:flutter_boilerplate/screens/result.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../test_utils.dart';
