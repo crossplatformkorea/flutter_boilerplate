@@ -4,7 +4,7 @@ import 'package:flutter_boilerplate/controllers/count_controller.dart';
 import 'package:flutter_boilerplate/screens/edit_profile.dart';
 import 'package:flutter_boilerplate/utils/colors.dart';
 import 'package:flutter_boilerplate/utils/localization.dart';
-import 'package:flutter_boilerplate/widgets/edit_text.dart';
+import 'package:flutter_boilerplate/widgets/edit_text_view.dart';
 import 'package:flutter_boilerplate/widgets/seoul_button.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -81,27 +81,20 @@ class _HomeState extends State<Home> {
                     Column(
                         children: ["Email", "Password"].map((String text) {
                       if (text == "Email") {
-                        return Container(
-                            margin: const EdgeInsets.only(bottom: 15),
-                            child: EditText(
-                              onChanged: (String txt) => setState(() {
-                                _emailValue = txt;
-                              }),
-                              keyboardType: TextInputType.emailAddress,
-                              hintText: text,
-                            ));
+                        return EditTextView(
+                          item: text,
+                          onChanged: (String txt) => setState(() {
+                            _emailValue = txt;
+                          }),
+                          type: TextInputType.emailAddress,
+                        );
                       }
-                      return Container(
-                          margin: const EdgeInsets.only(bottom: 15),
-                          child: EditText(
-                            onChanged: (String txt) => setState(() {
-                              _passwordValue = txt;
-                            }),
-                            hintText: "Password",
-                            obscureText: true,
-                            enableSuggestions: false,
-                            autocorrect: false,
-                          ));
+                      return EditTextView(
+                        item: text,
+                        onChanged: (String txt) => setState(() {
+                          _passwordValue = txt;
+                        }),
+                      );
                     }).toList()),
                     SeoulButton(
                       onPressed: () {
