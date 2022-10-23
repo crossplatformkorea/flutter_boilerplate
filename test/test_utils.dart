@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/generated/l10n.dart';
+import 'package:flutter_boilerplate/screens/edit_profile.dart';
 import 'package:flutter_boilerplate/screens/home.dart';
-import 'package:flutter_boilerplate/screens/result.dart';
+import 'package:flutter_boilerplate/screens/sample.dart';
 import 'package:flutter_boilerplate/utils/themes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
@@ -62,9 +63,10 @@ class TestUtils {
           page: () => const Home(),
         ),
         GetPage(
-          name: '/result',
-          page: () => const Result(),
+          name: '/edit_profile',
+          page: () => const EditProfile(),
         ),
+        GetPage(name: '/sample', page: () => const Sample())
       ],
     );
 
