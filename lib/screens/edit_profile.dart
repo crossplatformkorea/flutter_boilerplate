@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:flutter_boilerplate/controllers/count_controller.dart';
-import 'package:flutter_boilerplate/widgets/edit_text.dart';
-import 'package:flutter_boilerplate/widgets/seoul_button.dart';
+import 'package:flutter_seoul/controllers/count_controller.dart';
+import 'package:flutter_seoul/widgets/edit_text.dart';
+import 'package:flutter_seoul/widgets/seoul_button.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

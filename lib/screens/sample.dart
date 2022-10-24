@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/utils/tools.dart';
-import 'package:flutter_boilerplate/widgets/back_app_bar.dart';
-import 'package:flutter_boilerplate/widgets/custom_checkbox.dart';
-import 'package:flutter_boilerplate/widgets/outline_button.dart';
-import 'package:flutter_boilerplate/widgets/seoul_button.dart';
+import 'package:flutter_seoul/utils/tools.dart';
+import 'package:flutter_seoul/widgets/back_app_bar.dart';
+import 'package:flutter_seoul/widgets/custom_checkbox.dart';
+import 'package:flutter_seoul/widgets/outline_button.dart';
+import 'package:flutter_seoul/widgets/seoul_button.dart';
 
 class Sample extends StatefulWidget {
   const Sample({Key? key}) : super(key: key);

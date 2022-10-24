@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/generated/l10n.dart';
-import 'package:flutter_boilerplate/screens/edit_profile.dart';
-import 'package:flutter_boilerplate/screens/home.dart';
-import 'package:flutter_boilerplate/screens/sample.dart';
-import 'package:flutter_boilerplate/utils/themes.dart';
+import 'package:flutter_seoul/generated/l10n.dart';
+import 'package:flutter_seoul/screens/edit_profile.dart';
+import 'package:flutter_seoul/screens/home.dart';
+import 'package:flutter_seoul/screens/sample.dart';
+import 'package:flutter_seoul/utils/themes.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';

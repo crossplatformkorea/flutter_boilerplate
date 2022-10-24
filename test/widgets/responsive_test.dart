@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_boilerplate/utils/constants.dart';
-import 'package:flutter_boilerplate/widgets/responsive.dart';
+import 'package:flutter_seoul/utils/constants.dart';
+import 'package:flutter_seoul/widgets/responsive.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../test_utils.dart';

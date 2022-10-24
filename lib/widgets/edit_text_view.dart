@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/widgets/edit_text.dart';
+import 'package:flutter_seoul/widgets/edit_text.dart';
 
 class EditTextView extends StatefulWidget {
   const EditTextView(

@@ -1,5 +1,5 @@
-import 'package:flutter_boilerplate/screens/result.dart';
-import 'package:flutter_boilerplate/utils/localization.dart';
+import 'package:flutter_seoul/screens/result.dart';
+import 'package:flutter_seoul/utils/localization.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../test_utils.dart';

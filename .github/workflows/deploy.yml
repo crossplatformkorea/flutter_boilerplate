@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    if: ${{ github.repository == 'flutter-seoul/fluter_boilerplate' }}
+    if: ${{ github.repository == 'flutter-seoul/fluter_seoul' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

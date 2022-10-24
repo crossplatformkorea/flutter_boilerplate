@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_boilerplate/models/user.dart';
+import 'package:flutter_seoul/models/user.dart';
 import 'package:http/http.dart' as http;
 
 Future fetchUser(http.Client client) async {

@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/screens/home.dart';
+import 'package:flutter_seoul/screens/home.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../test_utils.dart';

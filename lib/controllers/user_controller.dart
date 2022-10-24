@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/models/user.dart';
+import 'package:flutter_seoul/models/user.dart';
 import 'package:get/state_manager.dart';
 
 class UserController extends GetxController {

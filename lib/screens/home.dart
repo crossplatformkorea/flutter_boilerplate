@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_boilerplate/controllers/count_controller.dart';
-import 'package:flutter_boilerplate/screens/edit_profile.dart';
-import 'package:flutter_boilerplate/utils/colors.dart';
-import 'package:flutter_boilerplate/utils/localization.dart';
-import 'package:flutter_boilerplate/widgets/edit_text_view.dart';
-import 'package:flutter_boilerplate/widgets/seoul_button.dart';
+import 'package:flutter_seoul/controllers/count_controller.dart';
+import 'package:flutter_seoul/screens/edit_profile.dart';
+import 'package:flutter_seoul/utils/colors.dart';
+import 'package:flutter_seoul/utils/localization.dart';
+import 'package:flutter_seoul/widgets/edit_text_view.dart';
+import 'package:flutter_seoul/widgets/seoul_button.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

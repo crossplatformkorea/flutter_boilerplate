@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/utils/colors.dart';
+import 'package:flutter_seoul/utils/colors.dart';
 
 class SeoulButton extends StatelessWidget {
   final void Function() onPressed;
