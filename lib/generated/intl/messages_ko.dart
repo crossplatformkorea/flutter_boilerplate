@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "APP_NAME": MessageLookupByLibrary.simpleMessage("두부랩"),
         "COUNT": MessageLookupByLibrary.simpleMessage("카운트"),
         "ERROR": MessageLookupByLibrary.simpleMessage("에러"),
+        "FLUTTER_SEOUL": MessageLookupByLibrary.simpleMessage("플러터 서울"),
         "GO_TO_RESULT": MessageLookupByLibrary.simpleMessage("결과 화면으로 이동"),
         "GO_TO_SAMPLE": MessageLookupByLibrary.simpleMessage("샘플 위젯 화면으로 이동"),
         "LOADING": MessageLookupByLibrary.simpleMessage("로딩중..."),

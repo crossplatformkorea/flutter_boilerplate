@@ -5,7 +5,7 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
-		<string>Flutter Boilerplate</string>
+		<string>Flutter Seoul</string>
 		<key>CFBundleExecutable</key>
 		<string>$(EXECUTABLE_NAME)</string>
 		<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 		<key>CFBundleInfoDictionaryVersion</key>
 		<string>6.0</string>
 		<key>CFBundleName</key>
-		<string>flutter_boilerplate</string>
+		<string>flutter_seoul</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
@@ -28,6 +28,8 @@
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
 		<string>Main</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>카메라 롤에서 사진을 선택하여 프로필 사진을 변경합니다.</string>
 		<key>UISupportedInterfaceOrientations</key>
 		<array>
 			<string>UIInterfaceOrientationPortrait</string>
@@ -48,6 +50,6 @@
 		<key>UIStatusBarHidden</key>
 		<false/>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
-</dict>
+		<true/>
+	</dict>
 </plist>

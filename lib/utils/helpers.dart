@@ -1,5 +1,5 @@
-import 'package:flutter_boilerplate/utils/constants.dart';
-import 'package:flutter_boilerplate/utils/localization.dart';
+import 'package:flutter_seoul/utils/constants.dart';
+import 'package:flutter_seoul/utils/localization.dart';
 import 'package:get/get.dart';
 
 void alert(String message) => Get.snackbar(appName, message);

@@ -1,8 +1,8 @@
-# flutter_boilerplate
+# flutter_seoul
 
-[![CI](https://github.com/flutter-seoul/flutter_boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/flutter-seoul/flutter_boilerplate/actions/workflows/ci.yml)
-[![Github Pages](https://github.com/flutter-seoul/flutter_boilerplate/actions/workflows/pages.yml/badge.svg)](https://github.com/flutter-seoul/flutter_boilerplate/actions/workflows/pages.yml)
-[![codecov](https://codecov.io/gh/Jay-flow/flutter_boilerplate/branch/main/graph/badge.svg?token=XDF4A42QLF)](https://codecov.io/gh/Jay-flow/flutter_boilerplate)
+[![CI](https://github.com/flutter-seoul/flutter_seoul/actions/workflows/ci.yml/badge.svg)](https://github.com/flutter-seoul/flutter_seoul/actions/workflows/ci.yml)
+[![Github Pages](https://github.com/flutter-seoul/flutter_seoul/actions/workflows/pages.yml/badge.svg)](https://github.com/flutter-seoul/flutter_seoul/actions/workflows/pages.yml)
+[![codecov](https://codecov.io/gh/Jay-flow/flutter_seoul/branch/main/graph/badge.svg?token=XDF4A42QLF)](https://codecov.io/gh/Jay-flow/flutter_seoul)
 
 Full boilerplate project for Flutter.
 
@@ -10,8 +10,8 @@ Full boilerplate project for Flutter.
 
 Do you need another boilerplate?
 
-- [Firebase boilerplate](https://github.com/flutter-seoul/flutter_boilerplate/tree/firebase)
-- [Supabase boilerplate](https://github.com/flutter-seoul/flutter_boilerplate/tree/supabase)
+- [Firebase boilerplate](https://github.com/flutter-seoul/flutter_seoul/tree/firebase)
+- [Supabase boilerplate](https://github.com/flutter-seoul/flutter_seoul/tree/supabase)
 
 ## Specification
 
@@ -77,7 +77,7 @@ This project consists of github hooks using [lefthooks](https://github.com/evilm
 - [How to install and use the Lefthook](https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md).
 
 
-> Current flutter version used is [written in CI](https://github.com/flutter-seoul/flutter_boilerplate/pull/10/files).
+> Current flutter version used is [written in CI](https://github.com/flutter-seoul/flutter_seoul/pull/10/files).
 
 ## Localization
 
@@ -107,7 +107,7 @@ Text(Intl.message('appName'));
 or
 
 ```dart
-import 'package:flutter_boilerplate/generated/l10n.dart';
+import 'package:flutter_seoul/generated/l10n.dart';
 ...
 
 Text(S.of(context).appName);
@@ -116,7 +116,7 @@ Text(S.of(context).appName);
 or
 
 ```dart
-import 'package:flutter_boilerplate/utils/localization.dart'
+import 'package:flutter_seoul/utils/localization.dart'
 
 t('appName');
 ```
@@ -145,7 +145,7 @@ t('appName');
 To use the image or icon, you can use it as below.
 
 ```dart
-import 'package:flutter_boilerplate/utils/asset.dart' as asset;
+import 'package:flutter_seoul/utils/asset.dart' as asset;
 ...
 
 Image(
@@ -233,4 +233,4 @@ class User with _$User {
 }
 ```
 
-Running `flutter pub run build_runner build --delete-conflicting-outputs`, will generate [b60b3d5](https://github.com/flutter-seoul/flutter_boilerplate/commit/b60b3d55a21df4328e0991df2bd489d9cf529143).
+Running `flutter pub run build_runner build --delete-conflicting-outputs`, will generate [b60b3d5](https://github.com/flutter-seoul/flutter_seoul/commit/b60b3d55a21df4328e0991df2bd489d9cf529143).

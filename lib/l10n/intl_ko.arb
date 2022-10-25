@@ -1,6 +1,7 @@
 {
   "@@locale": "ko",
-
+  
+  "FLUTTER_SEOUL": "플러터 서울",
   "APP_NAME": "두부랩",
   "GO_TO_RESULT": "결과 화면으로 이동",
   "GO_TO_SAMPLE": "샘플 위젯 화면으로 이동",

@@ -1,6 +1,7 @@
 {
   "@@locale": "en",
 
+  "FLUTTER_SEOUL": "Flutter Seoul",
   "APP_NAME": "dooboolab",
   "GO_TO_RESULT": "Go to Result screen",
   "GO_TO_SAMPLE": "Go to Sample screen",

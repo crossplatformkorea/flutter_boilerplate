@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/utils/colors.dart';
+import 'package:flutter_seoul/utils/colors.dart';
 
-class SolidButton extends StatelessWidget {
+class SeoulButton extends StatelessWidget {
   final void Function() onPressed;
   final bool disabled;
   final bool isLoading;
   final Widget child;
-  final SolidButtonStyle style;
+  final SeoulButtonStyle style;
 
-  const SolidButton({
+  const SeoulButton({
     Key? key,
     required this.onPressed,
     this.disabled = false,
     this.isLoading = false,
     required this.child,
-    this.style = const SolidButtonStyle(),
+    this.style = const SeoulButtonStyle(),
   }) : super(key: key);
 
   @override
@@ -29,9 +29,7 @@ class SolidButton extends StatelessWidget {
         onPressed: disabled || isLoading ? null : onPressed,
         style: ButtonStyle(
           backgroundColor: m<Color?>(
-            disabled
-                ? style.backgroundColor.withOpacity(0.4)
-                : style.backgroundColor,
+            disabled ? Theme.of(context).disabledColor : style.backgroundColor,
           ),
           padding: m<EdgeInsetsGeometry?>(style.padding),
           shape: m<RoundedRectangleBorder>(
@@ -71,7 +69,7 @@ class SolidButton extends StatelessWidget {
   }
 }
 
-class SolidButtonStyle {
+class SeoulButtonStyle {
   final double? width;
   final double? height;
   final Color backgroundColor;
@@ -84,7 +82,7 @@ class SolidButtonStyle {
   final double indicatorWidth;
   final Color? indicatorColor;
 
-  const SolidButtonStyle({
+  const SeoulButtonStyle({
     this.width,
     this.height,
     this.backgroundColor = primaryColor,
