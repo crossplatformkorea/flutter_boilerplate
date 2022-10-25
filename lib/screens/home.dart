@@ -4,10 +4,27 @@ import 'package:flutter_seoul/controllers/count_controller.dart';
 import 'package:flutter_seoul/screens/edit_profile.dart';
 import 'package:flutter_seoul/utils/colors.dart';
 import 'package:flutter_seoul/utils/localization.dart';
-import 'package:flutter_seoul/widgets/edit_text_view.dart';
+import 'package:flutter_seoul/widgets/edit_text.dart';
 import 'package:flutter_seoul/widgets/seoul_button.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+class LoginValue {
+  String name;
+  TextInputType? keyboardType;
+  String? hintText;
+  bool obscureText;
+  bool enableSuggestions;
+  bool autocorrect;
+
+  LoginValue(
+      {required this.name,
+      this.keyboardType,
+      this.hintText,
+      this.obscureText = false,
+      this.enableSuggestions = true,
+      this.autocorrect = true});
+}
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -21,6 +38,20 @@ class _HomeState extends State<Home> {
   late String _emailValue = "";
   late String _passwordValue = "";
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  final List<LoginValue> loginValues = [
+    LoginValue(
+        name: "Email",
+        hintText: "Email",
+        keyboardType: TextInputType.emailAddress),
+    LoginValue(
+      name: "Password",
+      hintText: "Password",
+      obscureText: true,
+      enableSuggestions: false,
+      autocorrect: false,
+    ),
+  ];
 
   _getThemeStatus() async {
     var brightness = SchedulerBinding.instance.window.platformBrightness;
@@ -79,22 +110,23 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     Column(
-                        children: ["Email", "Password"].map((String text) {
-                      if (text == "Email") {
-                        return EditTextView(
-                          item: text,
-                          onChanged: (String txt) => setState(() {
-                            _emailValue = txt;
-                          }),
-                          type: TextInputType.emailAddress,
-                        );
-                      }
-                      return EditTextView(
-                        item: text,
-                        onChanged: (String txt) => setState(() {
-                          _passwordValue = txt;
-                        }),
-                      );
+                        children: loginValues.map((LoginValue item) {
+                      return Container(
+                          margin: const EdgeInsets.only(bottom: 15),
+                          child: EditText(
+                            onChanged: (String txt) => setState(() {
+                              if (item.name == "Email") {
+                                _emailValue = txt;
+                              } else {
+                                _passwordValue = txt;
+                              }
+                            }),
+                            keyboardType: item.keyboardType,
+                            hintText: item.hintText,
+                            obscureText: item.obscureText,
+                            enableSuggestions: item.enableSuggestions,
+                            autocorrect: item.autocorrect,
+                          ));
                     }).toList()),
                     SeoulButton(
                       onPressed: () {
