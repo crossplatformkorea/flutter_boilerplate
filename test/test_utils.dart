@@ -5,7 +5,8 @@ import 'package:flutter_seoul/screens/home.dart';
 import 'package:flutter_seoul/screens/sample.dart';
 import 'package:flutter_seoul/utils/themes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get.dart';
+import 'package:flutter_seoul/widgets/model_theme.dart';
+import 'package:provider/provider.dart';
 
 import 'mocks/navigator_observer.mocks.dart';
 
@@ -31,45 +32,42 @@ class TestUtils {
           setDeviceWidth(),
         ),
       ),
-      child: GetMaterialApp(
+      child: MaterialApp(
         home: child,
       ),
     );
   }
 
   static Widget makeTestableWidget({required Widget child}) {
-    Themes.setStatusBarColors();
-
-    var widget = GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: Themes.light,
-      darkTheme: Themes.dark,
-      themeMode: ThemeMode.system,
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('ko', 'KR'),
-      ],
-      home: child,
-      navigatorObservers: <NavigatorObserver>[observer],
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => const Home(),
-        ),
-        GetPage(
-          name: '/edit_profile',
-          page: () => const EditProfile(),
-        ),
-        GetPage(name: '/sample', page: () => const Sample())
-      ],
+    var widget = ChangeNotifierProvider(
+      create: (_) => ModelTheme(),
+      child: Consumer<ModelTheme>(
+          builder: (context, ModelTheme themeNotifier, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: Themes.light,
+          darkTheme: Themes.dark,
+          themeMode: ThemeMode.system,
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en', 'US'),
+            Locale('ko', 'KR'),
+          ],
+          home: child,
+          navigatorObservers: <NavigatorObserver>[observer],
+          routes: {
+            '/': (context) => const Home(),
+            '/edit_profile': (context) => const EditProfile(),
+            '/sample': (context) => const Sample()
+          },
+        );
+      }),
     );
-
     return widget;
   }
 }

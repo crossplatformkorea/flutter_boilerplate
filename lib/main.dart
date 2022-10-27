@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_seoul/generated/l10n.dart';
 import 'package:flutter_seoul/screens/edit_profile.dart';
 import 'package:flutter_seoul/screens/home.dart';
+import 'package:flutter_seoul/screens/result.dart';
 import 'package:flutter_seoul/screens/sample.dart';
 import 'package:flutter_seoul/utils/themes.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get.dart';
+import 'package:flutter_seoul/widgets/model_theme.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -19,35 +21,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Themes.setStatusBarColors();
-
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: Themes.light,
-      darkTheme: Themes.dark,
-      themeMode: ThemeMode.system,
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('ko', 'KR'),
-      ],
-      home: const Home(),
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => const Home(),
-        ),
-        GetPage(
-          name: '/edit_profile',
-          page: () => const EditProfile(),
-        ),
-        GetPage(name: '/sample', page: () => const Sample())
-      ],
+    return ChangeNotifierProvider(
+      create: (_) => ModelTheme(),
+      child: Consumer<ModelTheme>(
+          builder: (context, ModelTheme themeNotifier, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: themeNotifier.isDark ? Themes.dark : Themes.light,
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en', 'US'),
+            Locale('ko', 'KR'),
+          ],
+          home: child,
+          routes: {
+            '/': (context) => const Home(),
+            '/edit_profile': (context) => const EditProfile(),
+            '/sample': (context) => const Sample(),
+            '/result': (context) => const Result()
+          },
+        );
+      }),
     );
   }
 }
