@@ -29,32 +29,35 @@ class EditText extends StatefulWidget {
 class _EditTextState extends State<EditText> {
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      obscureText: widget.obscureText,
-      enableSuggestions: widget.enableSuggestions,
-      autocorrect: widget.autocorrect,
-      style: widget.style,
-      decoration: InputDecoration(
-        hintText: widget.hintText,
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                width: 1,
-                color: Theme.of(context)
-                    .inputDecorationTheme
-                    .border!
-                    .borderSide
-                    .color)),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                width: 2,
-                color: Theme.of(context)
-                    .inputDecorationTheme
-                    .focusedBorder!
-                    .borderSide
-                    .color)),
+    return Container(
+      margin: const EdgeInsets.only(bottom: 15),
+      child: TextField(
+        obscureText: widget.obscureText,
+        enableSuggestions: widget.enableSuggestions,
+        autocorrect: widget.autocorrect,
+        style: widget.style,
+        decoration: InputDecoration(
+          hintText: widget.hintText,
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  width: 1,
+                  color: Theme.of(context)
+                      .inputDecorationTheme
+                      .border!
+                      .borderSide
+                      .color)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  width: 2,
+                  color: Theme.of(context)
+                      .inputDecorationTheme
+                      .focusedBorder!
+                      .borderSide
+                      .color)),
+        ),
+        onChanged: (String txt) => widget.onChanged(txt),
+        keyboardType: widget.keyboardType,
       ),
-      onChanged: (String txt) => widget.onChanged(txt),
-      keyboardType: widget.keyboardType,
     );
   }
 }

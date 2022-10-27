@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_seoul/widgets/back_app_bar.dart';
 import 'package:flutter_seoul/widgets/responsive.dart';
-import 'package:get/get.dart';
 import 'package:flutter_seoul/utils/localization.dart' show t;
 
 class Result extends StatefulWidget {
@@ -14,7 +13,7 @@ class Result extends StatefulWidget {
 class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) {
-    final count = Get.arguments ?? '0';
+    final count = '0';
 
     List<Widget> buildCountNumWidgets() {
       return [

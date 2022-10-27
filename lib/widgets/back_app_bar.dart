@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class BackAppBar extends StatelessWidget with PreferredSizeWidget {
   final Widget? title;
@@ -25,7 +24,7 @@ class BackAppBar extends StatelessWidget with PreferredSizeWidget {
         icon: const Icon(
           Icons.arrow_back_ios_outlined,
         ),
-        onPressed: () => Get.back(),
+        onPressed: () => Navigator.of(context).pop(),
       ),
       bottom: isBottomBorderDisplayed
           ? PreferredSize(

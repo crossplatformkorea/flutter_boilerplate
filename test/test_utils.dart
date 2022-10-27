@@ -5,7 +5,6 @@ import 'package:flutter_seoul/screens/home.dart';
 import 'package:flutter_seoul/screens/sample.dart';
 import 'package:flutter_seoul/utils/themes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get.dart';
 
 import 'mocks/navigator_observer.mocks.dart';
 
@@ -31,16 +30,14 @@ class TestUtils {
           setDeviceWidth(),
         ),
       ),
-      child: GetMaterialApp(
+      child: MaterialApp(
         home: child,
       ),
     );
   }
 
   static Widget makeTestableWidget({required Widget child}) {
-    Themes.setStatusBarColors();
-
-    var widget = GetMaterialApp(
+    var widget = MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Themes.light,
       darkTheme: Themes.dark,
@@ -57,17 +54,11 @@ class TestUtils {
       ],
       home: child,
       navigatorObservers: <NavigatorObserver>[observer],
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => const Home(),
-        ),
-        GetPage(
-          name: '/edit_profile',
-          page: () => const EditProfile(),
-        ),
-        GetPage(name: '/sample', page: () => const Sample())
-      ],
+      routes: {
+        '/': (context) => const Home(),
+        '/edit_profile': (context) => const EditProfile(),
+        '/sample': (context) => const Sample()
+      },
     );
 
     return widget;
