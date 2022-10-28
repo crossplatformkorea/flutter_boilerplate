@@ -26,22 +26,22 @@ Do you need another boilerplate?
 # dependencies
 cupertino_icons: ^1.0.5
 intl: ^0.17.0
-get: ^4.6.5
+provider: ^6.0.4
 flutter_dotenv: ^5.0.2
 logger: ^1.1.0
-http: ^0.13.4
+http: ^0.13.5
 freezed_annotation: ^2.2.0
 json_annotation: ^4.7.0
 
 # dev_dependencies
 flutter_lints: ^2.0.1
 test: ^1.20.2
-mockito: ^5.2.0
-build_runner: ^2.3.0
-flutter_native_splash: ^2.2.5
+mockito: ^5.3.2
+build_runner: ^2.3.2
+flutter_native_splash: ^2.2.12
 change_app_package_name: ^1.1.0
 freezed: ^2.2.0
-json_serializable: ^6.5.2
+json_serializable: ^6.5.4
 ```
 
 ## Getting Started
