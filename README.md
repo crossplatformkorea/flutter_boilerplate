@@ -16,7 +16,7 @@ Do you need another boilerplate?
 ## Specification
 
 - Localization
-- [Get package](https://pub.dev/packages/get) navigation settings
+- [Provider package](https://pub.dev/packages/provider)
 - Asset-related settings (Image, Icon, Color)
 - Testing settings
 
