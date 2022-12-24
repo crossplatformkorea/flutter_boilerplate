@@ -1,4 +1,4 @@
-import 'package:flutter_seoul/models/user.dart';
+import 'package:flutter_seoul/models/user_model.dart';
 import 'package:flutter_seoul/services/apis/sample.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
@@ -21,7 +21,7 @@ void main() {
             200),
       );
 
-      expect(await fetchUser(client), isA<User>());
+      expect(await fetchUser(client), isA<UserModel>());
     });
 
     test('throws an exception if the http call completes with an error', () {
