@@ -15,8 +15,8 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  late String _nameValue = "";
-  late String _descValue = "";
+  late String _nameValue = '';
+  late String _descValue = '';
   XFile? _imageFile;
   final ImagePicker _picker = ImagePicker();
 
@@ -101,7 +101,7 @@ class _EditProfileState extends State<EditProfile> {
                             child: const Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                "Profile",
+                                'Profile',
                                 style: TextStyle(
                                     fontSize: 24, fontWeight: FontWeight.w700),
                               ),
@@ -121,7 +121,7 @@ class _EditProfileState extends State<EditProfile> {
                                               ? Colors.white
                                               : Colors.black,
                                           child: const Text(
-                                            "사진 선택",
+                                            '사진 선택',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w700),
                                           ),
@@ -159,7 +159,7 @@ class _EditProfileState extends State<EditProfile> {
                               child: const Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "Display name",
+                                  'Display name',
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500),
@@ -176,7 +176,7 @@ class _EditProfileState extends State<EditProfile> {
                               child: const Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "Description",
+                                  'Description',
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500),
@@ -196,7 +196,7 @@ class _EditProfileState extends State<EditProfile> {
                                     builder: (context) => const Result()),
                               );
                             },
-                            disabled: _nameValue == "" || _descValue == "",
+                            disabled: _nameValue == '' || _descValue == '',
                             style: SeoulButtonStyle(
                                 backgroundColor: Theme.of(context)
                                     .buttonTheme
@@ -207,7 +207,7 @@ class _EditProfileState extends State<EditProfile> {
                                 padding:
                                     const EdgeInsets.fromLTRB(0, 16, 0, 16)),
                             child: Text(
-                              "Update",
+                              'Update',
                               style: TextStyle(
                                   color:
                                       Theme.of(context).colorScheme.background,

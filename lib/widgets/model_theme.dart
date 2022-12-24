@@ -13,7 +13,7 @@ class ModelTheme extends ChangeNotifier {
     getPreferences();
   }
 
-  toggleTheme() {
+  void toggleTheme() {
     _isDark = !_isDark;
     _preferences.setTheme(!_isDark);
     notifyListeners();
@@ -25,7 +25,7 @@ class ModelTheme extends ChangeNotifier {
     notifyListeners();
   }
 
-  getPreferences() async {
+  Future<void> getPreferences() async {
     final schedulerBinding = SchedulerBinding.instance;
     Brightness brightness = schedulerBinding.window.platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;

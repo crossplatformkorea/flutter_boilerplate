@@ -11,7 +11,7 @@ import 'package:flutter_seoul/widgets/model_theme.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: '.env');
 
   runApp(const MyApp());
 }

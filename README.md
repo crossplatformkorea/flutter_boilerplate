@@ -118,7 +118,7 @@ or
 ```dart
 import 'package:flutter_seoul/utils/localization.dart'
 
-t('appName');
+localization(context).appName;
 ```
 
 ## Assets

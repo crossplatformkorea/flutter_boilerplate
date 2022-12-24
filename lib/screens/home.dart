@@ -32,17 +32,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late String _emailValue = "";
-  late String _passwordValue = "";
+  late String _emailValue = '';
+  late String _passwordValue = '';
 
   final List<LoginValue> loginValues = [
     LoginValue(
-        name: "Email",
-        hintText: "Email",
+        name: 'Email',
+        hintText: 'Email',
         keyboardType: TextInputType.emailAddress),
     LoginValue(
-      name: "Password",
-      hintText: "Password",
+      name: 'Password',
+      hintText: 'Password',
       obscureText: true,
       enableSuggestions: false,
       autocorrect: false,
@@ -51,6 +51,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    var t = localization(context);
+
     return Consumer<ModelTheme>(
       builder: (context, ModelTheme themeNotifier, child) {
         return Scaffold(
@@ -60,15 +62,15 @@ class _HomeState extends State<Home> {
               child: ListView(
                 children: [
                   Container(
-                    margin: const EdgeInsets.fromLTRB(32, 60, 32, 0),
+                    margin: const EdgeInsets.only(left: 32, top: 60, right: 32),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Container(
                           alignment: Alignment.center,
-                          margin: const EdgeInsets.fromLTRB(0, 64, 0, 8),
+                          margin: const EdgeInsets.only(top: 60, bottom: 8),
                           child: Text(
-                            t("FLUTTER_SEOUL"),
+                            t.appName,
                             style: const TextStyle(
                                 fontSize: 32, fontWeight: FontWeight.w700),
                           ),
@@ -76,7 +78,7 @@ class _HomeState extends State<Home> {
                         Container(
                           margin: const EdgeInsets.only(bottom: 64),
                           child: const Text(
-                            "Flutter BoilerPlate",
+                            'Flutter BoilerPlate',
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -84,7 +86,7 @@ class _HomeState extends State<Home> {
                             children: loginValues.map((LoginValue item) {
                           return EditText(
                             onChanged: (String txt) => setState(() {
-                              if (item.name == "Email") {
+                              if (item.name == 'Email') {
                                 _emailValue = txt;
                               } else {
                                 _passwordValue = txt;
@@ -105,18 +107,18 @@ class _HomeState extends State<Home> {
                                   builder: (context) => const EditProfile()),
                             );
                           },
-                          disabled: _emailValue == "" || _passwordValue == "",
+                          disabled: _emailValue == '' || _passwordValue == '',
                           style: SeoulButtonStyle(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(4)),
-                            padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+                            padding: const EdgeInsets.only(top: 16, bottom: 16),
                             backgroundColor: Theme.of(context)
                                 .buttonTheme
                                 .colorScheme!
                                 .background,
                           ),
                           child: Text(
-                            "로그인 하기",
+                            '로그인 하기',
                             style: TextStyle(
                                 color: Theme.of(context).colorScheme.background,
                                 fontSize: 16),
@@ -129,12 +131,12 @@ class _HomeState extends State<Home> {
                     margin: const EdgeInsets.only(top: 56, bottom: 48),
                     child: Column(
                       children: [
-                        const Text("이용문의",
-                            style: TextStyle(fontSize: 12, color: grey)),
+                        Text(localization(context).inquiry,
+                            style: const TextStyle(fontSize: 12, color: grey)),
                         Container(
                           margin: const EdgeInsets.only(top: 8),
                           child: const Text(
-                            "support@dooboolab.com",
+                            'support@dooboolab.com',
                             style: TextStyle(fontSize: 12),
                           ),
                         ),

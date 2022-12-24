@@ -10,7 +10,7 @@ class CircleLoadingIndicator extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: CircularProgressIndicator(
-          semanticsLabel: t("LOADING"),
+          semanticsLabel: localization(context).loading,
           backgroundColor: Theme.of(context).primaryColor,
           strokeWidth: 2,
           valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),

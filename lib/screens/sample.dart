@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_seoul/utils/localization.dart';
 import 'package:flutter_seoul/utils/tools.dart';
 import 'package:flutter_seoul/widgets/back_app_bar.dart';
 import 'package:flutter_seoul/widgets/custom_checkbox.dart';
@@ -17,6 +18,8 @@ class _SampleState extends State<Sample> {
 
   @override
   Widget build(BuildContext context) {
+    var t = localization(context);
+
     return Scaffold(
       appBar: const BackAppBar(),
       body: SafeArea(
@@ -36,7 +39,7 @@ class _SampleState extends State<Sample> {
                   width: double.infinity,
                   height: 50,
                 ),
-                child: const Text("전체동의"),
+                child: Text(t.fullAgreement),
               ),
               Row(
                 children: [
@@ -95,7 +98,7 @@ class _SampleState extends State<Sample> {
                   width: double.infinity,
                   backgroundColor: Colors.teal,
                 ),
-                child: const Text("Solid button"),
+                child: const Text('Solid button'),
               ),
               SeoulButton(
                 disabled: true,
@@ -104,7 +107,7 @@ class _SampleState extends State<Sample> {
                   width: double.infinity,
                   backgroundColor: Colors.teal,
                 ),
-                child: const Text("Disabled Solid button"),
+                child: const Text('Disabled Solid button'),
               ),
               OutlineButton(
                 onPressed: () {},
@@ -112,7 +115,7 @@ class _SampleState extends State<Sample> {
                   width: double.infinity,
                 ),
                 child: const Text(
-                  "Outline button",
+                  'Outline button',
                 ),
               ),
               OutlineButton(
@@ -122,7 +125,7 @@ class _SampleState extends State<Sample> {
                   width: double.infinity,
                 ),
                 child: const Text(
-                  "Disabled Outline button",
+                  'Disabled Outline button',
                 ),
               ),
             ],

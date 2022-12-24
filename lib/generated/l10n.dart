@@ -51,90 +51,60 @@ class S {
   }
 
   /// `Flutter Seoul`
-  String get FLUTTER_SEOUL {
+  String get appName {
     return Intl.message(
       'Flutter Seoul',
-      name: 'FLUTTER_SEOUL',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `dooboolab`
-  String get APP_NAME {
-    return Intl.message(
-      'dooboolab',
-      name: 'APP_NAME',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Go to Result screen`
-  String get GO_TO_RESULT {
-    return Intl.message(
-      'Go to Result screen',
-      name: 'GO_TO_RESULT',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Go to Sample screen`
-  String get GO_TO_SAMPLE {
-    return Intl.message(
-      'Go to Sample screen',
-      name: 'GO_TO_SAMPLE',
+      name: 'appName',
       desc: '',
       args: [],
     );
   }
 
   /// `Result`
-  String get RESULT {
+  String get result {
     return Intl.message(
       'Result',
-      name: 'RESULT',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Warning`
-  String get WARNING {
-    return Intl.message(
-      'Warning',
-      name: 'WARNING',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Error`
-  String get ERROR {
-    return Intl.message(
-      'Error',
-      name: 'ERROR',
+      name: 'result',
       desc: '',
       args: [],
     );
   }
 
   /// `Loading...`
-  String get LOADING {
+  String get loading {
     return Intl.message(
       'Loading...',
-      name: 'LOADING',
+      name: 'loading',
       desc: '',
       args: [],
     );
   }
 
   /// `Count`
-  String get COUNT {
+  String get count {
     return Intl.message(
       'Count',
-      name: 'COUNT',
+      name: 'count',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inquiry`
+  String get inquiry {
+    return Intl.message(
+      'Inquiry',
+      name: 'inquiry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full agreement`
+  String get fullAgreement {
+    return Intl.message(
+      'Full agreement',
+      name: 'fullAgreement',
       desc: '',
       args: [],
     );

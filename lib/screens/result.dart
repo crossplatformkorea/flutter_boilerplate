@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_seoul/widgets/back_app_bar.dart';
 import 'package:flutter_seoul/widgets/responsive.dart';
-import 'package:flutter_seoul/utils/localization.dart' show t;
+import 'package:flutter_seoul/utils/localization.dart' show localization, t;
 
 class Result extends StatefulWidget {
   const Result({Key? key}) : super(key: key);
@@ -14,11 +14,12 @@ class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) {
     const count = '0';
+    var t = localization(context);
 
     List<Widget> buildCountNumWidgets() {
       return [
         Text(
-          t("COUNT"),
+          t.count,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         Text(
@@ -30,7 +31,7 @@ class _ResultState extends State<Result> {
 
     return Scaffold(
       appBar: BackAppBar(
-        title: Text(t("RESULT")),
+        title: Text(t.result),
       ),
       body: Center(
         child: Responsive(
