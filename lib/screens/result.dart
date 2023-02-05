@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_seoul/widgets/back_app_bar.dart';
 import 'package:flutter_seoul/widgets/responsive.dart';
-import 'package:flutter_seoul/utils/localization.dart' show localization, t;
+import 'package:flutter_seoul/utils/localization.dart' show localization;
 
 class Result extends StatefulWidget {
   const Result({Key? key}) : super(key: key);
