@@ -100,7 +100,8 @@ class Home extends HookWidget {
                               title: 'editProfile', person: 'ss'),
                         );
                       },
-                      disabled: emailValue == '' || passwordValue == '',
+                      disabled:
+                          emailValue.value == '' || passwordValue.value == '',
                       style: SeoulButtonStyle(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(4)),
