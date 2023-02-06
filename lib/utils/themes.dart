@@ -1,44 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'colors.dart';
+
 class Themes {
   Themes._();
 
   static final light = ThemeData.light().copyWith(
-    // light theme settings
-    colorScheme: const ColorScheme.light(
-      background: Colors.white,
-    ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white,
+    primaryColor: AppColors.role.primary,
+    scaffoldBackgroundColor: Colors.white,
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.transparent,
       elevation: 0,
       iconTheme: IconThemeData(
-        color: Colors.black,
+        color: AppColors.role.basic,
       ),
       actionsIconTheme: IconThemeData(
-        color: Colors.black,
+        color: AppColors.role.basic,
       ),
       centerTitle: true,
       titleTextStyle: TextStyle(
-        color: Colors.black,
-        fontSize: 17,
+        color: AppColors.role.basic,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
       ),
       systemOverlayStyle: lightModeStatusBarColor,
+      toolbarTextStyle: const TextStyle(
+        fontWeight: FontWeight.bold,
+      ),
     ),
-
-    scaffoldBackgroundColor: Colors.white,
-
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: AppColors.text.basic,
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppColors.role.basic,
+    ),
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      secondary: AppColors.bg.borderContrast,
+      background: Colors.white,
+      primary: AppColors.text.basic,
+    ),
     inputDecorationTheme: const InputDecorationTheme(
         border: OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xFFC4C4C4))),
         focusedBorder:
             OutlineInputBorder(borderSide: BorderSide(color: Colors.black))),
-
     disabledColor: const Color.fromRGBO(30, 30, 30, 0.2),
     buttonTheme: ButtonThemeData(
         colorScheme:
             ColorScheme.fromSwatch().copyWith(background: Colors.black)),
-
     iconTheme: const IconThemeData(
       color: Colors.black,
     ),
@@ -71,6 +81,12 @@ class Themes {
       color: Colors.white,
     ),
   );
+
+  static void setStatusBarColors() {
+    SystemChrome.setSystemUIOverlayStyle(
+      lightModeStatusBarColor,
+    );
+  }
 }
 
 const darkModeStatusBarColor = SystemUiOverlayStyle(

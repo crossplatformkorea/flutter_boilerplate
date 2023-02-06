@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_seoul/screens/edit_profile.dart';
 import 'package:flutter_seoul/utils/colors.dart';
 import 'package:flutter_seoul/utils/localization.dart';
+import 'package:flutter_seoul/utils/router_config.dart';
 import 'package:flutter_seoul/widgets/edit_text.dart';
 import 'package:flutter_seoul/widgets/model_theme.dart';
 import 'package:flutter_seoul/widgets/seoul_button.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class LoginValue {
@@ -101,10 +103,10 @@ class _HomeState extends State<Home> {
                         }).toList()),
                         SeoulButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const EditProfile()),
+                            context.push(
+                              GoRoutes.editProfile.fullPath,
+                              extra: EditProfileArugments(
+                                  title: 'editProfile', person: 'ss'),
                             );
                           },
                           disabled: _emailValue == '' || _passwordValue == '',

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_seoul/screens/result.dart';
 import 'package:flutter_seoul/widgets/edit_text.dart';
 import 'package:flutter_seoul/widgets/model_theme.dart';
@@ -7,33 +8,30 @@ import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class EditProfile extends StatefulWidget {
-  const EditProfile({Key? key}) : super(key: key);
+class EditProfileArugments {
+  final String? title;
+  final String? person;
 
-  @override
-  State<EditProfile> createState() => _EditProfileState();
+  EditProfileArugments({this.title, this.person});
 }
 
-class _EditProfileState extends State<EditProfile> {
-  late String _nameValue = '';
-  late String _descValue = '';
-  XFile? _imageFile;
-  final ImagePicker _picker = ImagePicker();
-
-  void pickPhoto(ImageSource source) async {
-    final pickedFile = await _picker.pickImage(source: source);
-    setState(() {
-      _imageFile = pickedFile;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
+class EditProfile extends HookWidget {
+  const EditProfile({super.key, this.title, this.person});
+  final String? title;
+  final String? person;
 
   @override
   Widget build(BuildContext context) {
+    final ImagePicker picker = ImagePicker();
+    var nameValue = useState('');
+    var descValue = useState('');
+    var imageFile = useState<XFile?>(null);
+
+    void pickPhoto(ImageSource source) async {
+      final pickedFile = await picker.pickImage(source: source);
+      imageFile.value = pickedFile;
+    }
+
     return Consumer<ModelTheme>(
       builder: (context, ModelTheme themeNotifier, child) {
         return Scaffold(
@@ -114,7 +112,7 @@ class _EditProfileState extends State<EditProfile> {
                               },
                               child: Stack(
                                 children: [
-                                  _imageFile == null
+                                  imageFile.value == null
                                       ? CircleAvatar(
                                           radius: 85,
                                           backgroundColor: themeNotifier.isDark
@@ -129,7 +127,7 @@ class _EditProfileState extends State<EditProfile> {
                                       : CircleAvatar(
                                           radius: 85,
                                           backgroundImage: FileImage(
-                                              File(_imageFile!.path))),
+                                              File(imageFile.value!.path))),
                                   Positioned(
                                     bottom: 0,
                                     right: 0,
@@ -166,9 +164,7 @@ class _EditProfileState extends State<EditProfile> {
                                 ),
                               )),
                           EditText(
-                            onChanged: (String txt) => setState(() {
-                              _nameValue = txt;
-                            }),
+                            onChanged: (String txt) => nameValue.value = txt,
                             hintText: 'Name',
                           ),
                           Container(
@@ -183,9 +179,7 @@ class _EditProfileState extends State<EditProfile> {
                                 ),
                               )),
                           EditText(
-                            onChanged: (String txt) => setState(() {
-                              _descValue = txt;
-                            }),
+                            onChanged: (String txt) => descValue.value = txt,
                             hintText: 'Description',
                           ),
                           SeoulButton(
@@ -196,7 +190,8 @@ class _EditProfileState extends State<EditProfile> {
                                     builder: (context) => const Result()),
                               );
                             },
-                            disabled: _nameValue == '' || _descValue == '',
+                            disabled:
+                                nameValue.value == '' || descValue.value == '',
                             style: SeoulButtonStyle(
                                 backgroundColor: Theme.of(context)
                                     .buttonTheme
