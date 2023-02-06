@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_seoul/utils/localization.dart';
-import 'package:flutter_seoul/utils/tools.dart';
 import 'package:flutter_seoul/widgets/back_app_bar.dart';
 import 'package:flutter_seoul/widgets/custom_checkbox.dart';
 import 'package:flutter_seoul/widgets/outline_button.dart';
 import 'package:flutter_seoul/widgets/seoul_button.dart';
 
-class Sample extends StatefulWidget {
+class Sample extends HookWidget {
   const Sample({Key? key}) : super(key: key);
 
   @override
-  State<Sample> createState() => _SampleState();
-}
-
-class _SampleState extends State<Sample> {
-  List<bool> _agreementValues = List.generate(3, (index) => false);
-
-  @override
   Widget build(BuildContext context) {
+    var agreementValues = useState(List.generate(3, (index) => false));
     var t = localization(context);
 
     return Scaffold(
@@ -29,11 +23,8 @@ class _SampleState extends State<Sample> {
             children: [
               SeoulButton(
                 onPressed: () {
-                  setState(() {
-                    _agreementValues =
-                        _agreementValues.map((e) => true).toList();
-                    logger.d(_agreementValues);
-                  });
+                  agreementValues.value =
+                      agreementValues.value.map((e) => true).toList();
                 },
                 style: const SeoulButtonStyle(
                   width: double.infinity,
@@ -49,9 +40,9 @@ class _SampleState extends State<Sample> {
                       horizontal: 5,
                     ),
                     child: CustomCheckbox(
-                      value: _agreementValues[0],
+                      value: agreementValues.value[0],
                       onChanged: (value) {
-                        _agreementValues[0] = value;
+                        agreementValues.value[0] = value;
                       },
                     ),
                   ),
@@ -66,9 +57,9 @@ class _SampleState extends State<Sample> {
                       horizontal: 5,
                     ),
                     child: CustomCheckbox(
-                      value: _agreementValues[1],
+                      value: agreementValues.value[1],
                       onChanged: (value) {
-                        _agreementValues[1] = value;
+                        agreementValues.value[1] = value;
                       },
                     ),
                   ),
@@ -83,9 +74,9 @@ class _SampleState extends State<Sample> {
                       horizontal: 5,
                     ),
                     child: CustomCheckbox(
-                      value: _agreementValues[2],
+                      value: agreementValues.value[2],
                       onChanged: (value) {
-                        _agreementValues[2] = value;
+                        agreementValues.value[2] = value;
                       },
                     ),
                   ),

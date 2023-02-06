@@ -51,7 +51,7 @@ final routerConfig = GoRouter(
       name: GoRoutes.editProfile.name,
       path: GoRoutes.editProfile.fullPath,
       builder: (context, state) {
-        var args = state.extra as EditProfileArugments;
+        var args = state.extra as EditProfileArguments;
 
         return EditProfile(
           title: args.title,
