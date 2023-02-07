@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'my_theme_preferences.dart';
 
 class ModelTheme extends ChangeNotifier {
@@ -40,3 +41,7 @@ class ModelTheme extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+final modelProvider = ChangeNotifierProvider<ModelTheme>((ref) {
+  return ModelTheme();
+});
