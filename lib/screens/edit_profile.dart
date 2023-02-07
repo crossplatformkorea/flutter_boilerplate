@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_seoul/screens/result.dart';
+import 'package:flutter_seoul/widgets/common/button.dart';
 import 'package:flutter_seoul/widgets/edit_text.dart';
 import 'package:flutter_seoul/widgets/model_theme.dart';
-import 'package:flutter_seoul/widgets/seoul_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class EditProfileArguments {
   EditProfileArguments({this.title, this.person});
 }
 
-class EditProfile extends ConsumerWidget {
+class EditProfile extends HookConsumerWidget {
   const EditProfile({super.key, this.title, this.person});
   final String? title;
   final String? person;
@@ -179,8 +179,9 @@ class EditProfile extends ConsumerWidget {
                         onChanged: (String txt) => descValue.value = txt,
                         hintText: 'Description',
                       ),
-                      SeoulButton(
-                        onPressed: () {
+                      Button(
+                        text: 'Update',
+                        onPress: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -189,21 +190,7 @@ class EditProfile extends ConsumerWidget {
                         },
                         disabled:
                             nameValue.value == '' || descValue.value == '',
-                        style: SeoulButtonStyle(
-                            backgroundColor: Theme.of(context)
-                                .buttonTheme
-                                .colorScheme!
-                                .background,
-                            width: double.infinity,
-                            margin: const EdgeInsets.fromLTRB(0, 40, 0, 24),
-                            padding: const EdgeInsets.fromLTRB(0, 16, 0, 16)),
-                        child: Text(
-                          'Update',
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.background,
-                              fontSize: 16),
-                        ),
-                      ),
+                      )
                     ],
                   ),
                 ),
