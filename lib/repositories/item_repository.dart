@@ -37,7 +37,6 @@ class ItemRepository implements IItemRepository {
 
   @override
   Future<void> addItem({required ItemModel item}) async {
-    print('item:$item');
     final Database db = await initDB();
     try {
       db.insert('item', item.toJson(),
