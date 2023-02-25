@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_seoul/screens/result.dart';
+import 'package:flutter_seoul/providers/user_provider.dart';
+import 'package:flutter_seoul/repositories/user_repository.dart';
 import 'package:flutter_seoul/widgets/common/button.dart';
 import 'package:flutter_seoul/widgets/edit_text.dart';
 import 'package:flutter_seoul/widgets/model_theme.dart';
@@ -23,6 +24,7 @@ class EditProfile extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeNotifier = ref.watch(modelProvider);
+    final userNotifier = ref.watch(userProvider);
 
     final ImagePicker picker = ImagePicker();
     var nameValue = useState('');
@@ -67,7 +69,10 @@ class EditProfile extends HookConsumerWidget {
           IconButton(
             color: Theme.of(context).iconTheme.color,
             icon: const Icon(Icons.exit_to_app),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () async {
+              await UserRepository.instance.logout();
+              userNotifier.remove();
+            },
             iconSize: 30,
           )
         ],
@@ -181,13 +186,7 @@ class EditProfile extends HookConsumerWidget {
                       ),
                       Button(
                         text: 'Update',
-                        onPress: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Result()),
-                          );
-                        },
+                        onPress: () {},
                         disabled:
                             nameValue.value == '' || descValue.value == '',
                       )

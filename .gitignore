@@ -47,3 +47,7 @@ app.*.map.json
 
 .env
 coverage
+
+# freezed
+*.g.dart 
+*.freezed.dart

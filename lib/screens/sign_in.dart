@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_seoul/models/user_model.dart';
+import 'package:flutter_seoul/providers/user_provider.dart';
 import 'package:flutter_seoul/repositories/user_repository.dart';
 import 'package:flutter_seoul/utils/colors.dart';
 import 'package:flutter_seoul/utils/localization.dart';
 import 'package:flutter_seoul/widgets/common/button.dart';
 import 'package:flutter_seoul/widgets/edit_text.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SignIn extends HookWidget {
+class SignIn extends HookConsumerWidget {
   const SignIn({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userNotifier = ref.watch(userProvider);
+
     var user =
         useState<UserModel>(const UserModel(id: '0', email: '', password: ''));
     var t = localization(context);
@@ -64,16 +68,8 @@ class SignIn extends HookWidget {
                     disabled:
                         user.value.email == '' || user.value.password == '',
                     onPress: () async {
-                      print('user.value:${user.value.email}');
-
+                      userNotifier.addUsers(user: user.value);
                       await UserRepository.instance.login(user.value);
-                      if (context.mounted) {
-                        // context.push(
-                        //   GoRoutes.editProfile.fullPath,
-                        //   extra: EditProfileArguments(
-                        //       title: 'editProfile', person: 'ss'),
-                        // );
-                      }
                     },
                   ),
                 ],
