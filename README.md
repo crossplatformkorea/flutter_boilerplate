@@ -1,6 +1,6 @@
 # flutter_seoul
 
-[![CI](https://github.com/flutter-seoul/flutter_seoul/actions/workflows/ci.yml/badge.svg)](https://github.com/flutter-seoul/flutter_seoul/actions/workflows/ci.yml)
+[![CI](https://github.com/crossplatformkorea/flutter_boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/flutter-seoul/flutter_seoul/actions/workflows/ci.yml)
 [![Github Pages](https://github.com/flutter-seoul/flutter_seoul/actions/workflows/pages.yml/badge.svg)](https://github.com/flutter-seoul/flutter_seoul/actions/workflows/pages.yml)
 [![codecov](https://codecov.io/gh/Jay-flow/flutter_seoul/branch/main/graph/badge.svg?token=XDF4A42QLF)](https://codecov.io/gh/Jay-flow/flutter_seoul)
 
