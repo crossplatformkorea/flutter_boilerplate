@@ -17,7 +17,7 @@ class Home extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var item =
+    var itemData =
         useState<ItemModel>(const ItemModel(id: 0, title: '', content: ''));
     var itemList = useState<List<ItemModel>>([]);
 
@@ -31,15 +31,35 @@ class Home extends HookWidget {
       return null;
     }, []);
 
-    Future<void> addContent() async {
+    Future<void> addItem() async {
       if (!formKey.currentState!.validate()) return;
 
       var rng = Random();
-
+      var rngId = rng.nextInt(100);
       await ItemRepository.instance
-          .addItem(item: item.value.copyWith(id: rng.nextInt(100)));
+          .addItem(item: itemData.value.copyWith(id: rngId));
       if (context.mounted) {
-        itemList.value = [...itemList.value, item.value];
+        itemList.value = [
+          ...itemList.value,
+          itemData.value.copyWith(id: rngId)
+        ];
+        Navigator.pop(context);
+      }
+    }
+
+    Future<void> removeItem(int id) async {
+      await ItemRepository.instance.removeItem(id: id);
+      itemList.value =
+          itemList.value.where((element) => element.id != id).toList();
+    }
+
+    Future<void> updateItem(int id) async {
+      await ItemRepository.instance
+          .updateItem(item: itemData.value.copyWith(id: id));
+      if (context.mounted) {
+        itemList.value = itemList.value
+            .map((e) => e.id == id ? itemData.value.copyWith(id: id) : e)
+            .toList();
         Navigator.pop(context);
       }
     }
@@ -60,19 +80,84 @@ class Home extends HookWidget {
             ),
             child: InkWell(
                 onTap: () {
-                  // todo go to detail
+                  General.instance.showBottomSheet(
+                    context,
+                    Form(
+                      key: formKey,
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        color: Colors.white,
+                        child: Column(
+                          children: [
+                            EditFormText(
+                              initialValue: item.title,
+                              margin: const EdgeInsets.only(top: 20),
+                              label: 'Title',
+                              hintText: 'Title',
+                              onChanged: (val) {
+                                itemData.value =
+                                    itemData.value.copyWith(title: val);
+                              },
+                              validator: (_) {
+                                var text = itemData.value.title;
+                                if (text.isEmpty) {
+                                  return '제목을 입력해주세요';
+                                }
+                                return null;
+                              },
+                            ),
+                            EditFormText(
+                              initialValue: item.content,
+                              margin: const EdgeInsets.only(top: 20),
+                              label: 'Content',
+                              hintText: 'Content',
+                              onChanged: (val) {
+                                itemData.value =
+                                    itemData.value.copyWith(content: val);
+                              },
+                              validator: (_) {
+                                var text = itemData.value.content;
+                                if (text.isEmpty) {
+                                  return '내용을 입력해주세요';
+                                }
+                                return null;
+                              },
+                            ),
+                            Button(
+                              margin: const EdgeInsets.only(top: 20),
+                              onPress: () => updateItem(item.id),
+                              text: '업데이트',
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(20),
-                  child: Column(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'title: ${item.title}',
-                        style: const TitleTextStyle(),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            'title: ${item.title}',
+                            style: const TitleTextStyle(),
+                          ),
+                          Text('content: ${item.content}',
+                              style: const SubTitleTextStyle())
+                        ],
                       ),
-                      Text('content: ${item.content}',
-                          style: const SubTitleTextStyle())
+                      IconButton(
+                        onPressed: () => removeItem(item.id),
+                        icon: const Icon(
+                          Icons.delete,
+                        ),
+                      ),
                     ],
                   ),
                 )),
@@ -95,10 +180,10 @@ class Home extends HookWidget {
                       label: 'Title',
                       hintText: 'Title',
                       onChanged: (val) {
-                        item.value = item.value.copyWith(title: val);
+                        itemData.value = itemData.value.copyWith(title: val);
                       },
                       validator: (_) {
-                        var text = item.value.title;
+                        var text = itemData.value.title;
                         if (text.isEmpty) {
                           return '제목을 입력해주세요';
                         }
@@ -110,10 +195,10 @@ class Home extends HookWidget {
                       label: 'Content',
                       hintText: 'Content',
                       onChanged: (val) {
-                        item.value = item.value.copyWith(content: val);
+                        itemData.value = itemData.value.copyWith(content: val);
                       },
                       validator: (_) {
-                        var text = item.value.content;
+                        var text = itemData.value.content;
                         if (text.isEmpty) {
                           return '내용을 입력해주세요';
                         }
@@ -122,7 +207,7 @@ class Home extends HookWidget {
                     ),
                     Button(
                       margin: const EdgeInsets.only(top: 20),
-                      onPress: addContent,
+                      onPress: addItem,
                       text: '추가',
                     )
                   ],
