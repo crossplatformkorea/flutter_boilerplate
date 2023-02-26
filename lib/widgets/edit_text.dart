@@ -92,46 +92,47 @@ class _EditTextState extends State<EditText> {
 }
 
 class EditFormText extends StatelessWidget {
-  const EditFormText({
-    Key? key,
-    this.focusNode,
-    this.margin,
-    this.padding,
-    this.label = '',
-    this.hintText,
-    this.cursorColor,
-    this.errorText,
-    this.textEditingController,
-    this.onChanged,
-    this.onSubmitted,
-    this.onEditingComplete,
-    this.textInputAction,
-    this.validator,
-    this.keyboardType,
-    this.isSecret = false,
-    this.hasChecked = false,
-    this.showBorder = true,
-    this.minLines = 1,
-    this.maxLines = 1,
-    this.inputDecoration,
-    this.labelStyle = const InputLabelTextStyle(),
-    this.textStyle = const TextStyle(
-      fontSize: 16.0,
-    ),
-    this.hintStyle = const TextStyle(
-      fontSize: 16.0,
-    ),
-    this.errorStyle = const TextStyle(
-      fontSize: 14.0,
-      fontWeight: FontWeight.w500,
-    ),
-    this.onTap,
-    this.prefixIcon,
-    this.enabled = true,
-    this.readOnly = false,
-    this.autofocus = false,
-    this.maxLength,
-  }) : super(key: key);
+  const EditFormText(
+      {Key? key,
+      this.focusNode,
+      this.margin,
+      this.padding,
+      this.label = '',
+      this.hintText,
+      this.cursorColor,
+      this.errorText,
+      this.textEditingController,
+      this.onChanged,
+      this.onSubmitted,
+      this.onEditingComplete,
+      this.textInputAction,
+      this.validator,
+      this.keyboardType,
+      this.isSecret = false,
+      this.hasChecked = false,
+      this.showBorder = true,
+      this.minLines = 1,
+      this.maxLines = 1,
+      this.inputDecoration,
+      this.labelStyle = const InputLabelTextStyle(),
+      this.textStyle = const TextStyle(
+        fontSize: 16.0,
+      ),
+      this.hintStyle = const TextStyle(
+        fontSize: 16.0,
+      ),
+      this.errorStyle = const TextStyle(
+        fontSize: 14.0,
+        fontWeight: FontWeight.w500,
+      ),
+      this.onTap,
+      this.prefixIcon,
+      this.enabled = true,
+      this.readOnly = false,
+      this.autofocus = false,
+      this.maxLength,
+      this.initialValue})
+      : super(key: key);
   final FocusNode? focusNode;
   final EdgeInsets? margin;
   final EdgeInsets? padding;
@@ -162,6 +163,7 @@ class EditFormText extends StatelessWidget {
   final bool readOnly;
   final bool autofocus;
   final int? maxLength;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -184,6 +186,7 @@ class EditFormText extends StatelessWidget {
             alignment: Alignment.centerLeft,
             children: <Widget>[
               TextFormField(
+                initialValue: initialValue,
                 key: key,
                 maxLength: maxLength,
                 validator: validator,

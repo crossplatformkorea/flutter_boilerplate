@@ -6,8 +6,8 @@ import 'package:sqflite/sqflite.dart';
 abstract class IItemRepository {
   Future<Database> initDB();
   Future<void> addItem({required ItemModel item});
-  Future<void> removeItem();
-  Future<void> updateItem();
+  Future<void> removeItem({required int id});
+  Future<void> updateItem({required ItemModel item});
   Future<List<ItemModel>> getItems();
 }
 
@@ -47,15 +47,34 @@ class ItemRepository implements IItemRepository {
   }
 
   @override
-  Future<void> removeItem() async {
+  Future<void> removeItem({required int id}) async {
     final Database db = await initDB();
-    db.delete('item');
+    try {
+      db.delete(
+        'item',
+        // 특정 dog를 제거하기 위해 `where` 절을 사용하세요
+        where: 'id = ?',
+        // Dog의 id를 where의 인자로 넘겨 SQL injection을 방지합니다.
+        whereArgs: [id],
+      );
+    } catch (e) {
+      logger.d(e);
+    }
   }
 
   @override
-  Future<void> updateItem() async {
+  Future<void> updateItem({required ItemModel item}) async {
     final Database db = await initDB();
-    db.delete('item');
+    try {
+      db.update(
+        'item',
+        item.toJson(),
+        where: 'id = ?',
+        whereArgs: [item.id],
+      );
+    } catch (e) {
+      logger.d(e);
+    }
   }
 
   @override
