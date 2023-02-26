@@ -1,145 +1,138 @@
+import 'dart:math';
+
+import 'package:flat_list/flat_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_seoul/screens/edit_profile.dart';
-import 'package:flutter_seoul/utils/colors.dart';
-import 'package:flutter_seoul/utils/localization.dart';
-import 'package:flutter_seoul/utils/router_config.dart';
+import 'package:flutter_seoul/models/item_model.dart';
+import 'package:flutter_seoul/repositories/item_repository.dart';
+import 'package:flutter_seoul/utils/general.dart';
+import 'package:flutter_seoul/widgets/common/button.dart';
+import 'package:flutter_seoul/widgets/common/styles.dart';
 import 'package:flutter_seoul/widgets/edit_text.dart';
-import 'package:flutter_seoul/widgets/seoul_button.dart';
-import 'package:go_router/go_router.dart';
 
-class LoginValue {
-  String name;
-  TextInputType? keyboardType;
-  String? hintText;
-  bool obscureText;
-  bool enableSuggestions;
-  bool autocorrect;
-
-  LoginValue(
-      {required this.name,
-      this.keyboardType,
-      this.hintText,
-      this.obscureText = false,
-      this.enableSuggestions = true,
-      this.autocorrect = true});
-}
+final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
 class Home extends HookWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var emailValue = useState('');
-    var passwordValue = useState('');
+    var item =
+        useState<ItemModel>(const ItemModel(id: 0, title: '', content: ''));
+    var itemList = useState<List<ItemModel>>([]);
 
-    final List<LoginValue> loginValues = [
-      LoginValue(
-          name: 'Email',
-          hintText: 'Email',
-          keyboardType: TextInputType.emailAddress),
-      LoginValue(
-        name: 'Password',
-        hintText: 'Password',
-        obscureText: true,
-        enableSuggestions: false,
-        autocorrect: false,
-      ),
-    ];
-    var t = localization(context);
+    useEffect(() {
+      Future<void> init() async {
+        var result = await ItemRepository.instance.getItems();
+        itemList.value = result;
+      }
+
+      init();
+      return null;
+    }, []);
+
+    Future<void> addContent() async {
+      if (!formKey.currentState!.validate()) return;
+
+      var rng = Random();
+
+      await ItemRepository.instance
+          .addItem(item: item.value.copyWith(id: rng.nextInt(100)));
+      if (context.mounted) {
+        itemList.value = [...itemList.value, item.value];
+        Navigator.pop(context);
+      }
+    }
 
     return Scaffold(
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-          child: ListView(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(left: 32, top: 60, right: 32),
+      appBar: AppBar(title: const Text('Home')),
+      body: FlatList<ItemModel>(
+        data: itemList.value,
+        buildItem: (item, index) {
+          return Container(
+            width: double.infinity,
+            height: 200,
+            margin: const EdgeInsets.only(bottom: 10),
+            decoration: const BoxDecoration(
+              border: Border.symmetric(
+                horizontal: BorderSide(color: Colors.grey, width: 1),
+              ),
+            ),
+            child: InkWell(
+                onTap: () {
+                  // todo go to detail
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'title: ${item.title}',
+                        style: const TitleTextStyle(),
+                      ),
+                      Text('content: ${item.content}',
+                          style: const SubTitleTextStyle())
+                    ],
+                  ),
+                )),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          General.instance.showBottomSheet(
+            context,
+            Form(
+              key: formKey,
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                color: Colors.white,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Container(
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.only(top: 60, bottom: 8),
-                      child: Text(
-                        t.appName,
-                        style: const TextStyle(
-                            fontSize: 32, fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 64),
-                      child: const Text(
-                        'Flutter BoilerPlate',
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    Column(
-                        children: loginValues.map((LoginValue item) {
-                      return EditText(
-                        onChanged: (String txt) {
-                          if (item.name == 'Email') {
-                            emailValue.value = txt;
-                          } else {
-                            passwordValue.value = txt;
-                          }
-                        },
-                        keyboardType: item.keyboardType,
-                        hintText: item.hintText,
-                        obscureText: item.obscureText,
-                        enableSuggestions: item.enableSuggestions,
-                        autocorrect: item.autocorrect,
-                      );
-                    }).toList()),
-                    SeoulButton(
-                      onPressed: () {
-                        context.push(
-                          GoRoutes.editProfile.fullPath,
-                          extra: EditProfileArguments(
-                              title: 'editProfile', person: 'ss'),
-                        );
+                    EditFormText(
+                      margin: const EdgeInsets.only(top: 20),
+                      label: 'Title',
+                      hintText: 'Title',
+                      onChanged: (val) {
+                        item.value = item.value.copyWith(title: val);
                       },
-                      disabled:
-                          emailValue.value == '' || passwordValue.value == '',
-                      style: SeoulButtonStyle(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(4)),
-                        padding: const EdgeInsets.only(top: 16, bottom: 16),
-                        backgroundColor: Theme.of(context)
-                            .buttonTheme
-                            .colorScheme!
-                            .background,
-                      ),
-                      child: Text(
-                        '로그인 하기',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.background,
-                            fontSize: 16),
-                      ),
+                      validator: (_) {
+                        var text = item.value.title;
+                        if (text.isEmpty) {
+                          return '제목을 입력해주세요';
+                        }
+                        return null;
+                      },
                     ),
+                    EditFormText(
+                      margin: const EdgeInsets.only(top: 20),
+                      label: 'Content',
+                      hintText: 'Content',
+                      onChanged: (val) {
+                        item.value = item.value.copyWith(content: val);
+                      },
+                      validator: (_) {
+                        var text = item.value.content;
+                        if (text.isEmpty) {
+                          return '내용을 입력해주세요';
+                        }
+                        return null;
+                      },
+                    ),
+                    Button(
+                      margin: const EdgeInsets.only(top: 20),
+                      onPress: addContent,
+                      text: '추가',
+                    )
                   ],
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 56, bottom: 48),
-                child: Column(
-                  children: [
-                    Text(localization(context).inquiry,
-                        style: const TextStyle(fontSize: 12, color: grey)),
-                    Container(
-                      margin: const EdgeInsets.only(top: 8),
-                      child: const Text(
-                        'support@dooboolab.com',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
+        backgroundColor: Colors.blue,
+        child: const Icon(Icons.add),
       ),
     );
   }

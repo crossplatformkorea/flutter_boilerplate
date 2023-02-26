@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_seoul/utils/localization.dart';
-import 'package:flutter_seoul/widgets/back_app_bar.dart';
+import 'package:flutter_seoul/widgets/common/app_bar.dart';
+import 'package:flutter_seoul/widgets/common/button.dart';
 import 'package:flutter_seoul/widgets/custom_checkbox.dart';
 import 'package:flutter_seoul/widgets/outline_button.dart';
-import 'package:flutter_seoul/widgets/seoul_button.dart';
 
 class Sample extends HookWidget {
   const Sample({Key? key}) : super(key: key);
@@ -15,22 +15,18 @@ class Sample extends HookWidget {
     var t = localization(context);
 
     return Scaffold(
-      appBar: const BackAppBar(),
+      appBar: const AppBarBack(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SeoulButton(
-                onPressed: () {
+              Button(
+                text: t.fullAgreement,
+                onPress: () {
                   agreementValues.value =
                       agreementValues.value.map((e) => true).toList();
                 },
-                style: const SeoulButtonStyle(
-                  width: double.infinity,
-                  height: 50,
-                ),
-                child: Text(t.fullAgreement),
               ),
               Row(
                 children: [
@@ -83,22 +79,14 @@ class Sample extends HookWidget {
                   const Text('agreement 3'),
                 ],
               ),
-              SeoulButton(
-                onPressed: () {},
-                style: const SeoulButtonStyle(
-                  width: double.infinity,
-                  backgroundColor: Colors.teal,
-                ),
-                child: const Text('Solid button'),
+              Button(
+                text: 'Solid button',
+                onPress: () {},
               ),
-              SeoulButton(
+              Button(
                 disabled: true,
-                onPressed: () {},
-                style: const SeoulButtonStyle(
-                  width: double.infinity,
-                  backgroundColor: Colors.teal,
-                ),
-                child: const Text('Disabled Solid button'),
+                text: 'Disabled Solid button',
+                onPress: () {},
               ),
               OutlineButton(
                 onPressed: () {},

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BackAppBar extends StatelessWidget with PreferredSizeWidget {
+class AppBarBack extends StatelessWidget with PreferredSizeWidget {
   final Widget? title;
   final Widget? leading;
   final List? actions;
   final bool isBottomBorderDisplayed;
   final BottomBorderStyle bottomBorderStyle;
 
-  const BackAppBar({
+  const AppBarBack({
     Key? key,
     this.title,
     this.leading,
