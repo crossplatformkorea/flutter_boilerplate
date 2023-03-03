@@ -78,124 +78,120 @@ class EditProfile extends HookConsumerWidget {
         ],
       ),
       body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-          child: ListView(
-            children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(16, 36, 16, 36),
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.16),
-                          offset: const Offset(4, 4),
-                          blurRadius: 16)
-                    ],
-                    color: Theme.of(context).colorScheme.background,
-                    borderRadius: const BorderRadius.all(Radius.circular(16))),
-                child: Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 24),
-                        child: const Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'Profile',
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.w700),
-                          ),
+        child: ListView(
+          children: [
+            Container(
+              margin: const EdgeInsets.fromLTRB(16, 36, 16, 36),
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.16),
+                        offset: const Offset(4, 4),
+                        blurRadius: 16)
+                  ],
+                  color: Theme.of(context).colorScheme.background,
+                  borderRadius: const BorderRadius.all(Radius.circular(16))),
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 24),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Profile',
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.w700),
                         ),
                       ),
-                      Center(
-                        child: InkWell(
-                          onTap: () {
-                            pickPhoto(ImageSource.gallery);
-                          },
-                          child: Stack(
-                            children: [
-                              imageFile.value == null
-                                  ? CircleAvatar(
-                                      radius: 85,
-                                      backgroundColor: themeNotifier.isDark
-                                          ? Colors.white
-                                          : Colors.black,
-                                      child: const Text(
-                                        '사진 선택',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700),
-                                      ),
-                                    )
-                                  : CircleAvatar(
-                                      radius: 85,
-                                      backgroundImage: FileImage(
-                                          File(imageFile.value!.path))),
-                              Positioned(
-                                bottom: 0,
-                                right: 0,
-                                child: SizedBox(
-                                  width: 48,
-                                  height: 48,
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(4)),
+                    ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          pickPhoto(ImageSource.gallery);
+                        },
+                        child: Stack(
+                          children: [
+                            imageFile.value == null
+                                ? CircleAvatar(
+                                    radius: 85,
+                                    backgroundColor: themeNotifier.isDark
+                                        ? Colors.white
+                                        : Colors.black,
+                                    child: const Text(
+                                      '사진 선택',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w700),
                                     ),
-                                    child: const Icon(
-                                      Icons.camera_alt,
-                                      color: Colors.white,
-                                      size: 24,
-                                    ),
+                                  )
+                                : CircleAvatar(
+                                    radius: 85,
+                                    backgroundImage:
+                                        FileImage(File(imageFile.value!.path))),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: SizedBox(
+                                width: 48,
+                                height: 48,
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(4)),
+                                  ),
+                                  child: const Icon(
+                                    Icons.camera_alt,
+                                    color: Colors.white,
+                                    size: 24,
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      Container(
-                          margin: const EdgeInsets.fromLTRB(0, 24, 0, 10),
-                          child: const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Display name',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500),
-                            ),
-                          )),
-                      EditText(
-                        onChanged: (String txt) => nameValue.value = txt,
-                        hintText: 'Name',
-                      ),
-                      Container(
-                          margin: const EdgeInsets.fromLTRB(0, 24, 0, 10),
-                          child: const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Description',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500),
-                            ),
-                          )),
-                      EditText(
-                        onChanged: (String txt) => descValue.value = txt,
-                        hintText: 'Description',
-                      ),
-                      Button(
-                        text: 'Update',
-                        onPress: () {},
-                        disabled:
-                            nameValue.value == '' || descValue.value == '',
-                      )
-                    ],
-                  ),
+                    ),
+                    Container(
+                        margin: const EdgeInsets.fromLTRB(0, 24, 0, 10),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Display name',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500),
+                          ),
+                        )),
+                    EditText(
+                      onChanged: (String txt) => nameValue.value = txt,
+                      hintText: 'Name',
+                    ),
+                    Container(
+                        margin: const EdgeInsets.fromLTRB(0, 24, 0, 10),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Description',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500),
+                          ),
+                        )),
+                    EditText(
+                      onChanged: (String txt) => descValue.value = txt,
+                      hintText: 'Description',
+                    ),
+                    Button(
+                      text: 'Update',
+                      onPress: () {},
+                      disabled: nameValue.value == '' || descValue.value == '',
+                    )
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
