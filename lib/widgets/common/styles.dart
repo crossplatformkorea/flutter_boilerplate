@@ -5,7 +5,6 @@ class TitleTextStyle extends TextStyle {
       : super(
           fontSize: 20,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
         );
 }
 
@@ -14,7 +13,6 @@ class NavigationTitleTextStyle extends TextStyle {
       : super(
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
         );
 }
 
@@ -22,7 +20,6 @@ class SubTitleTextStyle extends TextStyle {
   const SubTitleTextStyle()
       : super(
           fontSize: 14,
-          color: Colors.black,
         );
 }
 
@@ -31,7 +28,6 @@ class InputLabelTextStyle extends TextStyle {
       : super(
           fontSize: 14,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
         );
 }
 
@@ -40,6 +36,5 @@ class InputHintTextStyle extends TextStyle {
       : super(
           fontSize: 14,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
         );
 }

@@ -30,7 +30,24 @@
 		<string>Main</string>
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>카메라 롤에서 사진을 선택하여 프로필 사진을 변경합니다.</string>
-		<key>UISupportedInterfaceOrientations</key>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>photo</string>
+		
+    <!-- Permission options for the `location` group -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Need location when in use</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Always and when in use!</string>
+    <key>NSLocationUsageDescription</key>
+    <string>Older devices need location.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Can I have location always?</string>
+
+    <!-- Permission options for the `camera` group -->
+    <key>NSCameraUsageDescription</key>
+    <string>camera</string>
+    
+    <key>UISupportedInterfaceOrientations</key>
 		<array>
 			<string>UIInterfaceOrientationPortrait</string>
 			<string>UIInterfaceOrientationLandscapeLeft</string>
