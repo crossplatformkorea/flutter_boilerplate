@@ -32,6 +32,11 @@ logger: ^1.1.0
 http: ^0.13.5
 freezed_annotation: ^2.2.0
 json_annotation: ^4.7.0
+hooks_riverpod: ^2.1.3
+sqflite: ^2.2.4+1
+path: ^1.8.2
+permission_handler: ^10.2.0
+flat_list: ^0.1.13
 
 # dev_dependencies
 flutter_lints: ^2.0.1
@@ -78,6 +83,99 @@ This project consists of github hooks using [lefthooks](https://github.com/evilm
 
 
 > Current flutter version used is [written in CI](https://github.com/flutter-seoul/flutter_seoul/pull/10/files).
+
+## Local Database(sqflite)
+### Create DB
+```dart
+final Future<Database> database = openDatabase(
+  join(await getDatabasesPath(), 'item_database.db'),
+    onCreate: (db, version) {
+        // 데이터베이스에 CREATE TABLE 수행
+      return db.execute(
+      'CREATE TABLE item(id INTEGER PRIMARY KEY ,title TEXT, content TEXT)',
+    );
+  },
+  version: 1,
+);
+```
+
+### insert
+```dart
+db.insert('item', item.toJson(),
+  conflictAlgorithm: ConflictAlgorithm.replace);
+```
+
+### get
+```dart
+final List<Map<String, dynamic>> maps = await db.query('item');
+  return List.generate(maps.length, (i) {
+    return ItemModel(
+      id: maps[i]['id'],
+      title: maps[i]['title'],
+      content: maps[i]['content'],
+    );
+  });
+```
+
+### delete
+```dart
+db.delete(
+  'item',
+  where: 'id = ?',
+  whereArgs: [id],
+);
+```
+
+### update
+```dart
+db.update(
+  'item',
+  item.toJson(),
+  where: 'id = ?',
+  whereArgs: [item.id],
+);
+```
+
+## Permission
+
+### IOS
+```dart
+flutter pub add permission_handler
+```
+Add permission to your Info.plist file.
+
+[IOS permissions list]
+
+[IOS permissions list]:https://github.com/Baseflow/flutter-permission-handler/blob/master/permission_handler/example/ios/Runner/Info.plist
+
+### Android
+Add permissions to your AndroidManifest.xml file.
+
+[Android permissions list]
+
+[Android permissions list]:https://github.com/Baseflow/flutter-permission-handler/blob/master/permission_handler/example/android/app/src/main/AndroidManifest.xml
+
+### Permission Example
+```dart
+var status = await Permission.camera.status;
+if (status.granted) {
+  /// you can do something if granted
+}
+
+if (status.isDenied) {
+  /// you can do something if isDenied
+}
+
+if (status == PermissionStatus.permanentlyDenied) {
+  /// If permanently denied, have to openAppSettings()
+  await openAppSettings();
+}
+
+if (await Permission.location.isRestricted) {
+
+}
+```
+
 
 ## Localization
 
