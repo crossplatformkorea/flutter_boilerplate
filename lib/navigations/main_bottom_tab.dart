@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_seoul/screens/edit_profile.dart';
 import 'package:flutter_seoul/screens/home.dart';
-import 'package:flutter_seoul/screens/permissionScreen.dart';
+import 'package:flutter_seoul/screens/permission_screen.dart';
 
 import '../utils/colors.dart';
 

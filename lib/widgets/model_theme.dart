@@ -28,7 +28,8 @@ class ModelTheme extends ChangeNotifier {
 
   Future<void> getPreferences() async {
     final schedulerBinding = SchedulerBinding.instance;
-    Brightness brightness = schedulerBinding.window.platformBrightness;
+    Brightness brightness =
+        schedulerBinding.platformDispatcher.platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
     if (isDarkMode) {
       _isDark = isDarkMode;
