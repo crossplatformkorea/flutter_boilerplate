@@ -25,13 +25,16 @@ Do you need another boilerplate?
 ```yaml
 # dependencies
 cupertino_icons: ^1.0.5
-intl: ^0.17.0
-provider: ^6.0.4
+intl: ^0.18.0
 flutter_dotenv: ^5.0.2
 logger: ^1.1.0
 http: ^0.13.5
 freezed_annotation: ^2.2.0
 json_annotation: ^4.7.0
+image_picker: ^0.8.6
+shared_preferences: ^2.0.15
+go_router: ^6.0.3
+flutter_hooks: ^0.18.5+1
 hooks_riverpod: ^2.1.3
 sqflite: ^2.2.4+1
 path: ^1.8.2
@@ -40,12 +43,12 @@ flat_list: ^0.1.13
 
 # dev_dependencies
 flutter_lints: ^2.0.1
-test: ^1.20.2
+test: ^1.22.0
 mockito: ^5.3.2
-build_runner: ^2.3.2
-flutter_native_splash: ^2.2.12
+build_runner: ^2.3.3
+flutter_native_splash: ^2.2.16
 change_app_package_name: ^1.1.0
-freezed: ^2.2.0
+freezed: ^2.3.2
 json_serializable: ^6.5.4
 ```
 
