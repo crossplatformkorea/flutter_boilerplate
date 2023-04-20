@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppBarBack extends StatelessWidget with PreferredSizeWidget {
+class AppBarBack extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
   final Widget? leading;
   final List? actions;

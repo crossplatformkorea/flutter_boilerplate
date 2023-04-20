@@ -35,7 +35,7 @@ class MyApp extends ConsumerWidget {
           Locale('en', 'US'),
           Locale('ko', 'KR'),
         ],
-        routerConfig: routerConfig,
+        routerConfig: routerConfig(),
       ),
     );
   }

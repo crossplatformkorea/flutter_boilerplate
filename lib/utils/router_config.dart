@@ -32,62 +32,115 @@ extension GoRoutesName on GoRoutes {
   }
 }
 
-final routerConfig = GoRouter(
-  navigatorKey: _rootNavigatorKey,
-  initialLocation: GoRoutes.authSwitch.fullPath,
-  errorBuilder: (context, state) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Text('Error: ${state.error}'),
-    );
-  },
-  routes: <RouteBase>[
-    GoRoute(
-      name: GoRoutes.authSwitch.name,
-      path: GoRoutes.authSwitch.fullPath,
-      builder: (context, state) {
-        return const AuthSwitch();
-      },
-    ),
-    GoRoute(
-      name: GoRoutes.home.name,
-      path: GoRoutes.home.fullPath,
-      builder: (context, state) {
-        return const Home();
-      },
-    ),
-    GoRoute(
-      name: GoRoutes.signIn.name,
-      path: GoRoutes.signIn.fullPath,
-      builder: (context, state) {
-        return const SignIn();
-      },
-    ),
-    GoRoute(
-      name: GoRoutes.editProfile.name,
-      path: GoRoutes.editProfile.fullPath,
-      builder: (context, state) {
-        var args = state.extra as EditProfileArguments;
+GoRouter routerConfig([String? initialLocation]) => GoRouter(
+      initialLocation: initialLocation ?? GoRoutes.authSwitch.fullPath,
+      routes: <RouteBase>[
+        GoRoute(
+          name: GoRoutes.authSwitch.name,
+          path: GoRoutes.authSwitch.fullPath,
+          builder: (context, state) {
+            return const AuthSwitch();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.home.name,
+          path: GoRoutes.home.fullPath,
+          builder: (context, state) {
+            return const Home();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.signIn.name,
+          path: GoRoutes.signIn.fullPath,
+          builder: (context, state) {
+            return const SignIn();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.editProfile.name,
+          path: GoRoutes.editProfile.fullPath,
+          builder: (context, state) {
+            var args = state.extra as EditProfileArguments;
 
-        return EditProfile(
-          title: args.title,
-          person: args.person,
-        );
-      },
-    ),
-    GoRoute(
-      name: GoRoutes.sample.name,
-      path: GoRoutes.sample.fullPath,
-      builder: (context, state) {
-        return const Sample();
-      },
-    ),
-    GoRoute(
-      name: GoRoutes.result.name,
-      path: GoRoutes.result.fullPath,
-      builder: (context, state) {
-        return const Result();
-      },
-    ),
-  ],
-);
+            return EditProfile(
+              title: args.title,
+              person: args.person,
+            );
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.sample.name,
+          path: GoRoutes.sample.fullPath,
+          builder: (context, state) {
+            return const Sample();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.result.name,
+          path: GoRoutes.result.fullPath,
+          builder: (context, state) {
+            return const Result();
+          },
+        ),
+      ],
+    );
+
+// final routerConfig = GoRouter(
+//   navigatorKey: _rootNavigatorKey,
+//   initialLocation: GoRoutes.authSwitch.fullPath,
+//   errorBuilder: (context, state) {
+//     return Padding(
+//       padding: const EdgeInsets.all(16),
+//       child: Text('Error: ${state.error}'),
+//     );
+//   },
+//   routes: <RouteBase>[
+//     GoRoute(
+//       name: GoRoutes.authSwitch.name,
+//       path: GoRoutes.authSwitch.fullPath,
+//       builder: (context, state) {
+//         return const AuthSwitch();
+//       },
+//     ),
+//     GoRoute(
+//       name: GoRoutes.home.name,
+//       path: GoRoutes.home.fullPath,
+//       builder: (context, state) {
+//         return const Home();
+//       },
+//     ),
+//     GoRoute(
+//       name: GoRoutes.signIn.name,
+//       path: GoRoutes.signIn.fullPath,
+//       builder: (context, state) {
+//         return const SignIn();
+//       },
+//     ),
+//     GoRoute(
+//       name: GoRoutes.editProfile.name,
+//       path: GoRoutes.editProfile.fullPath,
+//       builder: (context, state) {
+//         var args = state.extra as EditProfileArguments;
+
+//         return EditProfile(
+//           title: args.title,
+//           person: args.person,
+//         );
+//       },
+//     ),
+//     GoRoute(
+//       name: GoRoutes.sample.name,
+//       path: GoRoutes.sample.fullPath,
+//       builder: (context, state) {
+//         return const Sample();
+//       },
+//     ),
+//     GoRoute(
+//       name: GoRoutes.result.name,
+//       path: GoRoutes.result.fullPath,
+//       builder: (context, state) {
+//         return const Result();
+//       },
+//     ),
+//   ],
+// );
