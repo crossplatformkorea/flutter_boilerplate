@@ -33,6 +33,7 @@ extension GoRoutesName on GoRoutes {
 }
 
 GoRouter routerConfig([String? initialLocation]) => GoRouter(
+      navigatorKey: _rootNavigatorKey,
       initialLocation: initialLocation ?? GoRoutes.authSwitch.fullPath,
       routes: <RouteBase>[
         GoRoute(
