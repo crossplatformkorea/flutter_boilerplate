@@ -35,7 +35,7 @@ class TestUtils {
     );
   }
 
-  static Widget makeTestableWidget({required Widget child}) {
+  static Widget makeTestableWidget({required String? child}) {
     return ProviderScope(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
@@ -50,7 +50,7 @@ class TestUtils {
           Locale('en', 'US'),
           Locale('ko', 'KR'),
         ],
-        routerConfig: routerConfig(),
+        routerConfig: routerConfig(child),
       ),
     );
   }

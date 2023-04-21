@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AppBarBack extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
@@ -24,7 +25,7 @@ class AppBarBack extends StatelessWidget implements PreferredSizeWidget {
         icon: const Icon(
           Icons.arrow_back_ios_outlined,
         ),
-        onPressed: () => Navigator.of(context).pop(),
+        onPressed: () => context.pop(),
       ),
       bottom: isBottomBorderDisplayed
           ? PreferredSize(

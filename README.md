@@ -87,6 +87,84 @@ This project consists of github hooks using [lefthooks](https://github.com/evilm
 
 > Current flutter version used is [written in CI](https://github.com/flutter-seoul/flutter_seoul/pull/10/files).
 
+## Navigation
+
+[go_router](https://pub.dev/packages/go_router)
+
+### Route settings
+```dart
+GoRouter routerConfig([String? initialLocation]) => GoRouter(
+      navigatorKey: _rootNavigatorKey,
+      initialLocation: initialLocation ?? GoRoutes.authSwitch.fullPath,
+      routes: <RouteBase>[
+        GoRoute(
+          name: GoRoutes.authSwitch.name,
+          path: GoRoutes.authSwitch.fullPath,
+          builder: (context, state) {
+            return const AuthSwitch();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.home.name,
+          path: GoRoutes.home.fullPath,
+          builder: (context, state) {
+            return const Home();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.signIn.name,
+          path: GoRoutes.signIn.fullPath,
+          builder: (context, state) {
+            return const SignIn();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.editProfile.name,
+          path: GoRoutes.editProfile.fullPath,
+          builder: (context, state) {
+            var args = state.extra as EditProfileArguments;
+
+            return EditProfile(
+              title: args.title,
+              person: args.person,
+            );
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.sample.name,
+          path: GoRoutes.sample.fullPath,
+          builder: (context, state) {
+            return const Sample();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.result.name,
+          path: GoRoutes.result.fullPath,
+          builder: (context, state) {
+            return const Result();
+          },
+        ),
+      ],
+    );
+```
+
+### Navigate using go_router
+```dart
+context.push(GoRoutes.sample.fullPath);
+context.go(GoRoutes.sample.fullPath);
+context.pop(GoRoutes.sample.fullPath);
+```
+
+### Returning values
+```dart
+onTap: () => context.pop(true)
+
+onTap: () {
+  final bool? result = await context.push<bool>('/page2');
+  if(result ?? false)...
+}
+```
+
 ## Local Database(sqflite)
 ### Create DB
 ```dart
