@@ -25,13 +25,16 @@ Do you need another boilerplate?
 ```yaml
 # dependencies
 cupertino_icons: ^1.0.5
-intl: ^0.17.0
-provider: ^6.0.4
+intl: ^0.18.0
 flutter_dotenv: ^5.0.2
 logger: ^1.1.0
 http: ^0.13.5
 freezed_annotation: ^2.2.0
 json_annotation: ^4.7.0
+image_picker: ^0.8.6
+shared_preferences: ^2.0.15
+go_router: ^6.0.3
+flutter_hooks: ^0.18.5+1
 hooks_riverpod: ^2.1.3
 sqflite: ^2.2.4+1
 path: ^1.8.2
@@ -40,12 +43,12 @@ flat_list: ^0.1.13
 
 # dev_dependencies
 flutter_lints: ^2.0.1
-test: ^1.20.2
+test: ^1.22.0
 mockito: ^5.3.2
-build_runner: ^2.3.2
-flutter_native_splash: ^2.2.12
+build_runner: ^2.3.3
+flutter_native_splash: ^2.2.16
 change_app_package_name: ^1.1.0
-freezed: ^2.2.0
+freezed: ^2.3.2
 json_serializable: ^6.5.4
 ```
 
@@ -83,6 +86,84 @@ This project consists of github hooks using [lefthooks](https://github.com/evilm
 
 
 > Current flutter version used is [written in CI](https://github.com/flutter-seoul/flutter_seoul/pull/10/files).
+
+## Navigation
+
+[go_router](https://pub.dev/packages/go_router)
+
+### Route settings
+```dart
+GoRouter routerConfig([String? initialLocation]) => GoRouter(
+      navigatorKey: _rootNavigatorKey,
+      initialLocation: initialLocation ?? GoRoutes.authSwitch.fullPath,
+      routes: <RouteBase>[
+        GoRoute(
+          name: GoRoutes.authSwitch.name,
+          path: GoRoutes.authSwitch.fullPath,
+          builder: (context, state) {
+            return const AuthSwitch();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.home.name,
+          path: GoRoutes.home.fullPath,
+          builder: (context, state) {
+            return const Home();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.signIn.name,
+          path: GoRoutes.signIn.fullPath,
+          builder: (context, state) {
+            return const SignIn();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.editProfile.name,
+          path: GoRoutes.editProfile.fullPath,
+          builder: (context, state) {
+            var args = state.extra as EditProfileArguments;
+
+            return EditProfile(
+              title: args.title,
+              person: args.person,
+            );
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.sample.name,
+          path: GoRoutes.sample.fullPath,
+          builder: (context, state) {
+            return const Sample();
+          },
+        ),
+        GoRoute(
+          name: GoRoutes.result.name,
+          path: GoRoutes.result.fullPath,
+          builder: (context, state) {
+            return const Result();
+          },
+        ),
+      ],
+    );
+```
+
+### Navigate using go_router
+```dart
+context.push(GoRoutes.sample.fullPath);
+context.go(GoRoutes.sample.fullPath);
+context.pop(GoRoutes.sample.fullPath);
+```
+
+### Returning values
+```dart
+onTap: () => context.pop(true)
+
+onTap: () {
+  final bool? result = await context.push<bool>('/page2');
+  if(result ?? false)...
+}
+```
 
 ## Local Database(sqflite)
 ### Create DB

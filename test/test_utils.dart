@@ -3,6 +3,7 @@ import 'package:flutter_seoul/generated/l10n.dart';
 import 'package:flutter_seoul/utils/router_config.dart';
 import 'package:flutter_seoul/utils/themes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'mocks/navigator_observer.mocks.dart';
 
@@ -34,21 +35,23 @@ class TestUtils {
     );
   }
 
-  static Widget makeTestableWidget({required Widget child}) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: Themes.light,
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('ko', 'KR'),
-      ],
-      routerConfig: routerConfig,
+  static Widget makeTestableWidget({required String? child}) {
+    return ProviderScope(
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        theme: Themes.light,
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('ko', 'KR'),
+        ],
+        routerConfig: routerConfig(child),
+      ),
     );
   }
 }
