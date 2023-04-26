@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../../utils/colors.dart' show AppColors;
-import 'styles.dart';
+import 'package:flutter_seoul/utils/colors.dart';
+import 'package:flutter_seoul/widgets/common/styles.dart';
 
 OutlineInputBorder focusedOutlineBorder = OutlineInputBorder(
   borderSide: BorderSide(width: 1.5, color: AppColors.role.basic),
@@ -28,172 +28,78 @@ OutlineInputBorder errorBorder = OutlineInputBorder(
   borderRadius: const BorderRadius.all(Radius.circular(8)),
 );
 
-class EditText extends StatelessWidget {
+class EditText extends StatefulWidget {
   const EditText({
-    Key? key,
-    this.focusNode,
-    this.margin,
-    this.padding,
-    this.label = '',
-    this.textHint,
-    this.cursorColor,
-    this.errorText,
-    this.textEditingController,
-    this.onChanged,
-    this.onSubmitted,
-    this.onEditingComplete,
-    this.textInputAction,
-    this.validator,
+    super.key,
+    required this.onChanged,
+    this.style,
+    this.decoration,
     this.keyboardType,
-    this.isSecret = false,
-    this.hasChecked = false,
-    this.showBorder = true,
-    this.minLines = 1,
-    this.maxLines = 1,
-    this.inputDecoration,
-    this.labelStyle = const InputLabelTextStyle(),
-    this.textStyle = const TextStyle(
-      fontSize: 16.0,
-    ),
-    this.hintStyle = const TextStyle(
-      fontSize: 16.0,
-    ),
-    this.errorStyle = const TextStyle(
-      fontSize: 14.0,
-      fontWeight: FontWeight.w500,
-    ),
-    this.onTap,
-    this.prefixIcon,
-    this.enabled = true,
-    this.readOnly = false,
-    this.autofocus = false,
-  }) : super(key: key);
-  final FocusNode? focusNode;
-  final EdgeInsets? margin;
-  final EdgeInsets? padding;
-  final String label;
-  final int minLines;
-  final int maxLines;
-  final InputDecoration? inputDecoration;
-  final TextStyle labelStyle;
-  final TextStyle textStyle;
-  final String? textHint;
-  final Color? cursorColor;
-  final TextStyle hintStyle;
-  final String? errorText;
-  final TextStyle errorStyle;
-  final bool isSecret;
-  final bool hasChecked;
-  final bool showBorder;
-  final TextInputType? keyboardType;
-  final TextEditingController? textEditingController;
-  final Function(String)? onChanged;
-  final Function(String)? onSubmitted;
-  final VoidCallback? onEditingComplete;
-  final TextInputAction? textInputAction;
-  final String? Function(String?)? validator;
-  final Function()? onTap;
-  final Widget? prefixIcon;
-  final bool enabled;
-  final bool readOnly;
-  final bool autofocus;
+    this.hintText,
+    this.validator,
+    this.obscureText = false,
+    this.enableSuggestions = true,
+    this.autocorrect = true,
+  });
 
+  final void Function(String) onChanged;
+  final TextStyle? style;
+  final String? hintText;
+  final String? Function(String?)? validator;
+  final bool obscureText;
+  final bool enableSuggestions;
+  final bool autocorrect;
+  final InputDecoration? decoration;
+  final TextInputType? keyboardType;
+
+  @override
+  State<EditText> createState() => _EditTextState();
+}
+
+class _EditTextState extends State<EditText> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: margin,
-      padding: padding,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          label.isNotEmpty
-              ? Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    label,
-                    style: labelStyle,
-                  ),
-                )
-              : const SizedBox(),
-          Stack(
-            alignment: Alignment.centerLeft,
-            children: <Widget>[
-              TextField(
-                key: key,
-                keyboardType: keyboardType,
-                obscureText: isSecret,
-                focusNode: focusNode,
-                minLines: minLines,
-                cursorColor: cursorColor,
-                maxLines: maxLines,
-                controller: textEditingController,
-                onSubmitted: onSubmitted,
-                enabled: enabled,
-                readOnly: readOnly,
-
-                /// Set default [InputDecoration] below instead of constructor
-                /// because we need to apply optional parameters given in other props.
-                ///
-                /// You can pass [inputDecoration] to replace default [InputDecoration].
-                decoration: inputDecoration ??
-                    InputDecoration(
-                      prefixIcon: prefixIcon,
-                      focusColor: AppColors.text.basic,
-                      fillColor: !enabled
-                          ? AppColors.bg.borderContrast
-                          : AppColors.bg.basic,
-                      filled: !enabled,
-                      disabledBorder:
-                          showBorder ? disableBorder : InputBorder.none,
-                      contentPadding: const EdgeInsets.all(16),
-                      focusedBorder:
-                          showBorder ? focusedOutlineBorder : InputBorder.none,
-                      enabledBorder:
-                          showBorder ? outlineBorder : InputBorder.none,
-                      errorBorder: showBorder ? errorBorder : InputBorder.none,
-                      focusedErrorBorder:
-                          showBorder ? focusedErrorBorder : InputBorder.none,
-                      hintText: textHint,
-                      hintStyle: hintStyle,
-                      errorText: errorText,
-                      errorStyle:
-                          errorStyle.copyWith(color: AppColors.role.danger),
-                    ),
-                autofocus: autofocus,
-                style: textStyle.merge(TextStyle(
-                  color: !enabled ? AppColors.text.placeholder : null,
-                )),
-                onChanged: onChanged,
-                onEditingComplete: onEditingComplete,
-                textInputAction: textInputAction,
-                onTap: onTap,
-                autocorrect: false,
-              ),
-              hasChecked
-                  ? const Positioned(
-                      right: 0.0,
-                      top: 16.0,
-                      child: Icon(
-                        Icons.check,
-                      ),
-                    )
-                  : Container(),
-            ],
-          )
-        ],
+      margin: const EdgeInsets.only(bottom: 15),
+      child: TextField(
+        obscureText: widget.obscureText,
+        enableSuggestions: widget.enableSuggestions,
+        autocorrect: widget.autocorrect,
+        style: widget.style,
+        decoration: InputDecoration(
+          hintText: widget.hintText,
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  width: 1,
+                  color: Theme.of(context)
+                      .inputDecorationTheme
+                      .border!
+                      .borderSide
+                      .color)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  width: 2,
+                  color: Theme.of(context)
+                      .inputDecorationTheme
+                      .focusedBorder!
+                      .borderSide
+                      .color)),
+        ),
+        onChanged: (String txt) => widget.onChanged(txt),
+        keyboardType: widget.keyboardType,
       ),
     );
   }
 }
 
-class EditFormText extends StatelessWidget {
+class EditFormText extends HookWidget {
   const EditFormText({
-    Key? key,
+    super.key,
     this.focusNode,
     this.margin,
     this.padding,
     this.label = '',
-    this.textHint,
+    this.hintText,
     this.cursorColor,
     this.errorText,
     this.textEditingController,
@@ -226,7 +132,9 @@ class EditFormText extends StatelessWidget {
     this.readOnly = false,
     this.autofocus = false,
     this.maxLength,
-  }) : super(key: key);
+    this.initialValue,
+  });
+
   final FocusNode? focusNode;
   final EdgeInsets? margin;
   final EdgeInsets? padding;
@@ -236,7 +144,7 @@ class EditFormText extends StatelessWidget {
   final InputDecoration? inputDecoration;
   final TextStyle labelStyle;
   final TextStyle textStyle;
-  final String? textHint;
+  final String? hintText;
   final Color? cursorColor;
   final TextStyle hintStyle;
   final String? errorText;
@@ -257,6 +165,7 @@ class EditFormText extends StatelessWidget {
   final bool readOnly;
   final bool autofocus;
   final int? maxLength;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -279,6 +188,7 @@ class EditFormText extends StatelessWidget {
             alignment: Alignment.centerLeft,
             children: <Widget>[
               TextFormField(
+                initialValue: initialValue,
                 key: key,
                 maxLength: maxLength,
                 validator: validator,
@@ -316,7 +226,7 @@ class EditFormText extends StatelessWidget {
                       errorBorder: showBorder ? errorBorder : InputBorder.none,
                       focusedErrorBorder:
                           showBorder ? focusedErrorBorder : InputBorder.none,
-                      hintText: textHint,
+                      hintText: hintText,
                       hintStyle: hintStyle,
                       errorText: errorText,
                       errorMaxLines: 2,
@@ -352,7 +262,7 @@ class EditFormText extends StatelessWidget {
 class EditTextSearch extends HookWidget {
   EditTextSearch({
     Key? key,
-    this.textHint,
+    this.hintText,
     this.hintStyle,
     this.textEditingController,
     this.onPressSearch,
@@ -363,7 +273,7 @@ class EditTextSearch extends HookWidget {
     this.suffixIcon,
     this.readOnly = false,
   }) : super(key: key);
-  final String? textHint;
+  final String? hintText;
   final TextStyle? hintStyle;
   final TextEditingController? textEditingController;
   final Function(String)? onPressSearch;
@@ -417,7 +327,7 @@ class EditTextSearch extends HookWidget {
                     onChanged!(val);
                   }
                 },
-                textHint: textHint,
+                hintText: hintText,
                 hintStyle: TextStyle(
                   color: AppColors.text.placeholder,
                 ).merge(hintStyle),
