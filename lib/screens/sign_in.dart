@@ -6,7 +6,7 @@ import 'package:flutter_seoul/repositories/user_repository.dart';
 import 'package:flutter_seoul/utils/colors.dart';
 import 'package:flutter_seoul/utils/localization.dart';
 import 'package:flutter_seoul/widgets/common/button.dart';
-import 'package:flutter_seoul/widgets/edit_text.dart';
+import 'package:flutter_seoul/widgets/common/edit_text.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SignIn extends HookConsumerWidget {

@@ -5,7 +5,7 @@ import 'package:flutter_seoul/widgets/responsive.dart';
 import 'package:flutter_seoul/utils/localization.dart' show localization;
 
 class Result extends HookWidget {
-  const Result({Key? key}) : super(key: key);
+  const Result({super.key});
 
   @override
   Widget build(BuildContext context) {
