@@ -24,7 +24,9 @@ class MyApp extends ConsumerWidget {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        theme: themeNotifier.isDark ? Themes.dark : Themes.light,
+        theme: Themes.light,
+        darkTheme: Themes.dark,
+        themeMode: themeNotifier.isDark ? ThemeMode.dark : ThemeMode.light,
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,

@@ -7,11 +7,14 @@ on:
 jobs:
   build_and_deploy_web:
     runs-on: ubuntu-latest
+    env:
+      FLUTTER_VERSION: "3.7.0-1.2.pre"
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
         with:
           channel: "beta"
+          flutter-version: ${{ env.FLUTTER_VERSION }}
 
       - name: COPY ENV
         run: cp .env.sample .env
