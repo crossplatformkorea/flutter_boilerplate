@@ -14,8 +14,6 @@ class SignIn extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userNotifier = ref.watch(userProvider);
-
     var user =
         useState<UserModel>(const UserModel(id: '0', email: '', password: ''));
     var t = localization(context);
@@ -68,7 +66,9 @@ class SignIn extends HookConsumerWidget {
                     disabled:
                         user.value.email == '' || user.value.password == '',
                     onPress: () async {
-                      userNotifier.addUsers(user: user.value);
+                      ref
+                          .read(userStateProvider.notifier)
+                          .addUsers(user: user.value);
                       await UserRepository.instance.login(user.value);
                     },
                   ),

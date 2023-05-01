@@ -5,15 +5,14 @@ import 'package:flutter_seoul/screens/sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../repositories/user_repository.dart';
-import '../widgets/common/loading_indicator.dart';
 
 class AuthSwitch extends ConsumerWidget {
   const AuthSwitch({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userNotifier = ref.watch(userProvider);
-    var currentUser = userNotifier.users;
+    final userNotifier = ref.watch(userStateProvider);
+    var currentUser = userNotifier;
 
     return FutureBuilder(
       future: UserRepository.instance.getMe(),
@@ -21,7 +20,7 @@ class AuthSwitch extends ConsumerWidget {
         if (snap.connectionState == ConnectionState.done) {
           var result = snap.data as List<Map<String, dynamic>>;
 
-          if (result.isEmpty && currentUser.isEmpty) {
+          if (result.isEmpty && currentUser == null) {
             return const SignIn();
           }
 
@@ -34,9 +33,10 @@ class AuthSwitch extends ConsumerWidget {
           return const MainBottomTab();
         }
 
-        return const Scaffold(
-          body: LoadingIndicator(),
-        );
+        return const SizedBox();
+        // return const Scaffold(
+        //   body: LoadingIndicator(),
+        // );
       },
     );
   }

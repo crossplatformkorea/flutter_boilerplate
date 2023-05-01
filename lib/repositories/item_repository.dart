@@ -3,6 +3,10 @@ import 'package:flutter_seoul/utils/logger.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+class MoviesRepository {
+  MoviesRepository();
+}
+
 abstract class IItemRepository {
   Future<Database> initDB();
   Future<void> addItem({required ItemModel item});
