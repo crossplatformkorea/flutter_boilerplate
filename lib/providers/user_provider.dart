@@ -1,26 +1,23 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_seoul/models/user_model.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class UserState extends ChangeNotifier {
-  final List<UserModel> _users = [];
+part 'user_provider.g.dart';
 
-  List<UserModel> get users => _users;
+/// NotifierProvider
+@riverpod
+class UserState extends _$UserState {
+  @override
+  UserModel? build() {
+    return null;
+  }
 
   void addUsers({
     required UserModel user,
   }) {
-    _users.add(user);
-
-    notifyListeners();
+    state = user;
   }
 
   void remove() {
-    _users.clear();
-    notifyListeners();
+    state = null;
   }
 }
-
-final userProvider = ChangeNotifierProvider<UserState>((ref) {
-  return UserState();
-});

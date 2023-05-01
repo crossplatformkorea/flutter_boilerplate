@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_seoul/providers/user_provider.dart';
 import 'package:flutter_seoul/repositories/user_repository.dart';
+import 'package:flutter_seoul/utils/assets.dart';
 import 'package:flutter_seoul/widgets/common/button.dart';
 import 'package:flutter_seoul/widgets/common/edit_text.dart';
 import 'package:flutter_seoul/widgets/model_theme.dart';
@@ -24,7 +25,6 @@ class EditProfile extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeNotifier = ref.watch(modelProvider);
-    final userNotifier = ref.watch(userProvider);
 
     final ImagePicker picker = ImagePicker();
     var nameValue = useState('');
@@ -46,13 +46,15 @@ class EditProfile extends HookConsumerWidget {
         leading: Padding(
           padding: const EdgeInsets.only(left: 20),
           child: themeNotifier.isDark
-              ? Image.asset(
-                  'res/images/dooboolabBlack.png',
-                  fit: BoxFit.contain,
+              ? Image(
+                  width: 230,
+                  height: 230,
+                  image: Assets.dooboolabLogo,
                 )
-              : Image.asset(
-                  'res/images/dooboolab.png',
-                  fit: BoxFit.contain,
+              : Image(
+                  width: 230,
+                  height: 230,
+                  image: Assets.dooboolab,
                 ),
         ),
         leadingWidth: 50,
@@ -71,7 +73,7 @@ class EditProfile extends HookConsumerWidget {
             icon: const Icon(Icons.exit_to_app),
             onPressed: () async {
               await UserRepository.instance.logout();
-              userNotifier.remove();
+              ref.read(userStateProvider.notifier).remove();
             },
             iconSize: 30,
           )
