@@ -5,9 +5,11 @@ import 'package:flutter_seoul/providers/user_provider.dart';
 import 'package:flutter_seoul/repositories/user_repository.dart';
 import 'package:flutter_seoul/utils/colors.dart';
 import 'package:flutter_seoul/utils/localization.dart';
+import 'package:flutter_seoul/utils/router_config.dart';
 import 'package:flutter_seoul/widgets/common/button.dart';
 import 'package:flutter_seoul/widgets/common/edit_text.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class SignIn extends HookConsumerWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -66,10 +68,11 @@ class SignIn extends HookConsumerWidget {
                     disabled:
                         user.value.email == '' || user.value.password == '',
                     onPress: () async {
-                      ref
-                          .read(userStateProvider.notifier)
-                          .addUsers(user: user.value);
                       await UserRepository.instance.login(user.value);
+                      ref.watch(userStateProvider.notifier).getMe();
+                      if (context.mounted) {
+                        context.go(GoRoutes.home.fullPath);
+                      }
                     },
                   ),
                 ],

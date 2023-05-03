@@ -6,7 +6,7 @@ abstract class IUserRepository {
   Future<void> login(UserModel user);
   Future<void> logout();
   Future<Database> initDB();
-  Future<List<Map<String, dynamic>>>? getMe();
+  Future<List<UserModel>>? getMe();
 }
 
 class UserRepository implements IUserRepository {
@@ -48,10 +48,16 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<List<Map<String, dynamic>>>? getMe() async {
+  Future<List<UserModel>>? getMe() async {
     final Database db = await initDB();
     final List<Map<String, dynamic>> maps = await db.query('user');
 
-    return maps;
+    return List.generate(maps.length, (i) {
+      return UserModel(
+        id: maps[i]['id'],
+        email: maps[i]['email'],
+        password: maps[i]['password'],
+      );
+    });
   }
 }

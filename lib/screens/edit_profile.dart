@@ -73,7 +73,7 @@ class EditProfile extends HookConsumerWidget {
             icon: const Icon(Icons.exit_to_app),
             onPressed: () async {
               await UserRepository.instance.logout();
-              ref.read(userStateProvider.notifier).remove();
+              ref.watch(userStateProvider.notifier).removeUser();
             },
             iconSize: 30,
           )

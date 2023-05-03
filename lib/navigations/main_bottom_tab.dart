@@ -1,26 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_seoul/screens/edit_profile.dart';
-import 'package:flutter_seoul/screens/home.dart';
-import 'package:flutter_seoul/screens/permission_screen.dart';
+import 'package:flutter_seoul/utils/router_config.dart';
+import 'package:go_router/go_router.dart';
 
 import '../utils/colors.dart';
 
 enum ScreenType { social, generalMeetings }
 
 class MainBottomTab extends HookWidget {
-  const MainBottomTab({Key? key}) : super(key: key);
+  const MainBottomTab({super.key, required this.child});
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     var currentIndex = useState(0);
 
+    void tap(BuildContext context, int index) {
+      print('index:$index');
+      if (index == currentIndex.value) {
+        // If the tab hasn't changed, do nothing
+        return;
+      }
+      currentIndex.value = index;
+      if (index == 0) {
+        // Note: this won't remember the previous state of the route
+        // More info here:
+        // https://github.com/flutter/flutter/issues/99124
+        context.goNamed(GoRoutes.home.name);
+      } else if (index == 1) {
+        context.goNamed(GoRoutes.permission.name);
+      } else if (index == 2) {
+        context.goNamed(GoRoutes.editProfile.name);
+      }
+    }
+
     return Scaffold(
-      body: [
-        const Home(),
-        const PermissionScreen(),
-        const EditProfile(),
-      ].elementAt(currentIndex.value),
+      body: child,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex.value,
         type: BottomNavigationBarType.fixed,
@@ -31,7 +46,7 @@ class MainBottomTab extends HookWidget {
         showSelectedLabels: true,
         showUnselectedLabels: true,
         iconSize: 24,
-        onTap: (index) => currentIndex.value = index,
+        onTap: (index) => tap(context, index),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

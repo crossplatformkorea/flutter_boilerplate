@@ -87,6 +87,14 @@ This project consists of github hooks using [lefthooks](https://github.com/evilm
 
 > Current flutter version used is [written in CI](https://github.com/flutter-seoul/flutter_seoul/pull/10/files).
 
+## riverpod
+
+Update riverpod provider with below command
+
+```sh
+flutter pub run build_runner watch -d
+```
+
 ## Navigation
 
 [go_router](https://pub.dev/packages/go_router)
