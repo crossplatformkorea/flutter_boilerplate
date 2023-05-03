@@ -16,7 +16,6 @@ class MainBottomTab extends HookWidget {
     var currentIndex = useState(0);
 
     void tap(BuildContext context, int index) {
-      print('index:$index');
       if (index == currentIndex.value) {
         // If the tab hasn't changed, do nothing
         return;

@@ -34,6 +34,7 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
       - run: cp .env.sample .env
       - run: flutter pub get
+      - run: flutter pub run build_runner build --delete-conflicting-outputs
       - run: flutter analyze
       - run: flutter test
       # - run: flutter test --coverage
