@@ -1,23 +1,47 @@
 import 'package:flutter_seoul/models/user_model.dart';
+import 'package:flutter_seoul/repositories/user_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_provider.g.dart';
 
-/// NotifierProvider
 @riverpod
 class UserState extends _$UserState {
+  Future<List<UserModel>?> getMe() async {
+    final user = UserRepository.instance.getMe();
+    return user;
+  }
+
   @override
-  UserModel? build() {
-    return null;
+  Future<List<UserModel>?> build() async {
+    final me = UserRepository.instance.getMe();
+    return me;
   }
 
-  void addUsers({
-    required UserModel user,
-  }) {
-    state = user;
-  }
+  Future<void> removeUser() async {
+    state = const AsyncValue.loading();
 
-  void remove() {
-    state = null;
+    state = await AsyncValue.guard(() async {
+      // await UserRepository.instance.logout();
+      return null;
+    });
   }
 }
+
+/// NotifierProvider
+// @riverpod
+// class UserState extends _$UserState {
+//   @override
+//   UserModel? build() {
+//     return null;
+//   }
+
+//   void addUsers({
+//     required UserModel user,
+//   }) {
+//     state = user;
+//   }
+
+//   void remove() {
+//     state = null;
+//   }
+// }

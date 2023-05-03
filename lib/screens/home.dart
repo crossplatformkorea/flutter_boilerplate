@@ -6,10 +6,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_seoul/models/item_model.dart';
 import 'package:flutter_seoul/providers/item_provider.dart';
 import 'package:flutter_seoul/utils/general.dart';
+import 'package:flutter_seoul/utils/router_config.dart';
 import 'package:flutter_seoul/widgets/common/button.dart';
 import 'package:flutter_seoul/widgets/common/edit_text.dart';
 import 'package:flutter_seoul/widgets/common/loading_indicator.dart';
 import 'package:flutter_seoul/widgets/common/styles.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -31,22 +33,15 @@ class Home extends HookConsumerWidget {
       var rngId = rng.nextInt(100);
 
       itemNotifier.addItems(item: itemData.value.copyWith(id: rngId));
-      // ref
-      //     .read(asyncItemsProvider.notifier)
-      //     .addItems(item: itemData.value.copyWith(id: rngId));
       Navigator.pop(context);
     }
 
     Future<void> removeItem(int id) async {
       itemNotifier.removeItems(id: id);
-      // ref.read(asyncItemsProvider.notifier).removeItems(id: id);
     }
 
     Future<void> updateItem(int id) async {
       itemNotifier.updateItems(item: itemData.value.copyWith(id: id));
-      // ref
-      //     .read(asyncItemsProvider.notifier)
-      //     .updateItems(item: itemData.value.copyWith(id: id));
       Navigator.pop(context);
     }
 
@@ -68,88 +63,109 @@ class Home extends HookConsumerWidget {
                 ),
               ),
               child: InkWell(
-                  onTap: () {
-                    General.instance.showBottomSheet(
-                      context,
-                      Form(
-                        key: formKey,
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          color: Colors.white,
-                          child: Column(
-                            children: [
-                              EditFormText(
-                                initialValue: buildItem.title,
-                                margin: const EdgeInsets.only(top: 20),
-                                label: 'Title',
-                                hintText: 'Title',
-                                onChanged: (val) {
-                                  itemData.value =
-                                      itemData.value.copyWith(title: val);
-                                },
-                                validator: (_) {
-                                  var text = itemData.value.title;
-                                  if (text.isEmpty) {
-                                    return '제목을 입력해주세요';
-                                  }
-                                  return null;
-                                },
-                              ),
-                              EditFormText(
-                                initialValue: buildItem.content,
-                                margin: const EdgeInsets.only(top: 20),
-                                label: 'Content',
-                                hintText: 'Content',
-                                onChanged: (val) {
-                                  itemData.value =
-                                      itemData.value.copyWith(content: val);
-                                },
-                                validator: (_) {
-                                  var text = itemData.value.content;
-                                  if (text.isEmpty) {
-                                    return '내용을 입력해주세요';
-                                  }
-                                  return null;
-                                },
-                              ),
-                              Button(
-                                margin: const EdgeInsets.only(top: 20),
-                                onPress: () => updateItem(buildItem.id),
-                                text: '업데이트',
-                              )
-                            ],
+                onTap: () {
+                  context.push(
+                    '${GoRoutes.home.fullPath}/${buildItem.id}',
+                    extra: buildItem,
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'title: ${buildItem.title}',
+                            style: const TitleTextStyle(),
                           ),
-                        ),
+                          Text('content: ${buildItem.content}',
+                              style: const SubTitleTextStyle())
+                        ],
                       ),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              'title: ${buildItem.title}',
-                              style: const TitleTextStyle(),
+                      Wrap(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(right: 20),
+                            child: IconButton(
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                              onPressed: () => General.instance.showBottomSheet(
+                                context,
+                                Form(
+                                  key: formKey,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(20),
+                                    color: Colors.white,
+                                    child: Column(
+                                      children: [
+                                        EditFormText(
+                                          initialValue: buildItem.title,
+                                          margin:
+                                              const EdgeInsets.only(top: 20),
+                                          label: 'Title',
+                                          hintText: 'Title',
+                                          onChanged: (val) {
+                                            itemData.value = itemData.value
+                                                .copyWith(title: val);
+                                          },
+                                          validator: (_) {
+                                            var text = itemData.value.title;
+                                            if (text.isEmpty) {
+                                              return '제목을 입력해주세요';
+                                            }
+                                            return null;
+                                          },
+                                        ),
+                                        EditFormText(
+                                          initialValue: buildItem.content,
+                                          margin:
+                                              const EdgeInsets.only(top: 20),
+                                          label: 'Content',
+                                          hintText: 'Content',
+                                          onChanged: (val) {
+                                            itemData.value = itemData.value
+                                                .copyWith(content: val);
+                                          },
+                                          validator: (_) {
+                                            var text = itemData.value.content;
+                                            if (text.isEmpty) {
+                                              return '내용을 입력해주세요';
+                                            }
+                                            return null;
+                                          },
+                                        ),
+                                        Button(
+                                          margin:
+                                              const EdgeInsets.only(top: 20),
+                                          onPress: () =>
+                                              updateItem(buildItem.id),
+                                          text: '업데이트',
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              icon: const Icon(Icons.edit),
                             ),
-                            Text('content: ${buildItem.content}',
-                                style: const SubTitleTextStyle())
-                          ],
-                        ),
-                        IconButton(
-                          onPressed: () => removeItem(buildItem.id),
-                          icon: const Icon(
-                            Icons.delete,
                           ),
-                        ),
-                      ],
-                    ),
-                  )),
+                          IconButton(
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                            onPressed: () => removeItem(buildItem.id),
+                            icon: const Icon(Icons.delete),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             );
           },
         ),
