@@ -46,9 +46,7 @@ extension GoRoutesName on GoRoutes {
 
 GoRouter routerConfig([String? initialLocation]) => GoRouter(
       navigatorKey: _rootNavigatorKey,
-      // debugLogDiagnostics: true,
       initialLocation: initialLocation ?? GoRoutes.home.fullPath,
-      // initialLocation: GoRoutes.home.fullPath,
       routes: <RouteBase>[
         ShellRoute(
           builder: (context, state, child) => MainBottomTab(child: child),
