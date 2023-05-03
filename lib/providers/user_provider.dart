@@ -21,7 +21,6 @@ class UserState extends _$UserState {
     state = const AsyncValue.loading();
 
     state = await AsyncValue.guard(() async {
-      // await UserRepository.instance.logout();
       return null;
     });
   }

@@ -51,6 +51,7 @@ class Home extends HookConsumerWidget {
         error: (e, st) => Text(e.toString()),
         loading: () => const LoadingIndicator(),
         data: (item) => FlatList<ItemModel>(
+          onRefresh: () => itemNotifier.fetchItem(),
           data: item,
           buildItem: (buildItem, index) {
             return Container(
