@@ -24,6 +24,20 @@ enum GoRoutes {
   result
 }
 
+CustomTransitionPage buildPageWithDefaultTransition<T>({
+  required BuildContext context,
+  required GoRouterState state,
+  required Widget child,
+}) {
+  return CustomTransitionPage<T>(
+    key: state.pageKey,
+    child: child,
+    transitionDuration: const Duration(milliseconds: 120),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+        FadeTransition(opacity: animation, child: child),
+  );
+}
+
 extension GoRoutesName on GoRoutes {
   String get name => describeEnum(this);
 
@@ -54,9 +68,12 @@ GoRouter routerConfig([String? initialLocation]) => GoRouter(
             GoRoute(
               name: GoRoutes.home.name,
               path: GoRoutes.home.fullPath,
-              builder: (context, state) {
-                return const Home();
-              },
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                context: context,
+                state: state,
+                child: const Home(),
+              ),
               routes: [
                 GoRoute(
                   name: GoRoutes.itemDetail.name,
@@ -71,16 +88,22 @@ GoRouter routerConfig([String? initialLocation]) => GoRouter(
             GoRoute(
               name: GoRoutes.permission.name,
               path: GoRoutes.permission.fullPath,
-              builder: (context, state) {
-                return const PermissionScreen();
-              },
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                context: context,
+                state: state,
+                child: const PermissionScreen(),
+              ),
             ),
             GoRoute(
               name: GoRoutes.editProfile.name,
               path: GoRoutes.editProfile.fullPath,
-              builder: (context, state) {
-                return const EditProfile();
-              },
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                context: context,
+                state: state,
+                child: const EditProfile(),
+              ),
             ),
           ],
         ),

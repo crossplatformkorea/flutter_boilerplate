@@ -9,6 +9,9 @@ class Themes {
   static final light = ThemeData.light().copyWith(
     primaryColor: AppColors.role.primary,
     scaffoldBackgroundColor: Colors.white,
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        // backgroundColor: Colors.white,
+        ),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
