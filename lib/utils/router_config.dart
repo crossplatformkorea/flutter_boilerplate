@@ -9,6 +9,8 @@ import 'package:flutter_seoul/screens/permission_screen.dart';
 import 'package:flutter_seoul/screens/result.dart';
 import 'package:flutter_seoul/screens/sample.dart';
 import 'package:flutter_seoul/screens/sign_in.dart';
+import 'package:flutter_seoul/screens/views/tab_scroll.dart';
+import 'package:flutter_seoul/screens/views/views.dart';
 import 'package:go_router/go_router.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -17,8 +19,10 @@ enum GoRoutes {
   authSwitch,
   signIn,
   home,
-  permission,
   itemDetail,
+  permission,
+  views,
+  tabScroll,
   editProfile,
   sample,
   result
@@ -95,6 +99,24 @@ GoRouter routerConfig([String? initialLocation]) => GoRouter(
                 child: const PermissionScreen(),
               ),
             ),
+            GoRoute(
+                name: GoRoutes.views.name,
+                path: GoRoutes.views.fullPath,
+                pageBuilder: (context, state) =>
+                    buildPageWithDefaultTransition<void>(
+                      context: context,
+                      state: state,
+                      child: const Views(),
+                    ),
+                routes: [
+                  GoRoute(
+                    name: GoRoutes.tabScroll.name,
+                    path: 'tab-Scroll',
+                    builder: (context, state) {
+                      return const TabScroll();
+                    },
+                  ),
+                ]),
             GoRoute(
               name: GoRoutes.editProfile.name,
               path: GoRoutes.editProfile.fullPath,
