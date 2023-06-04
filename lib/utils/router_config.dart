@@ -68,13 +68,13 @@ extension GoRoutesName on GoRoutes {
 
 final routerProvider = Provider<GoRouter>(
   (ref) {
-    final currentUser = ref.read(userStateProvider);
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
       initialLocation: GoRoutes.home.fullPath,
       redirect: (context, state) {
-        if (currentUser.value != null && currentUser.value!.isEmpty) {
-          if (state.subloc != GoRoutes.signIn.fullPath) {
+        final currentUser = ref.read(userStateProvider);
+        if (currentUser.value == null && currentUser.value!.isEmpty) {
+          if (state.matchedLocation != GoRoutes.signIn.fullPath) {
             return GoRoutes.signIn.fullPath;
           }
         }
