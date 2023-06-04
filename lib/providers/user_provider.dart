@@ -6,15 +6,17 @@ part 'user_provider.g.dart';
 
 @riverpod
 class UserState extends _$UserState {
-  Future<List<UserModel>?> getMe() async {
-    final user = UserRepository.instance.getMe();
-    return user;
+  Future<List<UserModel>?> fetchUser() async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      return await UserRepository.instance.getMe();
+    });
+    return state.value;
   }
 
   @override
   Future<List<UserModel>?> build() async {
-    final me = UserRepository.instance.getMe();
-    return me;
+    return fetchUser();
   }
 
   Future<void> removeUser() async {
@@ -25,22 +27,3 @@ class UserState extends _$UserState {
     });
   }
 }
-
-/// NotifierProvider
-// @riverpod
-// class UserState extends _$UserState {
-//   @override
-//   UserModel? build() {
-//     return null;
-//   }
-
-//   void addUsers({
-//     required UserModel user,
-//   }) {
-//     state = user;
-//   }
-
-//   void remove() {
-//     state = null;
-//   }
-// }

@@ -24,6 +24,14 @@ class Views extends HookConsumerWidget {
             },
             text: 'tabView scroll',
           ),
+          const SizedBox(height: 10),
+          Button(
+            onPress: () {
+              context.go(
+                  '${GoRoutes.views.fullPath}${GoRoutes.collapsibleTabScroll.fullPath}');
+            },
+            text: 'collapsible tabView scroll',
+          ),
         ],
       ),
     );

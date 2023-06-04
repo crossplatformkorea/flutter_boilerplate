@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_seoul/models/item_model.dart';
 import 'package:flutter_seoul/navigations/main_bottom_tab.dart';
+import 'package:flutter_seoul/providers/user_provider.dart';
 import 'package:flutter_seoul/screens/edit_profile.dart';
 import 'package:flutter_seoul/screens/home.dart';
 import 'package:flutter_seoul/screens/item_detail.dart';
@@ -9,9 +10,11 @@ import 'package:flutter_seoul/screens/permission_screen.dart';
 import 'package:flutter_seoul/screens/result.dart';
 import 'package:flutter_seoul/screens/sample.dart';
 import 'package:flutter_seoul/screens/sign_in.dart';
+import 'package:flutter_seoul/screens/views/collapsible_tab_scroll.dart';
 import 'package:flutter_seoul/screens/views/tab_scroll.dart';
 import 'package:flutter_seoul/screens/views/views.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -23,6 +26,7 @@ enum GoRoutes {
   permission,
   views,
   tabScroll,
+  collapsibleTabScroll,
   editProfile,
   sample,
   result
@@ -62,9 +66,20 @@ extension GoRoutesName on GoRoutes {
   }
 }
 
-GoRouter routerConfig([String? initialLocation]) => GoRouter(
+final routerProvider = Provider<GoRouter>(
+  (ref) {
+    final currentUser = ref.read(userStateProvider);
+    return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: initialLocation ?? GoRoutes.home.fullPath,
+      initialLocation: GoRoutes.home.fullPath,
+      redirect: (context, state) {
+        if (currentUser.value != null && currentUser.value!.isEmpty) {
+          if (state.subloc != GoRoutes.signIn.fullPath) {
+            return GoRoutes.signIn.fullPath;
+          }
+        }
+        return null;
+      },
       routes: <RouteBase>[
         ShellRoute(
           builder: (context, state, child) => MainBottomTab(child: child),
@@ -116,6 +131,13 @@ GoRouter routerConfig([String? initialLocation]) => GoRouter(
                       return const TabScroll();
                     },
                   ),
+                  GoRoute(
+                    name: GoRoutes.collapsibleTabScroll.name,
+                    path: 'collapsible-Tab-Scroll',
+                    builder: (context, state) {
+                      return const CollapsibleTabScroll();
+                    },
+                  ),
                 ]),
             GoRoute(
               name: GoRoutes.editProfile.name,
@@ -152,3 +174,5 @@ GoRouter routerConfig([String? initialLocation]) => GoRouter(
         ),
       ],
     );
+  },
+);
