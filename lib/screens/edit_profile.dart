@@ -3,9 +3,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_seoul/providers/user_provider.dart';
 import 'package:flutter_seoul/repositories/user_repository.dart';
 import 'package:flutter_seoul/utils/assets.dart';
+import 'package:flutter_seoul/utils/router_config.dart';
 import 'package:flutter_seoul/widgets/common/button.dart';
 import 'package:flutter_seoul/widgets/common/edit_text.dart';
 import 'package:flutter_seoul/widgets/model_theme.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
@@ -73,7 +75,10 @@ class EditProfile extends HookConsumerWidget {
             icon: const Icon(Icons.exit_to_app),
             onPressed: () async {
               await UserRepository.instance.logout();
-              ref.watch(userStateProvider.notifier).removeUser();
+              ref.read(userStateProvider.notifier).removeUser();
+              if (context.mounted) {
+                context.go(GoRoutes.signIn.fullPath, extra: null);
+              }
             },
             iconSize: 30,
           )

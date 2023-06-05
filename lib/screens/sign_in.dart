@@ -69,7 +69,7 @@ class SignIn extends HookConsumerWidget {
                         user.value.email == '' || user.value.password == '',
                     onPress: () async {
                       await UserRepository.instance.login(user.value);
-                      ref.watch(userStateProvider.notifier).getMe();
+                      ref.watch(userStateProvider.notifier).fetchUser();
                       if (context.mounted) {
                         context.go(GoRoutes.home.fullPath);
                       }

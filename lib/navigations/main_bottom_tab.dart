@@ -29,6 +29,8 @@ class MainBottomTab extends HookWidget {
       } else if (index == 1) {
         context.goNamed(GoRoutes.permission.name);
       } else if (index == 2) {
+        context.goNamed(GoRoutes.views.name);
+      } else if (index == 3) {
         context.goNamed(GoRoutes.editProfile.name);
       }
     }
@@ -56,6 +58,11 @@ class MainBottomTab extends HookWidget {
             icon: Icon(Icons.lock),
             label: '권한',
             tooltip: '권한',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.screen_share),
+            label: '화면',
+            tooltip: '화면',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
