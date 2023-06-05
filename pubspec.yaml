@@ -60,9 +60,6 @@ dependencies:
 dependency_overrides:
   intl: ^0.17.0-nullsafety.2
 
-dependency_overrides:
-  intl: ^0.17.0-nullsafety.2
-
 dev_dependencies:
   integration_test:
     sdk: flutter
