@@ -289,6 +289,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  extended_list:
+    dependency: transitive
+    description:
+      name: extended_list
+      sha256: "7eb3c21cd8b7710b0092cb0606807cd24614e5832e65f370e5dee226d317de44"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
+  extended_list_library:
+    dependency: transitive
+    description:
+      name: extended_list_library
+      sha256: cb424a04464e89bd6737f9ae025029bd8e913c7bf37101ad10c2defe0238d842
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
+  extended_nested_scroll_view:
+    dependency: "direct main"
+    description:
+      name: extended_nested_scroll_view
+      sha256: adb98e3a92c16245789699f9ddd3cbaa47f14f744b5bbd8d7fef54b7e86089a2
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.0"
   fake_async:
     dependency: transitive
     description:
@@ -620,6 +644,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  loading_more_list:
+    dependency: "direct main"
+    description:
+      name: loading_more_list
+      sha256: aa680edc81cf024c394dccfa7ba1db701a5efb23ec1b8c657308428ce9da11d1
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.3"
+  loading_more_list_library:
+    dependency: transitive
+    description:
+      name: loading_more_list_library
+      sha256: "31348925a98748ffe04f661e4b47df37103fabad39442064fcf59148a5fee2dd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   logger:
     dependency: "direct main"
     description:
@@ -860,6 +900,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.2"
+  pull_to_refresh_notification:
+    dependency: "direct main"
+    description:
+      name: pull_to_refresh_notification
+      sha256: "3f27b9695c98770db3f9f50550e5ab44a6d946d022311a55bbe6d5cd4c69a1ad"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
   riverpod:
     dependency: transitive
     description:
@@ -1185,6 +1233,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  visibility_detector:
+    dependency: transitive
+    description:
+      name: visibility_detector
+      sha256: "15c54a459ec2c17b4705450483f3d5a2858e733aee893dcee9d75fd04814940d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.3"
   vm_service:
     dependency: transitive
     description:
@@ -1201,6 +1257,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
+  waterfall_flow:
+    dependency: transitive
+    description:
+      name: waterfall_flow
+      sha256: "84486ac34f51977176990ada50b44d83be24726814fa03c22c1e10e3791cc3f2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.2"
   web_socket_channel:
     dependency: transitive
     description:
@@ -1259,4 +1323,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=3.0.0-0 <4.0.0"
-  flutter: ">=3.3.0"
+  flutter: ">=3.10.0"
