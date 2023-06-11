@@ -50,4 +50,4 @@ coverage
 
 *.g.dart 
 *.freezed.dart
-.fvm/flutter_sdk
+.fvm
