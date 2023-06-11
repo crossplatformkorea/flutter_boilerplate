@@ -17,14 +17,29 @@ class General {
     );
   }
 
-  void showModalTopSheet(BuildContext context, String message, Widget builder) {
+  void showModalTopSheet(BuildContext context, Widget builder,
+      {Color? backgroundColor, double? height}) {
     showGeneralDialog(
       context: context,
       barrierDismissible: true,
       transitionDuration: const Duration(milliseconds: 500),
       barrierLabel: MaterialLocalizations.of(context).dialogLabel,
       barrierColor: Colors.black.withOpacity(0.5),
-      pageBuilder: (context, _, __) => builder,
+      pageBuilder: (context, _, __) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(
+              height: height,
+              width: MediaQuery.of(context).size.width,
+              child: Material(
+                color: backgroundColor ?? Colors.white,
+                child: builder,
+              ),
+            ),
+          ],
+        );
+      },
       transitionBuilder: (context, animation, secondaryAnimation, child) {
         return SlideTransition(
           position: CurvedAnimation(
